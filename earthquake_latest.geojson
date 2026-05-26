@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.434,
+                    18.955
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-05-26 14:58:33 UTC",
+                "Time_TH": "2026-05-26 21:58:33",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 55 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.444,
                     24.114
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-25 17:20:18 UTC",
                 "Time_TH": "2026-05-26 00:20:18",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 268 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.833,
-                    18.348
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-25 09:52:09 UTC",
-                "Time_TH": "2026-05-25 16:52:09",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.เชียงคาน จ.เลย ประมาณ 53 กม."
             }
         }
     ]
