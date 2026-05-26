@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 def parse_item_data(item):
     """
     ฟังก์ชันย่อยสำหรับแกะข้อมูลและสกัดพิกัดจากแต่ละ Item 
-    เพื่อป้องกันปัญหา Syntax Error ซ้อนบล็อก
+    พร้อมปรับปรุงระบบแปลงเวลา UTC เป็นเวลาไทยให้เสถียร 100%
     """
     try:
         lat, lon = None, None
@@ -20,7 +20,7 @@ def parse_item_data(item):
             lat = float(lat_tag.text.strip())
             lon = float(lon_tag.text.strip())
         
-        # แผน ข: สกัดพิกัดจากข้อความในแท็ก <description> (CDATA) ด้วย Regex
+        # แผน ข: สกัดพิกัดจากข้อความในแท็ก <description> ด้วย Regex
         if lat is None or lon is None:
             desc_tag = item.find('description')
             if desc_tag:
@@ -31,34 +31,40 @@ def parse_item_data(item):
                     lat = float(lat_match.group(1))
                     lon = float(lon_match.group(1))
                     
-        # หากสกัดพิกัดไม่สำเร็จให้ส่งค่ากลับเป็น None ทันที
+        # หากสกัดพิกัดไม่สำเร็จให้ข้ามรายการนี้ทันที
         if lat is None or lon is None:
             return None
             
-        # สกัด Attributes อื่นๆ 
+        # สกัด Attributes พื้นฐาน
         title = item.find('title').text.strip() if item.find('title') else "ไม่ระบุสถานที่"
         mag = item.find('tmd:magnitude') or item.find('magnitude')
         depth = item.find('tmd:depth') or item.find('depth')
-        time_utc = item.find('tmd:time') or item.find('time')
+        time_utc_raw = item.find('tmd:time') or item.find('time')
         comments = item.find('comments')
+        
+        # ทำความสะอาดข้อความเวลา ตัดคำว่า UTC ออกเพื่อให้ Pandas อ่านง่าย
+        time_utc_str = time_utc_raw.text.strip() if time_utc_raw else ""
+        time_utc_clean = time_utc_str.replace("UTC", "").strip()
         
         record = {
             "Location": title,
             "Magnitude": float(mag.text.strip()) if mag else 0.0,
             "Depth_km": float(depth.text.strip()) if depth else 0.0,
-            "Time_UTC": time_utc.text.strip() if time_utc else "",
+            "Time_UTC": time_utc_str,
             "Comments": comments.text.strip() if comments else "",
             "Latitude": lat,
             "Longitude": lon
         }
         
-        # แปลงเวลา UTC เป็นเวลาประเทศไทย (+7 ชั่วโมง) ด้วย Pandas
-        if record["Time_UTC"]:
+        # แปลงเวลาเป็นเวลาประเทศไทย (+7 ชั่วโมง) โหมดเสถียรสูง
+        if time_utc_clean:
             try:
-                utc_time = pd.to_datetime(record["Time_UTC"]).tz_localize('UTC')
+                # เจาะจงฟอร์แมตเวลาให้ตรงกับโครงสร้างข้อมูลของกรมอุตุฯ (YYYY-MM-DD HH:MM:SS)
+                utc_time = pd.to_datetime(time_utc_clean, format='%Y-%m-%d %H:%M:%S').tz_localize('UTC')
                 thai_time = utc_time.tz_convert('Asia/Bangkok')
                 record["Time_TH"] = thai_time.strftime('%Y-%m-%d %H:%M:%S')
-            except:
+            except Exception as time_error:
+                print(f"[!] ไม่สามารถแปลงเวลาแถวนี้ได้เนื่องจาก: {time_error}")
                 record["Time_TH"] = None
         else:
             record["Time_TH"] = None
@@ -79,7 +85,6 @@ def fetch_tmd_earthquake():
     }
     
     try:
-        # 1. ส่งคำขอดึงข้อมูล XML
         response = requests.get(rss_url, headers=headers, timeout=30)
         if response.status_code != 200:
             print(f"[-] ไม่สามารถเชื่อมต่อ RSS Feed ได้ รหัสข้อผิดพลาด: {response.status_code}")
@@ -91,11 +96,9 @@ def fetch_tmd_earthquake():
         
         geojson_features = []
         
-        # 2. วนลูปส่งไปแกะค่าในฟังก์ชันย่อย
         for item in items_list:
             record = parse_item_data(item)
             
-            # หากแกะข้อมูลผ่านและได้พิกัดครบ ให้แปลงเป็นองค์ประกอบของ GeoJSON Feature
             if record is not None:
                 feature = {
                     "type": "Feature",
@@ -114,18 +117,15 @@ def fetch_tmd_earthquake():
                 }
                 geojson_features.append(feature)
                 
-        # 3. ตรวจสอบปริมาณข้อมูล
         if not geojson_features:
             print("[-] ไม่พบข้อมูลเหตุการณ์ที่สกัดพิกัดได้จาก RSS Feed")
             return
             
-        # ประกอบขึ้นเป็นภาพรวมโครงสร้าง GeoJSON Collection
         geojson_data = {
             "type": "FeatureCollection",
             "features": geojson_features
         }
         
-        # 4. เขียนไฟล์ผลลัพธ์ลงระบบเครื่องจำลอง
         output_file = "earthquake_latest.geojson"
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(geojson_data, f, ensure_ascii=False, indent=4)
