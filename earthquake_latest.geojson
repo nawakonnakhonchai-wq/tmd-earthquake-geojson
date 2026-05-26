@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.444,
+                    24.114
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.7,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-05-26 14:50:06 UTC",
+                "Time_TH": "2026-05-26 21:50:06",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 413 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.327,
                     23.578
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-25 09:52:09 UTC",
                 "Time_TH": "2026-05-25 16:52:09",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.เชียงคาน จ.เลย ประมาณ 53 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    94.863,
-                    24.344
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-24 21:37:46 UTC",
-                "Time_TH": "2026-05-25 04:37:46",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 640 กม."
             }
         }
     ]
