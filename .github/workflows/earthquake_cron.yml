@@ -17,16 +17,11 @@ jobs:
       with:
         python-version: '3.11'
 
-    # จุดที่แก้ไข: ติดตั้งไลบรารีระบบสากลสำหรับรองรับ GeoPandas บน Ubuntu Linux
-    - name: Install System GIS Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y gdal-bin libgdal-dev
-
     - name: Install Python Libraries
+      # จุดที่แก้ไข: เพิ่ม lxml เข้าไปต่อท้ายแถว เพื่อเป็นตัวขับเคลื่อนเอนจินแกะโค้ด XML ให้ BeautifulSoup
       run: |
         python -m pip install --upgrade pip
-        pip install requests beautifulsoup4 pandas geopandas shapely
+        pip install requests beautifulsoup4 pandas lxml
 
     - name: Execute Script
       run: python update_earthquake.py
@@ -35,12 +30,11 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
-        # ใช้คำสั่งเช็กก่อนว่ามีไฟล์อยู่จริงไหม ถ้ามีค่อย Add เพื่อป้องกันบอตรันพัง
         if [ -f earthquake_latest.geojson ]; then
           git add earthquake_latest.geojson
           git commit -m "Automated update earthquake GeoJSON data" || echo "No changes to commit"
           git push
         else
-          echo "[-] ไม่พบไฟล์ earthquake_latest.geojson กรุณาตรวจสอบข้อผิดพลาดในสคริปต์ Python"
+          echo "[-] ไม่พบไฟล์ earthquake_latest.geojson"
           exit 1
         fi
