@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    108.059,
+                    14.553
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 4.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-28 06:45:31 UTC",
+                "Time_TH": "2026-05-28 13:45:31",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 353 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.581,
                     4.173
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-26 06:32:21 UTC",
                 "Time_TH": "2026-05-26 13:32:21",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 332 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.419,
-                    18.495
-                ]
-            },
-            "properties": {
-                "Location": "ต.บ้านค่า อ.เมืองลำปาง จ.ลำปาง (Tambon Ban Kha, Amphoe MueangLampang, Lampang)",
-                "Magnitude": 1.7,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-05-26 02:22:48 UTC",
-                "Time_TH": "2026-05-26 09:22:48",
-                "Comments": ""
             }
         }
     ]
