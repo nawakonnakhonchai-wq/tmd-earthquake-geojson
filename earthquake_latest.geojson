@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.741,
+                    21.898
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศลาว - ประเทศจีน (Laos - China Border Region)",
+                "Magnitude": 4.0,
+                "Depth_km": 9.0,
+                "Time_UTC": "2026-05-28 17:08:54 UTC",
+                "Time_TH": "2026-05-29 00:08:54",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 223 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.371,
                     20.712
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-26 14:07:47 UTC",
                 "Time_TH": "2026-05-26 21:07:47",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 606 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.266,
-                    15.426
-                ]
-            },
-            "properties": {
-                "Location": "ใกล้ชายฝั่งทางตอนใต้ของประเทศเมียนมา  (Near South Coast of Myanmar)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-26 13:18:16 UTC",
-                "Time_TH": "2026-05-26 20:18:16",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.แม่สอด จ.ตาก ประมาณ 285 กม."
             }
         }
     ]
