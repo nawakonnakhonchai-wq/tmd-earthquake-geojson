@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.009,
+                    19.574
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-29 01:07:32 UTC",
+                "Time_TH": "2026-05-29 08:07:32",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 208 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.219,
+                    19.422
+                ]
+            },
+            "properties": {
+                "Location": "ต.ฝายกวาง อ.เชียงคำ จ.พะเยา (Tambon Fai Kwang, Amphoe ChiangKham, Phayao)",
+                "Magnitude": 1.8,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-05-29 01:03:47 UTC",
+                "Time_TH": "2026-05-29 08:03:47",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.904,
                     20.648
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-05-26 16:31:42 UTC",
                 "Time_TH": "2026-05-26 23:31:42",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 172 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.434,
-                    18.955
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-05-26 14:58:33 UTC",
-                "Time_TH": "2026-05-26 21:58:33",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 55 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.444,
-                    24.114
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 3.7,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-05-26 14:50:06 UTC",
-                "Time_TH": "2026-05-26 21:50:06",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 413 กม."
             }
         }
     ]
