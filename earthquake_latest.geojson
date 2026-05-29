@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.101,
+                    19.615
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-29 22:15:52 UTC",
+                "Time_TH": "2026-05-30 05:15:52",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 199 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     93.677,
                     23.544
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-28 11:14:45 UTC",
                 "Time_TH": "2026-05-28 18:14:45",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 167 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.734,
-                    14.87
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 4.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-28 09:08:16 UTC",
-                "Time_TH": "2026-05-28 16:08:16",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 312 กม."
             }
         }
     ]
