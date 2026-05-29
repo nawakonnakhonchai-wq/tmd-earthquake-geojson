@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.641,
+                    19.796
+                ]
+            },
+            "properties": {
+                "Location": "ต.โป่งแพร่ อ.แม่ลาว จ.เชียงราย (Tambon Pong Phrae, Amphoe MaeLao, ChiangRai)",
+                "Magnitude": 1.7,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-05-29 02:26:45 UTC",
+                "Time_TH": "2026-05-29 09:26:45",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.683,
                     2.068
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-28 06:45:31 UTC",
                 "Time_TH": "2026-05-28 13:45:31",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 353 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.581,
-                    4.173
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-26 19:49:05 UTC",
-                "Time_TH": "2026-05-27 02:49:05",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 391 กม."
             }
         }
     ]
