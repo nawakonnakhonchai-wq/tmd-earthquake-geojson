@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    95.996,
+                    15.915
+                ]
+            },
+            "properties": {
+                "Location": "ใกล้ชายฝั่งทางตอนใต้ของประเทศเมียนมา  (Near South Coast of Myanmar)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-30 20:42:30 UTC",
+                "Time_TH": "2026-05-31 03:42:30",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.แม่สอด จ.ตาก ประมาณ 289 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.148,
                     21.949
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-29 01:10:57 UTC",
                 "Time_TH": "2026-05-29 08:10:57",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 634 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.009,
-                    19.574
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-29 01:07:32 UTC",
-                "Time_TH": "2026-05-29 08:07:32",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 208 กม."
             }
         }
     ]
