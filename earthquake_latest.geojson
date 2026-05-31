@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.305,
+                    20.911
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-31 19:07:16 UTC",
+                "Time_TH": "2026-06-01 02:07:16",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 116 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     92.196,
                     7.54
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-29 23:03:11 UTC",
                 "Time_TH": "2026-05-30 06:03:11",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 508 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.101,
-                    19.615
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-29 22:15:52 UTC",
-                "Time_TH": "2026-05-30 05:15:52",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 199 กม."
             }
         }
     ]
