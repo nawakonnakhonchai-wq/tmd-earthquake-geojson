@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    102.244,
+                    20.852
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 4.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-30 23:56:25 UTC",
+                "Time_TH": "2026-05-31 06:56:25",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 181 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     95.996,
                     15.915
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-29 02:26:45 UTC",
                 "Time_TH": "2026-05-29 09:26:45",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.683,
-                    2.068
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-29 01:10:57 UTC",
-                "Time_TH": "2026-05-29 08:10:57",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 634 กม."
             }
         }
     ]
