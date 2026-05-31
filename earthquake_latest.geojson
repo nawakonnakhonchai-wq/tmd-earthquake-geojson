@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.631,
+                    16.836
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่กาษา อ.แม่สอด จ.ตาก (Tambon  Mae Kasa, Amphoe MaeSot, Tak)",
+                "Magnitude": 2.0,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-05-31 12:06:07 UTC",
+                "Time_TH": "2026-05-31 19:06:07",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     102.244,
                     20.852
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-29 12:22:53 UTC",
                 "Time_TH": "2026-05-29 19:22:53",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 649 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.641,
-                    19.796
-                ]
-            },
-            "properties": {
-                "Location": "ต.โป่งแพร่ อ.แม่ลาว จ.เชียงราย (Tambon Pong Phrae, Amphoe MaeLao, ChiangRai)",
-                "Magnitude": 1.7,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-05-29 02:26:45 UTC",
-                "Time_TH": "2026-05-29 09:26:45",
-                "Comments": ""
             }
         }
     ]
