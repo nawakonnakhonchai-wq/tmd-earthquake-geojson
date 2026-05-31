@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    92.196,
+                    7.54
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
+                "Magnitude": 4.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-05-31 15:03:33 UTC",
+                "Time_TH": "2026-05-31 22:03:33",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 683 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.631,
                     16.836
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-29 22:15:52 UTC",
                 "Time_TH": "2026-05-30 05:15:52",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 199 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.677,
-                    23.544
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศอินเดีย (Myanmar - India Border Region)",
-                "Magnitude": 4.1,
-                "Depth_km": 84.0,
-                "Time_UTC": "2026-05-29 12:22:53 UTC",
-                "Time_TH": "2026-05-29 19:22:53",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 649 กม."
             }
         }
     ]
