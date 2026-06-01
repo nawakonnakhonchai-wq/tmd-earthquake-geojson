@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.642,
+                    15.478
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.1,
+                "Depth_km": 9.0,
+                "Time_UTC": "2026-05-31 23:54:55 UTC",
+                "Time_TH": "2026-06-01 06:54:55",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.เมือง จ.อุบลราชธานี ประมาณ 300 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.75,
                     20.028
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-30 11:59:59 UTC",
                 "Time_TH": "2026-05-30 18:59:59",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 43 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.592,
-                    1.997
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-05-30 05:15:59 UTC",
-                "Time_TH": "2026-05-30 12:15:59",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 647 กม."
             }
         }
     ]
