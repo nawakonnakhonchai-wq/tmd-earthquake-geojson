@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    92.941,
+                    14.029
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
+                "Magnitude": 4.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-02 02:13:19 UTC",
+                "Time_TH": "2026-06-02 09:13:19",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 669 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.515,
                     17.987
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-05-31 15:03:33 UTC",
                 "Time_TH": "2026-05-31 22:03:33",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 683 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.631,
-                    16.836
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่กาษา อ.แม่สอด จ.ตาก (Tambon  Mae Kasa, Amphoe MaeSot, Tak)",
-                "Magnitude": 2.0,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-05-31 12:06:07 UTC",
-                "Time_TH": "2026-05-31 19:06:07",
-                "Comments": ""
             }
         }
     ]
