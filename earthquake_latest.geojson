@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.882,
+                    17.275
+                ]
+            },
+            "properties": {
+                "Location": "ต.ย่านยาว อ.สวรรคโลก จ.สุโขทัย (Tambon Yan Yao, Amphoe Sawankhalok, Sukhothai)",
+                "Magnitude": 1.9,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-06-03 13:38:39 UTC",
+                "Time_TH": "2026-06-03 20:38:39",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     102.538,
                     20.992
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-01 21:40:20 UTC",
                 "Time_TH": "2026-06-02 04:40:20",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 170 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.719,
-                    14.899
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-01 14:07:59 UTC",
-                "Time_TH": "2026-06-01 21:07:59",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 310 กม."
             }
         }
     ]
