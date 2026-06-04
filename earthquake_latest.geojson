@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    94.765,
+                    22.508
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.1,
+                "Depth_km": 93.0,
+                "Time_UTC": "2026-06-04 15:39:26 UTC",
+                "Time_TH": "2026-06-04 22:39:26",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 488 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.488,
                     18.858
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-02 02:13:19 UTC",
                 "Time_TH": "2026-06-02 09:13:19",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 669 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.515,
-                    17.987
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-01 23:37:47 UTC",
-                "Time_TH": "2026-06-02 06:37:47",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 44 กม."
             }
         }
     ]
