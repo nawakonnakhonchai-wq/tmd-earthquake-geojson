@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.749,
+                    21.617
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 2.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-06 01:24:04 UTC",
+                "Time_TH": "2026-06-06 08:24:04",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 144 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.765,
                     22.508
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-02 14:52:19 UTC",
                 "Time_TH": "2026-06-02 21:52:19",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 87 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    92.941,
-                    14.029
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
-                "Magnitude": 4.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-02 02:13:19 UTC",
-                "Time_TH": "2026-06-02 09:13:19",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 669 กม."
             }
         }
     ]
