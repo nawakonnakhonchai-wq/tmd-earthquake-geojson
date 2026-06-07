@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.948,
+                    20.368
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-07 14:07:50 UTC",
+                "Time_TH": "2026-06-07 21:07:50",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 99 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.808,
                     4.783
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-03 13:38:39 UTC",
                 "Time_TH": "2026-06-03 20:38:39",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    102.538,
-                    20.992
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 4.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-03 05:41:33 UTC",
-                "Time_TH": "2026-06-03 12:41:33",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 213 กม."
             }
         }
     ]
