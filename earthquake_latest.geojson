@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.447,
+                    19.734
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-09 21:33:56 UTC",
+                "Time_TH": "2026-06-10 04:33:56",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 167 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.948,
                     20.368
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-03 17:18:38 UTC",
                 "Time_TH": "2026-06-04 00:18:38",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 123 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.882,
-                    17.275
-                ]
-            },
-            "properties": {
-                "Location": "ต.ย่านยาว อ.สวรรคโลก จ.สุโขทัย (Tambon Yan Yao, Amphoe Sawankhalok, Sukhothai)",
-                "Magnitude": 1.9,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-06-03 13:38:39 UTC",
-                "Time_TH": "2026-06-03 20:38:39",
-                "Comments": ""
             }
         }
     ]
