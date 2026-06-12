@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.711,
+                    14.856
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-12 21:43:34 UTC",
+                "Time_TH": "2026-06-13 04:43:34",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 310 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.67,
                     14.74
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-11 02:30:01 UTC",
                 "Time_TH": "2026-06-11 09:30:01",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 59 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.77,
-                    14.981
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-11 00:02:13 UTC",
-                "Time_TH": "2026-06-11 07:02:13",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 314 กม."
             }
         }
     ]
