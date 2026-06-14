@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.912,
+                    19.917
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-14 20:13:35 UTC",
+                "Time_TH": "2026-06-15 03:13:35",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 56 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.891,
+                    19.967
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.7,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-06-14 20:07:58 UTC",
+                "Time_TH": "2026-06-15 03:07:58",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.374,
                     16.906
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-06-12 17:40:39 UTC",
                 "Time_TH": "2026-06-13 00:40:39",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 302 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.121,
-                    21.11
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-12 15:10:07 UTC",
-                "Time_TH": "2026-06-12 22:10:07",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 212 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.664,
-                    19.752
-                ]
-            },
-            "properties": {
-                "Location": "ต.ดงมะดะ อ.แม่ลาว จ.เชียงราย (Tambon Dong Mada, Amphoe MaeLao, ChiangRai)",
-                "Magnitude": 2.0,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-06-12 10:02:03 UTC",
-                "Time_TH": "2026-06-12 17:02:03",
-                "Comments": ""
             }
         }
     ]
