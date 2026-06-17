@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.71,
+                    16.938
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่กาษา อ.แม่สอด จ.ตาก (Tambon Mae Kasa, Amphoe MaeSot, Tak)",
+                "Magnitude": 2.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-06-17 21:32:13 UTC",
+                "Time_TH": "2026-06-18 04:32:13",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.328,
                     20.504
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-14 22:17:41 UTC",
                 "Time_TH": "2026-06-15 05:17:41",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 456 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.86,
-                    19.94
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.9,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-06-14 21:27:55 UTC",
-                "Time_TH": "2026-06-15 04:27:55",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
             }
         }
     ]
