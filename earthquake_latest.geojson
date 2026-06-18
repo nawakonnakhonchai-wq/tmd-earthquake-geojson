@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    93.931,
+                    24.434
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศอินเดีย (Myanmar - India Border Region)",
+                "Magnitude": 4.5,
+                "Depth_km": 60.0,
+                "Time_UTC": "2026-06-18 15:29:24 UTC",
+                "Time_TH": "2026-06-18 22:29:24",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 704 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.52,
                     15.016
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-15 18:30:15 UTC",
                 "Time_TH": "2026-06-16 01:30:15",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 63 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.917,
-                    19.983
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 4.0,
-                "Time_UTC": "2026-06-15 10:40:03 UTC",
-                "Time_TH": "2026-06-15 17:40:03",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
             }
         }
     ]
