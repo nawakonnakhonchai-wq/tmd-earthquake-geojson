@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.551,
+                    19.699
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่สรวย อ.แม่สรวย จ.เชียงราย (Tambon Mae Suai, Amphoe MaeSuai, ChiangRai)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-06-19 17:27:42 UTC",
+                "Time_TH": "2026-06-20 00:27:42",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.553,
                     19.699
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-17 21:32:13 UTC",
                 "Time_TH": "2026-06-18 04:32:13",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.328,
-                    20.504
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-17 21:15:56 UTC",
-                "Time_TH": "2026-06-18 04:15:56",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 58 กม."
             }
         }
     ]
