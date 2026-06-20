@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.005,
+                    18.686
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-20 02:22:42 UTC",
+                "Time_TH": "2026-06-20 09:22:42",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 100 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.551,
                     19.699
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-18 03:44:35 UTC",
                 "Time_TH": "2026-06-18 10:44:35",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 287 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.71,
-                    16.938
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่กาษา อ.แม่สอด จ.ตาก (Tambon Mae Kasa, Amphoe MaeSot, Tak)",
-                "Magnitude": 2.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-06-17 21:32:13 UTC",
-                "Time_TH": "2026-06-18 04:32:13",
-                "Comments": ""
             }
         }
     ]
