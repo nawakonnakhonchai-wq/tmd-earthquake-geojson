@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.117,
+                    19.862
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.6,
+                "Depth_km": 6.0,
+                "Time_UTC": "2026-06-20 13:24:27 UTC",
+                "Time_TH": "2026-06-20 20:24:27",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 40 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.965,
                     20.047
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-18 22:49:40 UTC",
                 "Time_TH": "2026-06-19 05:49:40",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 317 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.547,
-                    19.696
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สรวย  อ.แม่สรวย จ.เชียงราย (Tambon Mae Suai, Amphoe MaeSuai, ChiangRai)",
-                "Magnitude": 1.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-06-18 20:43:35 UTC",
-                "Time_TH": "2026-06-19 03:43:35",
-                "Comments": ""
             }
         }
     ]
