@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    94.539,
+                    24.823
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศอินเดีย (Myanmar-India Border Region)",
+                "Magnitude": 4.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-20 04:33:02 UTC",
+                "Time_TH": "2026-06-20 11:33:02",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 702 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.005,
                     18.686
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-18 15:29:24 UTC",
                 "Time_TH": "2026-06-18 22:29:24",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 704 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.52,
-                    15.016
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-18 03:44:35 UTC",
-                "Time_TH": "2026-06-18 10:44:35",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 287 กม."
             }
         }
     ]
