@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.809,
+                    14.991
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-22 14:50:57 UTC",
+                "Time_TH": "2026-06-22 21:50:57",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 318 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.803,
                     14.88
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-20 02:22:42 UTC",
                 "Time_TH": "2026-06-20 09:22:42",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 100 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.551,
-                    19.699
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สรวย อ.แม่สรวย จ.เชียงราย (Tambon Mae Suai, Amphoe MaeSuai, ChiangRai)",
-                "Magnitude": 1.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-06-19 17:27:42 UTC",
-                "Time_TH": "2026-06-20 00:27:42",
-                "Comments": ""
             }
         }
     ]
