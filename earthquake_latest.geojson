@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.765,
+                    19.981
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.9,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-06-24 17:03:44 UTC",
+                "Time_TH": "2026-06-25 00:03:44",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 72 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.939,
                     19.855
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-23 10:52:47 UTC",
                 "Time_TH": "2026-06-23 17:52:47",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สอด จ.ตาก ประมาณ 68 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.089,
-                    17.957
-                ]
-            },
-            "properties": {
-                "Location": "ต.บ้านโคก อ.บ้านโคก จ.อุตรดิตถ์ (Tambon Ban Khok, Amphoe BanKhok, Uttaradit)",
-                "Magnitude": 1.4,
-                "Depth_km": 4.0,
-                "Time_UTC": "2026-06-22 17:17:06 UTC",
-                "Time_TH": "2026-06-23 00:17:06",
-                "Comments": ""
             }
         }
     ]
