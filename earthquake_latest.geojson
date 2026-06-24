@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.266,
+                    16.451
+                ]
+            },
+            "properties": {
+                "Location": "ใกล้ชายฝั่งทางตอนใต้ของประเทศเมียนมา  (Near South Coast of Myanmar)",
+                "Magnitude": 3.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-24 10:22:45 UTC",
+                "Time_TH": "2026-06-24 17:22:45",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 244 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.548,
                     19.727
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-22 14:50:57 UTC",
                 "Time_TH": "2026-06-22 21:50:57",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 318 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.803,
-                    14.88
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-22 13:29:52 UTC",
-                "Time_TH": "2026-06-22 20:29:52",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 319 กม."
             }
         }
     ]
