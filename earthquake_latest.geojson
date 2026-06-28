@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.643,
+                    19.749
+                ]
+            },
+            "properties": {
+                "Location": "ต.ดงมะดะ อ.แม่ลาว จ.เชียงราย (Tambon Dong Mada, Amphoe MaeLao, ChiangRai)",
+                "Magnitude": 1.7,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-06-28 17:14:20 UTC",
+                "Time_TH": "2026-06-29 00:14:20",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.138,
                     20.578
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-26 19:04:06 UTC",
                 "Time_TH": "2026-06-27 02:04:06",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 65 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.813,
-                    19.96
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-06-26 18:02:59 UTC",
-                "Time_TH": "2026-06-27 01:02:59",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 67 กม."
             }
         }
     ]
