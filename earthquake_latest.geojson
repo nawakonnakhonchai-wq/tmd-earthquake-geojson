@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.252,
+                    19.004
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-06-29 15:03:07 UTC",
+                "Time_TH": "2026-06-29 22:03:07",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 179 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.826,
                     15.185
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-27 06:10:47 UTC",
                 "Time_TH": "2026-06-27 13:10:47",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.15,
-                    3.292
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-27 04:01:46 UTC",
-                "Time_TH": "2026-06-27 11:01:46",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 495 กม."
             }
         }
     ]
