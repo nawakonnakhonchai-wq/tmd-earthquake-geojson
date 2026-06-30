@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.476,
+                    18.647
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่นาจร อ.แม่แจ่ม จ.เชียงใหม่ (Tambon Mae Nachon, Amphoe MaeChaem, ChiangMai)",
+                "Magnitude": 1.9,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-06-30 04:30:47 UTC",
+                "Time_TH": "2026-06-30 11:30:47",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.252,
                     19.004
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-27 08:01:36 UTC",
                 "Time_TH": "2026-06-27 15:01:36",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 58 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.799,
-                    19.89
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.6,
-                "Depth_km": 7.0,
-                "Time_UTC": "2026-06-27 06:10:47 UTC",
-                "Time_TH": "2026-06-27 13:10:47",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
             }
         }
     ]
