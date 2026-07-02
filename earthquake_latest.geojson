@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.837,
+                    19.954
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.7,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-07-02 16:37:11 UTC",
+                "Time_TH": "2026-07-02 23:37:11",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 64 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.518,
                     17.011
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-30 04:30:47 UTC",
                 "Time_TH": "2026-06-30 11:30:47",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.252,
-                    19.004
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-29 15:03:07 UTC",
-                "Time_TH": "2026-06-29 22:03:07",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 179 กม."
             }
         }
     ]
