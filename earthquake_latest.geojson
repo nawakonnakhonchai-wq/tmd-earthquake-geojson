@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.803,
+                    20.077
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่จัน  อ.แม่จัน จ.เชียงราย (Tambon Mae Chan, Amphoe MaeChan, ChiangRai)",
+                "Magnitude": 1.6,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-07-02 01:05:48 UTC",
+                "Time_TH": "2026-07-02 08:05:48",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.806,
                     19.966
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-06-29 06:34:42 UTC",
                 "Time_TH": "2026-06-29 13:34:42",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 293 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.745,
-                    20.948
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-06-28 17:24:16 UTC",
-                "Time_TH": "2026-06-29 00:24:16",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 124 กม."
             }
         }
     ]
