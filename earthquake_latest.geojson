@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.474,
+                    19.318
+                ]
+            },
+            "properties": {
+                "Location": "ต.บ้านโป่ง อ.เวียงป่าเป้า จ.เชียงราย (Tambon Ban Pong, Amphoe WiangPaPao, ChiangRai)",
+                "Magnitude": 1.7,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-07-04 00:02:08 UTC",
+                "Time_TH": "2026-07-04 07:02:08",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.353,
                     22.438
                 ]
@@ -160,24 +178,6 @@
                 "Depth_km": 5.0,
                 "Time_UTC": "2026-07-02 14:17:25 UTC",
                 "Time_TH": "2026-07-02 21:17:25",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.803,
-                    20.077
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่จัน  อ.แม่จัน จ.เชียงราย (Tambon Mae Chan, Amphoe MaeChan, ChiangRai)",
-                "Magnitude": 1.6,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-07-02 01:05:48 UTC",
-                "Time_TH": "2026-07-02 08:05:48",
                 "Comments": ""
             }
         }
