@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.12,
+                    18.636
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่ศึก  อ.แม่แจ่ม จ.เชียงใหม่ (Tambon Mae Suek, Amphoe MaeChaem, ChiangMai)",
+                "Magnitude": 2.1,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-06 22:46:05 UTC",
+                "Time_TH": "2026-07-07 05:46:05",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.686,
                     4.275
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-03 09:09:01 UTC",
                 "Time_TH": "2026-07-03 16:09:01",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 130 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.049,
-                    19.933
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-03 05:16:24 UTC",
-                "Time_TH": "2026-07-03 12:16:24",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 50 กม."
             }
         }
     ]
