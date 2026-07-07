@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.155,
+                    19.339
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำแพร่ อ.พร้าว จ.เชียงใหม่ (Tambon Nam Phrae, Amphoe Phrao, ChiangMai)",
+                "Magnitude": 1.9,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-07-07 05:41:58 UTC",
+                "Time_TH": "2026-07-07 12:41:58",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.12,
                     18.636
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-03 13:39:34 UTC",
                 "Time_TH": "2026-07-03 20:39:34",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 379 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.091,
-                    21.594
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-03 09:09:01 UTC",
-                "Time_TH": "2026-07-03 16:09:01",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 130 กม."
             }
         }
     ]
