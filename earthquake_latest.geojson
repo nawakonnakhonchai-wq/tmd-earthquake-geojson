@@ -6,6 +6,96 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.889,
+                    20.048
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-08 23:08:04 UTC",
+                "Time_TH": "2026-07-09 06:08:04",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 69 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    94.289,
+                    20.366
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.4,
+                "Depth_km": 13.0,
+                "Time_UTC": "2026-07-08 17:56:36 UTC",
+                "Time_TH": "2026-07-09 00:56:36",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 403 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.164,
+                    19.183
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่ปั๋ง อ.พร้าว จ.เชียงใหม่ (Tambon Mae Pang, Amphoe Phrao, ChiangMai)",
+                "Magnitude": 2.8,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-08 16:54:11 UTC",
+                "Time_TH": "2026-07-08 23:54:11",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.768,
+                    14.814
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-08 07:08:43 UTC",
+                "Time_TH": "2026-07-08 14:08:43",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 316 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.968,
+                    15.112
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-08 06:34:36 UTC",
+                "Time_TH": "2026-07-08 13:34:36",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 334 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.501,
                     2.944
                 ]
@@ -89,96 +179,6 @@
                 "Time_UTC": "2026-07-06 13:36:15 UTC",
                 "Time_TH": "2026-07-06 20:36:15",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 65 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.988,
-                    21.621
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-06 12:19:16 UTC",
-                "Time_TH": "2026-07-06 19:19:16",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 331 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.366,
-                    16.457
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.6,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-07-04 19:12:38 UTC",
-                "Time_TH": "2026-07-05 02:12:38",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 320 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.73,
-                    21.19
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-04 11:19:34 UTC",
-                "Time_TH": "2026-07-04 18:19:34",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 315 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.469,
-                    16.636
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา  (Myanmar)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-04 00:21:12 UTC",
-                "Time_TH": "2026-07-04 07:21:12",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 214 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.474,
-                    19.318
-                ]
-            },
-            "properties": {
-                "Location": "ต.บ้านโป่ง อ.เวียงป่าเป้า จ.เชียงราย (Tambon Ban Pong, Amphoe WiangPaPao, ChiangRai)",
-                "Magnitude": 1.7,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-07-04 00:02:08 UTC",
-                "Time_TH": "2026-07-04 07:02:08",
-                "Comments": ""
             }
         }
     ]
