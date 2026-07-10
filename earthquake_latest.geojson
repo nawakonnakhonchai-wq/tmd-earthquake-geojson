@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.996,
+                    19.18
+                ]
+            },
+            "properties": {
+                "Location": "ต.สว่างอารมณ์  อ.ดอกคำใต้ จ.พะเยา (Tambon Sawang Arom, Amphoe DokKhamtai, Phayao)",
+                "Magnitude": 2.4,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-10 08:05:40 UTC",
+                "Time_TH": "2026-07-10 15:05:40",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.445,
                     20.084
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-06 22:46:05 UTC",
                 "Time_TH": "2026-07-07 05:46:05",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.686,
-                    4.275
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-06 15:16:06 UTC",
-                "Time_TH": "2026-07-06 22:16:06",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 375 กม."
             }
         }
     ]
