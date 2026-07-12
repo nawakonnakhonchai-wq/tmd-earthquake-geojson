@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.153,
+                    19.349
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำแพร่  อ.พร้าว จ.เชียงใหม่ (Tambon Nam Phrae, Amphoe Phrao, ChiangMai)",
+                "Magnitude": 1.8,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-12 12:15:34 UTC",
+                "Time_TH": "2026-07-12 19:15:34",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.488,
                     18.098
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-11 11:09:41 UTC",
                 "Time_TH": "2026-07-11 18:09:41",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 549 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.297,
-                    4.686
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-11 07:41:21 UTC",
-                "Time_TH": "2026-07-11 14:41:21",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 494 กม."
             }
         }
     ]
