@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.643,
+                    4.123
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-12 16:40:29 UTC",
+                "Time_TH": "2026-07-12 23:40:29",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 390 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.153,
                     19.349
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-11 11:15:03 UTC",
                 "Time_TH": "2026-07-11 18:15:03",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 442 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.141,
-                    25.367
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 4.8,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-07-11 11:09:41 UTC",
-                "Time_TH": "2026-07-11 18:09:41",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 549 กม."
             }
         }
     ]
