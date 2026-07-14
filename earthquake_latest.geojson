@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    93.621,
+                    21.112
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-14 21:42:34 UTC",
+                "Time_TH": "2026-07-15 04:42:34",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 497 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     108.2,
                     14.907
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-11 22:10:27 UTC",
                 "Time_TH": "2026-07-12 05:10:27",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 187 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.088,
-                    25.473
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 4.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-11 14:23:38 UTC",
-                "Time_TH": "2026-07-11 21:23:38",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 560 กม."
             }
         }
     ]
