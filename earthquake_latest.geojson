@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.603,
+                    22.927
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 3.9,
+                "Depth_km": 8.0,
+                "Time_UTC": "2026-07-21 21:14:48 UTC",
+                "Time_TH": "2026-07-22 04:14:48",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 312 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.409,
                     22.931
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-17 01:26:22 UTC",
                 "Time_TH": "2026-07-17 08:26:22",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 321 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.618,
-                    19.548
-                ]
-            },
-            "properties": {
-                "Location": "ต.เวียงแหง อ.เวียงแหง จ.เชียงใหม่ (Tambon Wiang Haeng, Amphoe WiangHaeng, ChiangMai)",
-                "Magnitude": 2.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-16 19:13:10 UTC",
-                "Time_TH": "2026-07-17 02:13:10",
-                "Comments": ""
             }
         }
     ]
