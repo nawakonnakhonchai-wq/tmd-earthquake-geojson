@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.426,
+                    4.253
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-22 17:36:39 UTC",
+                "Time_TH": "2026-07-23 00:36:39",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 397 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.149,
                     19.547
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-21 22:16:37 UTC",
                 "Time_TH": "2026-07-22 05:16:37",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 480 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.603,
-                    22.927
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.9,
-                "Depth_km": 8.0,
-                "Time_UTC": "2026-07-21 21:14:48 UTC",
-                "Time_TH": "2026-07-22 04:14:48",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 312 กม."
             }
         }
     ]
