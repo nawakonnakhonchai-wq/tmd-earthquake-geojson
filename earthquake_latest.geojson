@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.038,
+                    4.524
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-22 04:41:07 UTC",
+                "Time_TH": "2026-07-22 11:41:07",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 328 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.661,
+                    4.225
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 5.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-22 04:18:23 UTC",
+                "Time_TH": "2026-07-22 11:18:23",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 381 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.757,
                     23.465
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-07-20 05:31:26 UTC",
                 "Time_TH": "2026-07-20 12:31:26",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.375,
-                    19.405
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.1,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-07-19 14:11:44 UTC",
-                "Time_TH": "2026-07-19 21:11:44",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 24 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.954,
-                    19.88
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-19 03:27:35 UTC",
-                "Time_TH": "2026-07-19 10:27:35",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 50 กม."
             }
         }
     ]
