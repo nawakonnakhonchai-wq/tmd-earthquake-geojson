@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.138,
+                    19.53
+                ]
+            },
+            "properties": {
+                "Location": "ต. สันทราย  อ.พร้าว จ.เชียงใหม่ (Tambon San Sai, Amphoe Phrao, ChiangMai)",
+                "Magnitude": 1.9,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-07-23 13:52:56 UTC",
+                "Time_TH": "2026-07-23 20:52:56",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     95.365,
                     22.91
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-22 08:43:50 UTC",
                 "Time_TH": "2026-07-22 15:43:50",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 164 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.038,
-                    4.524
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-22 04:41:07 UTC",
-                "Time_TH": "2026-07-22 11:41:07",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 328 กม."
             }
         }
     ]
