@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.612,
+                    22.775
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.5,
+                "Depth_km": 9.0,
+                "Time_UTC": "2026-07-24 04:30:23 UTC",
+                "Time_TH": "2026-07-24 11:30:23",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 297 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.985,
                     22.506
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-22 09:37:28 UTC",
                 "Time_TH": "2026-07-22 16:37:28",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 169 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.726,
-                    19.027
-                ]
-            },
-            "properties": {
-                "Location": "ต.สะเมิงเหนือ อ.สะเมิง จ.เชียงใหม่ (Tambon Samoengnuea, Amphoe Samoeng, ChiangMai)",
-                "Magnitude": 2.0,
-                "Depth_km": 7.0,
-                "Time_UTC": "2026-07-22 09:20:07 UTC",
-                "Time_TH": "2026-07-22 16:20:07",
-                "Comments": ""
             }
         }
     ]
