@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.736,
+                    21.876
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-24 19:57:28 UTC",
+                "Time_TH": "2026-07-25 02:57:28",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 305 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.695,
                     19.236
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-22 17:36:39 UTC",
                 "Time_TH": "2026-07-23 00:36:39",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 397 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.149,
-                    19.547
-                ]
-            },
-            "properties": {
-                "Location": "ต.สันทราย อ.พร้าว จ.เชียงใหม่ (Tambon San Sai, Amphoe Phrao, ChiangMai)",
-                "Magnitude": 2.4,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-07-22 16:22:06 UTC",
-                "Time_TH": "2026-07-22 23:22:06",
-                "Comments": ""
             }
         }
     ]
