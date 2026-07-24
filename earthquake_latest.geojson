@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.985,
+                    22.506
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-24 00:29:19 UTC",
+                "Time_TH": "2026-07-24 07:29:19",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 248 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.73,
                     18.709
                 ]
@@ -160,24 +178,6 @@
                 "Depth_km": 7.0,
                 "Time_UTC": "2026-07-22 09:20:07 UTC",
                 "Time_TH": "2026-07-22 16:20:07",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.742,
-                    19.031
-                ]
-            },
-            "properties": {
-                "Location": "ต.สะเมิงเหนือ อ.สะเมิง จ.เชียงใหม่ (Tambon samoengnuea, Amphoe Samoeng, ChiangMai)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-22 09:19:12 UTC",
-                "Time_TH": "2026-07-22 16:19:12",
                 "Comments": ""
             }
         }
