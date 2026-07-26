@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.175,
+                    19.182
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่ปั๋ง อ.พร้าว จ.เชียงใหม่ (Tambon Mae Pang, Amphoe Phrao, ChiangMai)",
+                "Magnitude": 1.4,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-26 14:37:58 UTC",
+                "Time_TH": "2026-07-26 21:37:58",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.885,
                     20.116
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-24 04:30:23 UTC",
                 "Time_TH": "2026-07-24 11:30:23",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 297 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.985,
-                    22.506
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-24 00:29:19 UTC",
-                "Time_TH": "2026-07-24 07:29:19",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 248 กม."
             }
         }
     ]
