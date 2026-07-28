@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.2,
+                    18.419
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-28 02:57:20 UTC",
+                "Time_TH": "2026-07-28 09:57:20",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เชียงคาน จ.เลย ประมาณ 76 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.711,
                     21.578
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-25 16:46:08 UTC",
                 "Time_TH": "2026-07-25 23:46:08",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 97 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.736,
-                    21.876
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-24 19:57:28 UTC",
-                "Time_TH": "2026-07-25 02:57:28",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 305 กม."
             }
         }
     ]
