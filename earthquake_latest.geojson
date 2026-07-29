@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.352,
+                    17.154
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่หละ อ.ท่าสองยาง จ.ตาก (Tambon Mae La, Amphoe ThaSongYang, Tak)",
+                "Magnitude": 2.3,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-07-29 22:42:23 UTC",
+                "Time_TH": "2026-07-30 05:42:23",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.687,
                     24.514
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-28 02:57:20 UTC",
                 "Time_TH": "2026-07-28 09:57:20",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เชียงคาน จ.เลย ประมาณ 76 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.711,
-                    21.578
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-27 09:31:33 UTC",
-                "Time_TH": "2026-07-27 16:31:33",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 279 กม."
             }
         }
     ]
