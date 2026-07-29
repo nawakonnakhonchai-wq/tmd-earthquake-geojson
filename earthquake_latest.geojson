@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.512,
+                    19.369
+                ]
+            },
+            "properties": {
+                "Location": "ต.เวียงเหนือ อ.ปาย จ.แม่ฮ่องสอน (Tambon Wiang Nuea, Amphoe Pai, MaeHongSon)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-07-29 08:02:43 UTC",
+                "Time_TH": "2026-07-29 15:02:43",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.906,
                     24.599
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-26 14:37:58 UTC",
                 "Time_TH": "2026-07-26 21:37:58",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.885,
-                    20.116
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-26 04:02:48 UTC",
-                "Time_TH": "2026-07-26 11:02:48",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 76 กม."
             }
         }
     ]
