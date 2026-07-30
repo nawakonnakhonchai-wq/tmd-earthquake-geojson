@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.941,
+                    22.333
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-30 06:16:02 UTC",
+                "Time_TH": "2026-07-30 13:16:02",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 232 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.009,
                     22.376
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-28 11:24:34 UTC",
                 "Time_TH": "2026-07-28 18:24:34",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 722 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.396,
-                    19.766
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-28 04:44:15 UTC",
-                "Time_TH": "2026-07-28 11:44:15",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 173 กม."
             }
         }
     ]
