@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.288,
+                    22.792
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 4.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-07-31 21:24:15 UTC",
+                "Time_TH": "2026-08-01 04:24:15",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 286 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     93.228,
                     4.085
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-29 14:02:45 UTC",
                 "Time_TH": "2026-07-29 21:02:45",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 349 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.512,
-                    19.369
-                ]
-            },
-            "properties": {
-                "Location": "ต.เวียงเหนือ อ.ปาย จ.แม่ฮ่องสอน (Tambon Wiang Nuea, Amphoe Pai, MaeHongSon)",
-                "Magnitude": 1.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-07-29 08:02:43 UTC",
-                "Time_TH": "2026-07-29 15:02:43",
-                "Comments": ""
             }
         }
     ]
