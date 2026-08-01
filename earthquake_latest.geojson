@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    95.337,
+                    11.714
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-01 05:42:39 UTC",
+                "Time_TH": "2026-08-01 12:42:39",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมืองชุมพร จ.ชุมพร  ประมาณ 441 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.288,
                     22.792
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-29 19:31:50 UTC",
                 "Time_TH": "2026-07-30 02:31:50",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 506 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.167,
-                    21.981
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 4.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-29 14:02:45 UTC",
-                "Time_TH": "2026-07-29 21:02:45",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 349 กม."
             }
         }
     ]
