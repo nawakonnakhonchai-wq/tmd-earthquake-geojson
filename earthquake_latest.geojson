@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.023,
+                    18.46
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
+                "Magnitude": 2.8,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-08-03 13:29:00 UTC",
+                "Time_TH": "2026-08-03 20:29:00",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.666,
                     15.175
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-07-31 08:31:30 UTC",
                 "Time_TH": "2026-07-31 15:31:30",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 710 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.913,
-                    21.055
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-07-30 21:57:22 UTC",
-                "Time_TH": "2026-07-31 04:57:22",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 69 กม."
             }
         }
     ]
