@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.59,
+                    20.959
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 2.0,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-08-04 19:54:51 UTC",
+                "Time_TH": "2026-08-05 02:54:51",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 70 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.469,
                     20.88
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-02 13:11:42 UTC",
                 "Time_TH": "2026-08-02 20:11:42",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 65 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.459,
-                    21.185
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-08-01 17:52:16 UTC",
-                "Time_TH": "2026-08-02 00:52:16",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 94 กม."
             }
         }
     ]
