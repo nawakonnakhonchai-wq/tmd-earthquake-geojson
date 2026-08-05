@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.447,
+                    21.08
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-05 16:07:39 UTC",
+                "Time_TH": "2026-08-05 23:07:39",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 79 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.424,
                     20.933
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-04 17:07:01 UTC",
                 "Time_TH": "2026-08-05 00:07:01",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 58 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.436,
-                    21.086
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-04 16:16:24 UTC",
-                "Time_TH": "2026-08-04 23:16:24",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 80 กม."
             }
         }
     ]
