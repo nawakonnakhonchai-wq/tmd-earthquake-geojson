@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.339,
+                    21.081
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 1.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-05 11:07:28 UTC",
+                "Time_TH": "2026-08-05 18:07:28",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 79 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.386,
+                    15.256
+                ]
+            },
+            "properties": {
+                "Location": "ใกล้ชายฝั่งทางตอนใต้ของประเทศเมียนมา (Near South Coast of Myanmar)",
+                "Magnitude": 3.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-05 10:44:44 UTC",
+                "Time_TH": "2026-08-05 17:44:44",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 277 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.466,
+                    21.122
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-05 10:15:56 UTC",
+                "Time_TH": "2026-08-05 17:15:56",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 84 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.443,
                     21.008
                 ]
@@ -124,60 +178,6 @@
                 "Depth_km": 5.0,
                 "Time_UTC": "2026-08-04 11:57:00 UTC",
                 "Time_TH": "2026-08-04 18:57:00",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.406,
-                    21.063
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-04 09:31:35 UTC",
-                "Time_TH": "2026-08-04 16:31:35",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 77 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.137,
-                    20.833
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-03 19:15:52 UTC",
-                "Time_TH": "2026-08-04 02:15:52",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 89 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.023,
-                    18.46
-                ]
-            },
-            "properties": {
-                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
-                "Magnitude": 2.8,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-08-03 13:29:00 UTC",
-                "Time_TH": "2026-08-03 20:29:00",
                 "Comments": ""
             }
         }
