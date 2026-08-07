@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.433,
+                    19.778
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-07 21:35:24 UTC",
+                "Time_TH": "2026-08-08 04:35:24",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 170 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.335,
                     18.971
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-05 14:20:36 UTC",
                 "Time_TH": "2026-08-05 21:20:36",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 63 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.339,
-                    21.081
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 1.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-05 11:07:28 UTC",
-                "Time_TH": "2026-08-05 18:07:28",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 79 กม."
             }
         }
     ]
