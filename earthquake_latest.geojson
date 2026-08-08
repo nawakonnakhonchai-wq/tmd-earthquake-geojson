@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.956,
+                    19.676
+                ]
+            },
+            "properties": {
+                "Location": "ต.ดอยลาน อ.เมืองเชียงราย จ.เชียงราย (Tambon  Doi Lan, Amphoe MueangChiangRai, ChiangRai)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-08-08 21:59:37 UTC",
+                "Time_TH": "2026-08-09 04:59:37",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.964,
                     19.666
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-06 20:32:46 UTC",
                 "Time_TH": "2026-08-07 03:32:46",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 446 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.294,
-                    23.284
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.4,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-08-06 17:40:23 UTC",
-                "Time_TH": "2026-08-07 00:40:23",
-                "Comments": ""
             }
         }
     ]
