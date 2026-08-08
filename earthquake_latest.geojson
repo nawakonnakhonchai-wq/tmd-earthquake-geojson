@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.317,
+                    19.761
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-08 03:35:44 UTC",
+                "Time_TH": "2026-08-08 10:35:44",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 181 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.003,
+                    18.463
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
+                "Magnitude": 2.4,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-08-08 03:09:45 UTC",
+                "Time_TH": "2026-08-08 10:09:45",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.433,
                     19.778
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-08-05 17:00:21 UTC",
                 "Time_TH": "2026-08-06 00:00:21",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 81 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.447,
-                    21.08
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-05 16:07:39 UTC",
-                "Time_TH": "2026-08-05 23:07:39",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 79 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.424,
-                    20.933
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-05 14:20:36 UTC",
-                "Time_TH": "2026-08-05 21:20:36",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 63 กม."
             }
         }
     ]
