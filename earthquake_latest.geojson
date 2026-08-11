@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    93.622,
+                    10.612
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
+                "Magnitude": 4.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-11 19:55:40 UTC",
+                "Time_TH": "2026-08-12 02:55:40",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 589 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.669,
                     20.692
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-09 11:53:59 UTC",
                 "Time_TH": "2026-08-09 18:53:59",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 81 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.445,
-                    20.87
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-09 05:12:34 UTC",
-                "Time_TH": "2026-08-09 12:12:34",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 56 กม."
             }
         }
     ]
