@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.444,
+                    18.151
+                ]
+            },
+            "properties": {
+                "Location": "ต.หางดง อ.ฮอด จ.เชียงใหม่ (Tambon Hang Dong, Amphoe Hot, ChiangMai)",
+                "Magnitude": 1.3,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-08-13 15:31:45 UTC",
+                "Time_TH": "2026-08-13 22:31:45",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.724,
                     14.94
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-10 16:22:26 UTC",
                 "Time_TH": "2026-08-10 23:22:26",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 73 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.516,
-                    20.998
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-10 13:30:40 UTC",
-                "Time_TH": "2026-08-10 20:30:40",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 72 กม."
             }
         }
     ]
