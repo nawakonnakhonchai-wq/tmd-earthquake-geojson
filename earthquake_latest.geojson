@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    108.231,
+                    14.781
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-15 19:42:00 UTC",
+                "Time_TH": "2026-08-16 02:42:00",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 300 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.35,
                     22.007
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-11 19:55:40 UTC",
                 "Time_TH": "2026-08-12 02:55:40",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 589 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.09,
-                    14.813
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 4.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-11 15:00:39 UTC",
-                "Time_TH": "2026-08-11 22:00:39",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เมือง จ.อุบลราชธานี ประมาณ 351 กม."
             }
         }
     ]
