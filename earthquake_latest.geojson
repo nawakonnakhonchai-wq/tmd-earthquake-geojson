@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.707,
+                    14.953
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-16 14:50:37 UTC",
+                "Time_TH": "2026-08-16 21:50:37",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 241 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.841,
                     14.876
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-15 10:54:52 UTC",
                 "Time_TH": "2026-08-15 17:54:52",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 417 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    104.569,
-                    17.913
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.8,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-08-14 15:53:49 UTC",
-                "Time_TH": "2026-08-14 22:53:49",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ ต.หอคำ อ.เมืองบึงกาฬ จ.บึงกาฬ ประมาณ 133 กม."
             }
         }
     ]
