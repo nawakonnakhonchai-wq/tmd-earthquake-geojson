@@ -6,6 +6,78 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.586,
+                    19.778
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-28 20:35:49 UTC",
+                "Time_TH": "2026-08-29 03:35:49",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 155 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.809,
+                    23.044
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.4,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-08-28 19:43:38 UTC",
+                "Time_TH": "2026-08-29 02:43:38",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 360 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.035,
+                    19.666
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 1.7,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-08-28 19:36:51 UTC",
+                "Time_TH": "2026-08-29 02:36:51",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 22 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.667,
+                    15.05
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 2.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-28 18:58:09 UTC",
+                "Time_TH": "2026-08-29 01:58:09",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 235 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.642,
                     15.058
                 ]
@@ -107,78 +179,6 @@
                 "Time_UTC": "2026-08-27 16:06:10 UTC",
                 "Time_TH": "2026-08-27 23:06:10",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ.เบตง จ.ยะลา ประมาณ 53 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.541,
-                    21.104
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-27 14:34:08 UTC",
-                "Time_TH": "2026-08-27 21:34:08",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 84 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.374,
-                    19.766
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-27 10:45:18 UTC",
-                "Time_TH": "2026-08-27 17:45:18",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 175 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.91,
-                    19.447
-                ]
-            },
-            "properties": {
-                "Location": "ต.เมืองงาย อ.เชียงดาว จ.เชียงใหม่ (Tambon Mueang Ngai, Amphoe ChiangDao, ChiangMai)",
-                "Magnitude": 1.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-08-27 07:35:14 UTC",
-                "Time_TH": "2026-08-27 14:35:14",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    102.23,
-                    22.215
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 4.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-26 19:21:25 UTC",
-                "Time_TH": "2026-08-27 02:21:25",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 283 กม."
             }
         }
     ]
