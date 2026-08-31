@@ -24,6 +24,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.552,
+                    15.025
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 2.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-08-30 19:22:56 UTC",
+                "Time_TH": "2026-08-31 02:22:56",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 223 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.639,
                     20.321
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-28 10:38:56 UTC",
                 "Time_TH": "2026-08-28 17:38:56",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 232 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.384,
-                    15.24
-                ]
-            },
-            "properties": {
-                "Location": "นอกชายฝั่งทางตอนใต้ของประเทศเมียนมา  (Off South Coast of Myanmar)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-28 07:06:50 UTC",
-                "Time_TH": "2026-08-28 14:06:50",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 278 กม."
             }
         }
     ]
