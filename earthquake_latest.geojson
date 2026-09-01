@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.134,
+                    19.366
+                ]
+            },
+            "properties": {
+                "Location": "ต.ห้วยปูลิง อ.เมืองแม่ฮ่องสอน จ.แม่ฮ่องสอน (Tambon Huai Pu Ling, Amphoe MueangMaeHongSon, MaeHongSon)",
+                "Magnitude": 1.6,
+                "Depth_km": 7.0,
+                "Time_UTC": "2026-09-01 04:27:14 UTC",
+                "Time_TH": "2026-09-01 11:27:14",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.358,
                     7.865
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-08-28 19:36:51 UTC",
                 "Time_TH": "2026-08-29 02:36:51",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 22 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.667,
-                    15.05
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-28 18:58:09 UTC",
-                "Time_TH": "2026-08-29 01:58:09",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 235 กม."
             }
         }
     ]
