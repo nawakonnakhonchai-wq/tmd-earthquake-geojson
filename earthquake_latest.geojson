@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.346,
+                    20.19
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.6,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-02 13:27:17 UTC",
+                "Time_TH": "2026-09-02 20:27:17",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 33 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.581,
+                    16.728
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่สอด อ.แม่สอด จ.ตาก (Tambon Mae Sot, Amphoe MaeSot, Tak)",
+                "Magnitude": 2.3,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-02 12:03:26 UTC",
+                "Time_TH": "2026-09-02 19:03:26",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.373,
                     19.252
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-08-30 19:50:13 UTC",
                 "Time_TH": "2026-08-31 02:50:13",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 229 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.552,
-                    15.025
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-30 19:22:56 UTC",
-                "Time_TH": "2026-08-31 02:22:56",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 223 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.639,
-                    20.321
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-30 18:35:35 UTC",
-                "Time_TH": "2026-08-31 01:35:35",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 75 กม."
             }
         }
     ]
