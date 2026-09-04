@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.721,
+                    19.69
+                ]
+            },
+            "properties": {
+                "Location": "ต.ทรายขาว  อ.พาน จ.เชียงราย (Tambon Sai Khao, Amphoe Phan, ChiangRai)",
+                "Magnitude": 1.4,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-09-04 08:00:41 UTC",
+                "Time_TH": "2026-09-04 15:00:41",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.053,
+                    20.138
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-04 06:24:07 UTC",
+                "Time_TH": "2026-09-04 13:24:07",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 71 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.346,
                     20.19
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-09-01 04:27:14 UTC",
                 "Time_TH": "2026-09-01 11:27:14",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.358,
-                    7.865
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-31 21:32:44 UTC",
-                "Time_TH": "2026-09-01 04:32:44",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 223 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.596,
-                    14.942
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-08-30 19:50:13 UTC",
-                "Time_TH": "2026-08-31 02:50:13",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 229 กม."
             }
         }
     ]
