@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.79,
+                    19.782
+                ]
+            },
+            "properties": {
+                "Location": "ต.จอมหมอกแก้ว อ.แม่ลาว จ.เชียงราย (Tambon Chom Mok Kaeo, Amphoe MaeLao, ChiangRai)",
+                "Magnitude": 2.0,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-04 22:50:05 UTC",
+                "Time_TH": "2026-09-05 05:50:05",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     95.386,
                     23.006
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-02 00:51:56 UTC",
                 "Time_TH": "2026-09-02 07:51:56",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 313 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.681,
-                    22.703
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-02 00:34:24 UTC",
-                "Time_TH": "2026-09-02 07:34:24",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 293 กม."
             }
         }
     ]
