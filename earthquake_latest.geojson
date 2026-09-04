@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.697,
+                    14.897
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-04 13:35:33 UTC",
+                "Time_TH": "2026-09-04 20:35:33",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 241 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.721,
                     19.69
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-01 16:34:16 UTC",
                 "Time_TH": "2026-09-01 23:34:16",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 256 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.134,
-                    19.366
-                ]
-            },
-            "properties": {
-                "Location": "ต.ห้วยปูลิง อ.เมืองแม่ฮ่องสอน จ.แม่ฮ่องสอน (Tambon Huai Pu Ling, Amphoe MueangMaeHongSon, MaeHongSon)",
-                "Magnitude": 1.6,
-                "Depth_km": 7.0,
-                "Time_UTC": "2026-09-01 04:27:14 UTC",
-                "Time_TH": "2026-09-01 11:27:14",
-                "Comments": ""
             }
         }
     ]
