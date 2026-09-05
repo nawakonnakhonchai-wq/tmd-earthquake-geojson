@@ -6,6 +6,78 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.326,
+                    21.165
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.2,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-09-05 04:58:36 UTC",
+                "Time_TH": "2026-09-05 11:58:36",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 99 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.806,
+                    14.999
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-05 02:59:42 UTC",
+                "Time_TH": "2026-09-05 09:59:42",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 251 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.435,
+                    19.314
+                ]
+            },
+            "properties": {
+                "Location": "ต. ผาช้างน้อย  อ.ปง จ.พะเยา (Tambon Pha Chang Noi,, Amphoe Pong, Phayao)",
+                "Magnitude": 2.4,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-09-05 02:34:50 UTC",
+                "Time_TH": "2026-09-05 09:34:50",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.322,
+                    21.268
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.5,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-09-05 01:09:21 UTC",
+                "Time_TH": "2026-09-05 08:09:21",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 109 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.79,
                     19.782
                 ]
@@ -107,78 +179,6 @@
                 "Time_UTC": "2026-09-04 06:24:07 UTC",
                 "Time_TH": "2026-09-04 13:24:07",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 71 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.346,
-                    20.19
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-09-02 13:27:17 UTC",
-                "Time_TH": "2026-09-02 20:27:17",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 33 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.581,
-                    16.728
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สอด อ.แม่สอด จ.ตาก (Tambon Mae Sot, Amphoe MaeSot, Tak)",
-                "Magnitude": 2.3,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-09-02 12:03:26 UTC",
-                "Time_TH": "2026-09-02 19:03:26",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.373,
-                    19.252
-                ]
-            },
-            "properties": {
-                "Location": "ต. งิม อ.ปง จ.พะเยา (Tambon Ngim, Amphoe Pong, Phayao)",
-                "Magnitude": 2.3,
-                "Depth_km": 8.0,
-                "Time_UTC": "2026-09-02 03:39:45 UTC",
-                "Time_TH": "2026-09-02 10:39:45",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.251,
-                    21.627
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-02 00:51:56 UTC",
-                "Time_TH": "2026-09-02 07:51:56",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 313 กม."
             }
         }
     ]
