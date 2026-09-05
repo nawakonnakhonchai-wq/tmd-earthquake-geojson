@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.264,
+                    21.155
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.1,
+                "Depth_km": 6.0,
+                "Time_UTC": "2026-09-05 14:09:50 UTC",
+                "Time_TH": "2026-09-05 21:09:50",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 102 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.292,
                     21.22
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-04 18:37:14 UTC",
                 "Time_TH": "2026-09-05 01:37:14",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 488 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.423,
-                    18.456
-                ]
-            },
-            "properties": {
-                "Location": "ต.บ้านเอื้อม อ.เมืองลำปาง จ.ลำปาง (Tambon Ban Ueam, Amphoe MueangLampang, Lampang)",
-                "Magnitude": 1.5,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-09-04 15:03:30 UTC",
-                "Time_TH": "2026-09-04 22:03:30",
-                "Comments": ""
             }
         }
     ]
