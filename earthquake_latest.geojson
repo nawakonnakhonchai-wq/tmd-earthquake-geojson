@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.292,
+                    21.22
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-05 12:38:31 UTC",
+                "Time_TH": "2026-09-05 19:38:31",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 106 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.91,
+                    20.226
+                ]
+            },
+            "properties": {
+                "Location": "ต.จันจว้าใต้ อ.แม่จัน จ.เชียงราย (Tambon  Chan Chawa Ta, Amphoe MaeChan, ChiangRai)",
+                "Magnitude": 2.1,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-09-05 09:30:19 UTC",
+                "Time_TH": "2026-09-05 16:30:19",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.094,
+                    3.21
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-05 09:14:19 UTC",
+                "Time_TH": "2026-09-05 16:14:19",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 579 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.326,
                     21.165
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-09-04 15:03:30 UTC",
                 "Time_TH": "2026-09-04 22:03:30",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.697,
-                    14.897
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-04 13:35:33 UTC",
-                "Time_TH": "2026-09-04 20:35:33",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 241 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.721,
-                    19.69
-                ]
-            },
-            "properties": {
-                "Location": "ต.ทรายขาว  อ.พาน จ.เชียงราย (Tambon Sai Khao, Amphoe Phan, ChiangRai)",
-                "Magnitude": 1.4,
-                "Depth_km": 4.0,
-                "Time_UTC": "2026-09-04 08:00:41 UTC",
-                "Time_TH": "2026-09-04 15:00:41",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.053,
-                    20.138
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-04 06:24:07 UTC",
-                "Time_TH": "2026-09-04 13:24:07",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 71 กม."
             }
         }
     ]
