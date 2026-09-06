@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    95.44,
+                    23.176
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-06 21:20:56 UTC",
+                "Time_TH": "2026-09-07 04:20:56",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 499 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.188,
                     21.461
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-05 01:09:21 UTC",
                 "Time_TH": "2026-09-05 08:09:21",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 109 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.79,
-                    19.782
-                ]
-            },
-            "properties": {
-                "Location": "ต.จอมหมอกแก้ว อ.แม่ลาว จ.เชียงราย (Tambon Chom Mok Kaeo, Amphoe MaeLao, ChiangRai)",
-                "Magnitude": 2.0,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-09-04 22:50:05 UTC",
-                "Time_TH": "2026-09-05 05:50:05",
-                "Comments": ""
             }
         }
     ]
