@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.936,
+                    17.247
+                ]
+            },
+            "properties": {
+                "Location": "ต.นาบัว อ.นครไทย จ.พิษณุโลก (Tambon Na Bua, Amphoe NakhonThai, Phitsanulok)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-07 19:10:36 UTC",
+                "Time_TH": "2026-09-08 02:10:36",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.015,
                     19.711
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-05 09:30:19 UTC",
                 "Time_TH": "2026-09-05 16:30:19",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.094,
-                    3.21
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-05 09:14:19 UTC",
-                "Time_TH": "2026-09-05 16:14:19",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 579 กม."
             }
         }
     ]
