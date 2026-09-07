@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.92,
+                    18.297
+                ]
+            },
+            "properties": {
+                "Location": "ต.นครเจดีย์ อ.ป่าซาง จ.ลำพูน (Tambon Nakhon Chedi, Amphoe PaSang, Lamphun)",
+                "Magnitude": 1.5,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-09-07 09:12:15 UTC",
+                "Time_TH": "2026-09-07 16:12:15",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.018,
                     21.26
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-05 04:58:36 UTC",
                 "Time_TH": "2026-09-05 11:58:36",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 99 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.806,
-                    14.999
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-05 02:59:42 UTC",
-                "Time_TH": "2026-09-05 09:59:42",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 251 กม."
             }
         }
     ]
