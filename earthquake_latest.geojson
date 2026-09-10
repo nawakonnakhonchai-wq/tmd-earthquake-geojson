@@ -6,24 +6,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    103.885,
-                    29.788
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลเสฉวน, จีน (Sichuan, China)",
-                "Magnitude": 4.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-10 16:53:31 UTC",
-                "Time_TH": "2026-09-10 23:53:31",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 1106 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     96.425,
                     19.749
                 ]
@@ -179,6 +161,24 @@
                 "Time_UTC": "2026-09-08 02:29:25 UTC",
                 "Time_TH": "2026-09-08 09:29:25",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 239 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.936,
+                    17.247
+                ]
+            },
+            "properties": {
+                "Location": "ต.นาบัว อ.นครไทย จ.พิษณุโลก (Tambon Na Bua, Amphoe NakhonThai, Phitsanulok)",
+                "Magnitude": 1.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-07 19:10:36 UTC",
+                "Time_TH": "2026-09-08 02:10:36",
+                "Comments": ""
             }
         }
     ]
