@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.018,
+                    18.476
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
+                "Magnitude": 2.8,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-09-10 01:23:18 UTC",
+                "Time_TH": "2026-09-10 08:23:18",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.931,
                     17.258
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-07 14:18:05 UTC",
                 "Time_TH": "2026-09-07 21:18:05",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 27 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.92,
-                    18.297
-                ]
-            },
-            "properties": {
-                "Location": "ต.นครเจดีย์ อ.ป่าซาง จ.ลำพูน (Tambon Nakhon Chedi, Amphoe PaSang, Lamphun)",
-                "Magnitude": 1.5,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-09-07 09:12:15 UTC",
-                "Time_TH": "2026-09-07 16:12:15",
-                "Comments": ""
             }
         }
     ]
