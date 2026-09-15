@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.277,
+                    21.51
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-15 12:04:32 UTC",
+                "Time_TH": "2026-09-15 19:04:32",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 159 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.841,
                     4.509
                 ]
@@ -160,24 +178,6 @@
                 "Depth_km": 1.0,
                 "Time_UTC": "2026-09-10 01:23:18 UTC",
                 "Time_TH": "2026-09-10 08:23:18",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.931,
-                    17.258
-                ]
-            },
-            "properties": {
-                "Location": "ต.หนองบัว อ.ศรีนคร จ.สุโขทัย (Tambon Nong Bua, Amphoe SiNakhon, Sukhothai)",
-                "Magnitude": 2.0,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-09-09 21:49:41 UTC",
-                "Time_TH": "2026-09-10 04:49:41",
                 "Comments": ""
             }
         }
