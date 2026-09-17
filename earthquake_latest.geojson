@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.921,
+                    15.379
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 4.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-17 04:23:25 UTC",
+                "Time_TH": "2026-09-17 11:23:25",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 260 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.357,
+                    15.187
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-17 03:41:47 UTC",
+                "Time_TH": "2026-09-17 10:41:47",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 200 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.853,
                     4.455
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-09-15 12:04:32 UTC",
                 "Time_TH": "2026-09-15 19:04:32",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 159 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.841,
-                    4.509
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-15 07:13:17 UTC",
-                "Time_TH": "2026-09-15 14:13:17",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 344 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.551,
-                    23.439
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 3.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-14 21:42:07 UTC",
-                "Time_TH": "2026-09-15 04:42:07",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 335 กม."
             }
         }
     ]
