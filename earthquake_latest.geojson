@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    92.207,
+                    9.706
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
+                "Magnitude": 4.1,
+                "Depth_km": 100.0,
+                "Time_UTC": "2026-09-19 20:32:14 UTC",
+                "Time_TH": "2026-09-20 03:32:14",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 707 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.43,
                     18.249
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-18 14:51:58 UTC",
                 "Time_TH": "2026-09-18 21:51:58",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 256 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.785,
-                    14.779
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-18 14:02:58 UTC",
-                "Time_TH": "2026-09-18 21:02:58",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 253 กม."
             }
         }
     ]
