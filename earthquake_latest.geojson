@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.439,
+                    19.024
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.6,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-09-18 23:22:30 UTC",
+                "Time_TH": "2026-09-19 06:22:30",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 57 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.802,
+                    14.93
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 2.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-18 23:08:56 UTC",
+                "Time_TH": "2026-09-19 06:08:56",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 251 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.707,
                     15.253
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-09-17 04:23:25 UTC",
                 "Time_TH": "2026-09-17 11:23:25",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 260 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.357,
-                    15.187
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 3.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-17 03:41:47 UTC",
-                "Time_TH": "2026-09-17 10:41:47",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 200 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.853,
-                    4.455
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-16 17:28:32 UTC",
-                "Time_TH": "2026-09-17 00:28:32",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 348 กม."
             }
         }
     ]
