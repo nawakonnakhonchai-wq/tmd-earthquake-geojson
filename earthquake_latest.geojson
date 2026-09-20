@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.653,
+                    15.032
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-20 21:20:24 UTC",
+                "Time_TH": "2026-09-21 04:20:24",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 234 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.405,
                     8.494
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-19 21:26:19 UTC",
                 "Time_TH": "2026-09-20 04:26:19",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 245 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    92.207,
-                    9.706
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
-                "Magnitude": 4.1,
-                "Depth_km": 100.0,
-                "Time_UTC": "2026-09-19 20:32:14 UTC",
-                "Time_TH": "2026-09-20 03:32:14",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 707 กม."
             }
         }
     ]
