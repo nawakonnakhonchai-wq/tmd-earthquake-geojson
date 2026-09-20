@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    94.405,
+                    8.494
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
+                "Magnitude": 3.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-20 15:52:06 UTC",
+                "Time_TH": "2026-09-20 22:52:06",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.ภูเก็ต ประมาณ 443 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.755,
+                    14.987
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-20 14:19:48 UTC",
+                "Time_TH": "2026-09-20 21:19:48",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 245 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.448,
                     17.99
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-09-19 20:32:14 UTC",
                 "Time_TH": "2026-09-20 03:32:14",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 707 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.43,
-                    18.249
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.6,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-09-19 13:49:48 UTC",
-                "Time_TH": "2026-09-19 20:49:48",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สะเรียง จ.แม่ฮ่องสอน ประมาณ 54 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.2,
-                    13.941
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-19 02:58:56 UTC",
-                "Time_TH": "2026-09-19 09:58:56",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. บุณฑริก จ.อุบลราชธานี ประมาณ 314 กม."
             }
         }
     ]
