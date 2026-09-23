@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.725,
+                    19.759
+                ]
+            },
+            "properties": {
+                "Location": "ต.จอมหมอกแก้ว อ.แม่ลาว จ.เชียงราย (Tambon Chom Mok Kaeo, Amphoe MaeLao, ChiangRai)",
+                "Magnitude": 2.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-23 20:49:34 UTC",
+                "Time_TH": "2026-09-24 03:49:34",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.621,
                     15.099
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-21 19:06:45 UTC",
                 "Time_TH": "2026-09-22 02:06:45",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 269 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.267,
-                    4.245
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-21 18:53:40 UTC",
-                "Time_TH": "2026-09-22 01:53:40",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 468 กม."
             }
         }
     ]
