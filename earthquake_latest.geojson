@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    95.723,
+                    5.147
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-24 21:01:33 UTC",
+                "Time_TH": "2026-09-25 04:01:33",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 424 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.203,
                     21.549
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-22 07:48:50 UTC",
                 "Time_TH": "2026-09-22 14:48:50",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 68 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.21,
-                    22.229
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-22 06:06:02 UTC",
-                "Time_TH": "2026-09-22 13:06:02",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 368 กม."
             }
         }
     ]
