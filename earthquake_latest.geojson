@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.939,
+                    15.451
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-24 23:38:20 UTC",
+                "Time_TH": "2026-09-25 06:38:20",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 262 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.992,
+                    14.808
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-24 22:54:19 UTC",
+                "Time_TH": "2026-09-25 05:54:19",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 274 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.789,
+                    14.997
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-24 22:35:13 UTC",
+                "Time_TH": "2026-09-25 05:35:13",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 249 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     95.723,
                     5.147
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-09-22 19:45:45 UTC",
                 "Time_TH": "2026-09-23 02:45:45",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 242 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.598,
-                    18.244
-                ]
-            },
-            "properties": {
-                "Location": "ต.บ้านแปะ อ.จอมทอง จ.เชียงใหม่ (Tambon Ban Pae, Amphoe ChomThong, ChiangMai)",
-                "Magnitude": 1.2,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-09-22 18:59:37 UTC",
-                "Time_TH": "2026-09-23 01:59:37",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.941,
-                    15.108
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 4.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-22 10:29:42 UTC",
-                "Time_TH": "2026-09-22 17:29:42",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 263 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.335,
-                    19.057
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.6,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-09-22 07:48:50 UTC",
-                "Time_TH": "2026-09-22 14:48:50",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 68 กม."
             }
         }
     ]
