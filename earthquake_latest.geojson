@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.412,
+                    20.973
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-27 15:43:05 UTC",
+                "Time_TH": "2026-09-27 22:43:05",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 67 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.421,
+                    20.946
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-27 10:39:13 UTC",
+                "Time_TH": "2026-09-27 17:39:13",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 64 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.523,
+                    13.844
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-27 10:37:07 UTC",
+                "Time_TH": "2026-09-27 17:37:07",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 74 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.08,
                     20.51
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-09-25 14:31:09 UTC",
                 "Time_TH": "2026-09-25 21:31:09",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.เวียงแก่น จ.เชียงราย ประมาณ 36 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.141,
-                    22.084
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-25 12:47:54 UTC",
-                "Time_TH": "2026-09-25 19:47:54",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 359 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.345,
-                    14.65
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-25 10:36:37 UTC",
-                "Time_TH": "2026-09-25 17:36:37",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 105 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.011,
-                    20.001
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.6,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-09-25 09:47:04 UTC",
-                "Time_TH": "2026-09-25 16:47:04",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 59 กม."
             }
         }
     ]
