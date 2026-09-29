@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.279,
+                    21.79
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-29 07:27:06 UTC",
+                "Time_TH": "2026-09-29 14:27:06",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 325 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.768,
                     5.418
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-26 07:55:19 UTC",
                 "Time_TH": "2026-09-26 14:55:19",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 259 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.943,
-                    21.143
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-26 07:25:44 UTC",
-                "Time_TH": "2026-09-26 14:25:44",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 79 กม."
             }
         }
     ]
