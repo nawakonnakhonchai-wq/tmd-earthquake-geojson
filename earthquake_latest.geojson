@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    108.023,
+                    14.871
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 4.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-09-30 01:37:21 UTC",
+                "Time_TH": "2026-09-30 08:37:21",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 276 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.286,
                     21.931
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-09-27 10:37:07 UTC",
                 "Time_TH": "2026-09-27 17:37:07",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 74 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.08,
-                    20.51
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-27 04:35:32 UTC",
-                "Time_TH": "2026-09-27 11:35:32",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 239 กม."
             }
         }
     ]
