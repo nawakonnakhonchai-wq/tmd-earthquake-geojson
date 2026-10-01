@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.035,
+                    18.472
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
+                "Magnitude": 1.8,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-01 06:24:37 UTC",
+                "Time_TH": "2026-10-01 13:24:37",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.035,
+                    18.459
+                ]
+            },
+            "properties": {
+                "Location": "ต.น้ำมวบ อ.เวียงสา จ.น่าน (Tambon Nam Muap, Amphoe WiangSa, Nan)",
+                "Magnitude": 2.3,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-01 05:52:36 UTC",
+                "Time_TH": "2026-10-01 12:52:36",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     108.052,
                     15.114
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-09-28 14:43:14 UTC",
                 "Time_TH": "2026-09-28 21:43:14",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 485 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.849,
-                    15.291
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-09-28 06:48:18 UTC",
-                "Time_TH": "2026-09-28 13:48:18",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 252 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.855,
-                    20.638
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.4,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-09-27 21:17:00 UTC",
-                "Time_TH": "2026-09-28 04:17:00",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 22 กม."
             }
         }
     ]
