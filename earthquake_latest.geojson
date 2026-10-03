@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    93.642,
+                    20.6
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.9,
+                "Depth_km": 12.0,
+                "Time_UTC": "2026-10-03 18:12:49 UTC",
+                "Time_TH": "2026-10-04 01:12:49",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 475 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     102.308,
                     18.764
                 ]
@@ -160,24 +178,6 @@
                 "Depth_km": 2.0,
                 "Time_UTC": "2026-10-01 20:24:36 UTC",
                 "Time_TH": "2026-10-02 03:24:36",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.538,
-                    18.0
-                ]
-            },
-            "properties": {
-                "Location": "ต.นาคอเรือ อ.ฮอด จ.เชียงใหม่ (Tambon Na Kho Ruea, Amphoe Hot, ChiangMai)",
-                "Magnitude": 1.7,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-01 19:22:33 UTC",
-                "Time_TH": "2026-10-02 02:22:33",
                 "Comments": ""
             }
         }
