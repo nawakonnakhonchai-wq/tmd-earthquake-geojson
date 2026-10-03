@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    95.377,
+                    4.58
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 5.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-03 23:37:34 UTC",
+                "Time_TH": "2026-10-04 06:37:34",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 496 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.998,
                     19.493
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-02 00:52:41 UTC",
                 "Time_TH": "2026-10-02 07:52:41",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 604 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.742,
-                    15.083
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-01 23:52:29 UTC",
-                "Time_TH": "2026-10-02 06:52:29",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 242 กม."
             }
         }
     ]
