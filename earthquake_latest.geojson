@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.998,
+                    19.493
+                ]
+            },
+            "properties": {
+                "Location": "ต.ห้วยผา อ.เมืองแม่ฮ่องสอน จ.แม่ฮ่องสอน (Tambon Huai Pha, Amphoe MueangMaeHongSon, MaeHongSon)",
+                "Magnitude": 2.0,
+                "Depth_km": 4.0,
+                "Time_UTC": "2026-10-03 19:53:47 UTC",
+                "Time_TH": "2026-10-04 02:53:47",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     93.642,
                     20.6
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-01 23:52:29 UTC",
                 "Time_TH": "2026-10-02 06:52:29",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 242 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.529,
-                    18.014
-                ]
-            },
-            "properties": {
-                "Location": "ต.นาคอเรือ  อ.ฮอด จ.เชียงใหม่ (Tambon Na Kho Ruea, Amphoe Hot, ChiangMai)",
-                "Magnitude": 1.5,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-01 20:24:36 UTC",
-                "Time_TH": "2026-10-02 03:24:36",
-                "Comments": ""
             }
         }
     ]
