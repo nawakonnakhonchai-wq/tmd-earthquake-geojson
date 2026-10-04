@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    93.265,
+                    21.646
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-04 05:54:57 UTC",
+                "Time_TH": "2026-10-04 12:54:57",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 555 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.605,
                     22.96
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-02 15:58:00 UTC",
                 "Time_TH": "2026-10-02 22:58:00",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 225 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.995,
-                    19.639
-                ]
-            },
-            "properties": {
-                "Location": "ต.เมืองนะ อ.เชียงดาว จ.เชียงใหม่ (Tambon Mueang Na, Amphoe ChiangDao, ChiangMai)",
-                "Magnitude": 1.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-02 04:22:36 UTC",
-                "Time_TH": "2026-10-02 11:22:36",
-                "Comments": ""
             }
         }
     ]
