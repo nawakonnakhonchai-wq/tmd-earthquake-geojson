@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.605,
+                    22.96
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-04 00:09:43 UTC",
+                "Time_TH": "2026-10-04 07:09:43",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 316 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     95.377,
                     4.58
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-02 04:22:36 UTC",
                 "Time_TH": "2026-10-02 11:22:36",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.502,
-                    14.277
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
-                "Magnitude": 3.5,
-                "Depth_km": 9.0,
-                "Time_UTC": "2026-10-02 00:52:41 UTC",
-                "Time_TH": "2026-10-02 07:52:41",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 604 กม."
             }
         }
     ]
