@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.826,
+                    15.064
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-05 18:35:31 UTC",
+                "Time_TH": "2026-10-06 01:35:31",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 252 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.605,
+                    24.298
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 4.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-05 15:38:59 UTC",
+                "Time_TH": "2026-10-05 22:38:59",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 489 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.551,
                     21.51
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-03 10:59:25 UTC",
                 "Time_TH": "2026-10-03 17:59:25",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.สังคม จ.หนองคาย ประมาณ 78 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.28,
-                    21.244
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-03 00:15:16 UTC",
-                "Time_TH": "2026-10-03 07:15:16",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 176 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    94.381,
-                    23.088
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 4.3,
-                "Depth_km": 129.0,
-                "Time_UTC": "2026-10-02 16:55:32 UTC",
-                "Time_TH": "2026-10-02 23:55:32",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 562 กม."
             }
         }
     ]
