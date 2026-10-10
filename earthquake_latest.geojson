@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.659,
+                    15.217
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-10 22:28:52 UTC",
+                "Time_TH": "2026-10-11 05:28:52",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 232 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.945,
+                    21.811
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-10 20:19:47 UTC",
+                "Time_TH": "2026-10-11 03:19:47",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 181 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.325,
                     20.059
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-10 09:03:35 UTC",
                 "Time_TH": "2026-10-10 16:03:35",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 451 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.131,
-                    23.376
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-10 08:50:41 UTC",
-                "Time_TH": "2026-10-10 15:50:41",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 433 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.386,
-                    19.54
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่นาเปิง อ.ปาย จ.แม่ฮ่องสอน (Tambon Mae Na Toeng, Amphoe Pai, MaeHongSon)",
-                "Magnitude": 2.2,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-10-10 06:29:00 UTC",
-                "Time_TH": "2026-10-10 13:29:00",
-                "Comments": ""
             }
         }
     ]
