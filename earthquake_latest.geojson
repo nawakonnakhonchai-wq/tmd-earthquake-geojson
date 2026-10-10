@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.386,
+                    19.54
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่นาเปิง อ.ปาย จ.แม่ฮ่องสอน (Tambon Mae Na Toeng, Amphoe Pai, MaeHongSon)",
+                "Magnitude": 2.2,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-10-10 06:29:00 UTC",
+                "Time_TH": "2026-10-10 13:29:00",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.978,
+                    21.762
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 3.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-10 01:29:14 UTC",
+                "Time_TH": "2026-10-10 08:29:14",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 175 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.083,
+                    21.807
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 4.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-10 01:23:35 UTC",
+                "Time_TH": "2026-10-10 08:23:35",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 173 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.472,
                     16.315
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-08 07:45:12 UTC",
                 "Time_TH": "2026-10-08 14:45:12",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 461 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.991,
-                    19.897
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 1.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-08 04:57:39 UTC",
-                "Time_TH": "2026-10-08 11:57:39",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 45 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.935,
-                    21.086
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.7,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-07 21:55:53 UTC",
-                "Time_TH": "2026-10-08 04:55:53",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 72 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.898,
-                    20.667
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-07 21:50:48 UTC",
-                "Time_TH": "2026-10-08 04:50:48",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 25 กม."
             }
         }
     ]
