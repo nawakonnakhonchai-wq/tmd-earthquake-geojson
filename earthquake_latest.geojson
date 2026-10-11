@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.656,
+                    18.828
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-11 08:01:05 UTC",
+                "Time_TH": "2026-10-11 15:01:05",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 135 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.254,
                     20.566
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-10 09:45:30 UTC",
                 "Time_TH": "2026-10-10 16:45:30",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 199 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.421,
-                    19.676
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่นาเติง  อ.ปาย จ.แม่ฮ่องสอน (Tambon Mae Na Toeng, Amphoe Pai, MaeHongSon)",
-                "Magnitude": 1.5,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-10 09:27:48 UTC",
-                "Time_TH": "2026-10-10 16:27:48",
-                "Comments": ""
             }
         }
     ]
