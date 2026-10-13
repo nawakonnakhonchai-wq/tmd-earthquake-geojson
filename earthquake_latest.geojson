@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.864,
+                    18.212
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-13 13:13:57 UTC",
+                "Time_TH": "2026-10-13 20:13:57",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สะเรียง จ.แม่ฮ่องสอน ประมาณ 113 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.562,
+                    18.789
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.0,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-13 12:51:58 UTC",
+                "Time_TH": "2026-10-13 19:51:58",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 40 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.767,
+                    14.763
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 4.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-13 12:42:42 UTC",
+                "Time_TH": "2026-10-13 19:42:42",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 252 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.603,
                     15.003
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-12 03:30:09 UTC",
                 "Time_TH": "2026-10-12 10:30:09",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 226 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    94.239,
-                    24.654
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศอินเดีย (Myanmar - India Border Region)",
-                "Magnitude": 4.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-12 01:28:15 UTC",
-                "Time_TH": "2026-10-12 08:28:15",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 704 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.914,
-                    20.308
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-12 01:18:48 UTC",
-                "Time_TH": "2026-10-12 08:18:48",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 53 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.906,
-                    19.968
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-12 00:59:14 UTC",
-                "Time_TH": "2026-10-12 07:59:14",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 61 กม."
             }
         }
     ]
