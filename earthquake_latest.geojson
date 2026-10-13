@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.237,
+                    20.625
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.0,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-10-13 22:34:46 UTC",
+                "Time_TH": "2026-10-14 05:34:46",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 123 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.18,
+                    20.723
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.7,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-10-13 22:21:03 UTC",
+                "Time_TH": "2026-10-14 05:21:03",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 134 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.864,
                     18.212
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-12 18:34:57 UTC",
                 "Time_TH": "2026-10-13 01:34:57",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 467 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.312,
-                    10.3
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
-                "Magnitude": 4.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-12 15:37:22 UTC",
-                "Time_TH": "2026-10-12 22:37:22",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 607 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.571,
-                    14.997
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-12 03:30:09 UTC",
-                "Time_TH": "2026-10-12 10:30:09",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 226 กม."
             }
         }
     ]
