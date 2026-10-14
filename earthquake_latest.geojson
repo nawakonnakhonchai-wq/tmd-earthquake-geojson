@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.538,
+                    22.985
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 3.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-14 19:25:20 UTC",
+                "Time_TH": "2026-10-15 02:25:20",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 285 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    94.129,
+                    19.606
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.6,
+                "Depth_km": 80.0,
+                "Time_UTC": "2026-10-14 18:45:05 UTC",
+                "Time_TH": "2026-10-15 01:45:05",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 404 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    92.267,
+                    13.413
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะอันดามัน ประเทศอินเดีย (Andaman Islands, India Region)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-14 18:02:17 UTC",
+                "Time_TH": "2026-10-15 01:02:17",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ไทรโยค จ.กาญจนบุรี ประมาณ 747 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.383,
                     21.785
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-13 12:42:42 UTC",
                 "Time_TH": "2026-10-13 19:42:42",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 252 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.603,
-                    15.003
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-13 04:22:51 UTC",
-                "Time_TH": "2026-10-13 11:22:51",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 229 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.751,
-                    14.986
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-13 01:09:10 UTC",
-                "Time_TH": "2026-10-13 08:09:10",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 245 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.66,
-                    15.028
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-13 01:06:19 UTC",
-                "Time_TH": "2026-10-13 08:06:19",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 235 กม."
             }
         }
     ]
