@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.918,
+                    19.876
+                ]
+            },
+            "properties": {
+                "Location": "ต.เวียงชัย อ.เวียงชัย จ.เชียงราย (Tambon Wiang Chai, Amphoe WiangChai, ChiangRai)",
+                "Magnitude": 1.7,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-10-15 11:30:45 UTC",
+                "Time_TH": "2026-10-15 18:30:45",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.538,
                     22.985
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-13 12:51:58 UTC",
                 "Time_TH": "2026-10-13 19:51:58",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 40 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.767,
-                    14.763
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 4.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-13 12:42:42 UTC",
-                "Time_TH": "2026-10-13 19:42:42",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 252 กม."
             }
         }
     ]
