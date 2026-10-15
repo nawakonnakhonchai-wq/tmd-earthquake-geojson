@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.015,
+                    18.977
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่แฝกใหม่ อ.สันทราย จ.เชียงใหม่ (Tambon Mae Faek Mai, Amphoe SanSai, ChiangMai)",
+                "Magnitude": 1.5,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-15 16:05:11 UTC",
+                "Time_TH": "2026-10-15 23:05:11",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.918,
                     19.876
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-13 13:13:57 UTC",
                 "Time_TH": "2026-10-13 20:13:57",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สะเรียง จ.แม่ฮ่องสอน ประมาณ 113 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.562,
-                    18.789
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-13 12:51:58 UTC",
-                "Time_TH": "2026-10-13 19:51:58",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 40 กม."
             }
         }
     ]
