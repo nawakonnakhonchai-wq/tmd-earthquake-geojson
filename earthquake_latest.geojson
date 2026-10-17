@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.995,
+                    20.393
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-17 20:34:08 UTC",
+                "Time_TH": "2026-10-18 03:34:08",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 100 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.965,
+                    15.119
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 4.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-17 18:48:11 UTC",
+                "Time_TH": "2026-10-18 01:48:11",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 266 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     107.886,
                     14.989
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-16 09:13:16 UTC",
                 "Time_TH": "2026-10-16 16:13:16",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 184 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.848,
-                    14.923
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.1,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-15 19:15:35 UTC",
-                "Time_TH": "2026-10-16 02:15:35",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 256 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.015,
-                    18.977
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่แฝกใหม่ อ.สันทราย จ.เชียงใหม่ (Tambon Mae Faek Mai, Amphoe SanSai, ChiangMai)",
-                "Magnitude": 1.5,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-15 16:05:11 UTC",
-                "Time_TH": "2026-10-15 23:05:11",
-                "Comments": ""
             }
         }
     ]
