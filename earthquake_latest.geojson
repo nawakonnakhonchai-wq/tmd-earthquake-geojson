@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.886,
+                    14.989
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-17 09:51:33 UTC",
+                "Time_TH": "2026-10-17 16:51:33",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 259 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    93.307,
+                    9.843
+                ]
+            },
+            "properties": {
+                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
+                "Magnitude": 3.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-17 09:43:05 UTC",
+                "Time_TH": "2026-10-17 16:43:05",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.พังงา ประมาณ 593 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.174,
                     21.997
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-15 16:05:11 UTC",
                 "Time_TH": "2026-10-15 23:05:11",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.918,
-                    19.876
-                ]
-            },
-            "properties": {
-                "Location": "ต.เวียงชัย อ.เวียงชัย จ.เชียงราย (Tambon Wiang Chai, Amphoe WiangChai, ChiangRai)",
-                "Magnitude": 1.7,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-10-15 11:30:45 UTC",
-                "Time_TH": "2026-10-15 18:30:45",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.538,
-                    22.985
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-14 19:25:20 UTC",
-                "Time_TH": "2026-10-15 02:25:20",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 285 กม."
             }
         }
     ]
