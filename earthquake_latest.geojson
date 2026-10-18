@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.935,
+                    15.2
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.5,
+                "Depth_km": 8.0,
+                "Time_UTC": "2026-10-18 15:12:49 UTC",
+                "Time_TH": "2026-10-18 22:12:49",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 262 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.601,
                     18.823
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-17 21:08:20 UTC",
                 "Time_TH": "2026-10-18 04:08:20",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 206 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.218,
-                    21.368
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 2.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-17 21:05:14 UTC",
-                "Time_TH": "2026-10-18 04:05:14",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 109 กม."
             }
         }
     ]
