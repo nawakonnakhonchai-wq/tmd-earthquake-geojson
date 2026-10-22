@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.453,
+                    21.033
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-22 22:03:45 UTC",
+                "Time_TH": "2026-10-23 05:03:45",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 74 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.336,
+                    21.17
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-22 21:19:35 UTC",
+                "Time_TH": "2026-10-23 04:19:35",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 99 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.428,
+                    21.191
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-22 20:05:13 UTC",
+                "Time_TH": "2026-10-23 03:05:13",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 96 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.235,
                     21.399
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-21 11:53:07 UTC",
                 "Time_TH": "2026-10-21 18:53:07",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.เวียงแก่น จ.เชียงราย ประมาณ 72 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.056,
-                    18.71
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่ตีบ อ.งาว จ.ลำปาง (Tambon Mae Tip, Amphoe Ngao, Lampang)",
-                "Magnitude": 1.6,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-21 09:29:29 UTC",
-                "Time_TH": "2026-10-21 16:29:29",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.959,
-                    3.878
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 5.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-20 16:29:34 UTC",
-                "Time_TH": "2026-10-20 23:29:34",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 521 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.536,
-                    19.049
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-20 13:55:38 UTC",
-                "Time_TH": "2026-10-20 20:55:38",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 150 กม."
             }
         }
     ]
