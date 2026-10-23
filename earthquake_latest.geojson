@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.087,
+                    19.903
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 1.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-23 11:01:49 UTC",
+                "Time_TH": "2026-10-23 18:01:49",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 42 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.217,
+                    20.195
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 1.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-23 10:43:29 UTC",
+                "Time_TH": "2026-10-23 17:43:29",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 72 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.94,
                     19.761
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-22 22:03:45 UTC",
                 "Time_TH": "2026-10-23 05:03:45",
                 "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 74 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.336,
-                    21.17
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-22 21:19:35 UTC",
-                "Time_TH": "2026-10-23 04:19:35",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 99 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.428,
-                    21.191
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-22 20:05:13 UTC",
-                "Time_TH": "2026-10-23 03:05:13",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 96 กม."
             }
         }
     ]
