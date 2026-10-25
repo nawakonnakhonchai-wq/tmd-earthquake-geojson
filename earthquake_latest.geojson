@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.998,
+                    21.01
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 1.8,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-25 10:44:16 UTC",
+                "Time_TH": "2026-10-25 17:44:16",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 98 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.979,
+                    19.927
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 1.7,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-10-25 10:36:04 UTC",
+                "Time_TH": "2026-10-25 17:36:04",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 49 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.203,
+                    3.629
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-25 07:39:52 UTC",
+                "Time_TH": "2026-10-25 14:39:52",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 464 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.991,
                     19.106
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-24 19:46:11 UTC",
                 "Time_TH": "2026-10-25 02:46:11",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 348 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.979,
-                    19.05
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.2,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-10-24 18:02:54 UTC",
-                "Time_TH": "2026-10-25 01:02:54",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 98 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.115,
-                    20.885
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.0,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-10-24 13:18:24 UTC",
-                "Time_TH": "2026-10-24 20:18:24",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 94 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.921,
-                    19.142
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-24 10:46:54 UTC",
-                "Time_TH": "2026-10-24 17:46:54",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 87 กม."
             }
         }
     ]
