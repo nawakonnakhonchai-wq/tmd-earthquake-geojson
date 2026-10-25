@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.991,
+                    19.106
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 3.2,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-10-25 04:51:40 UTC",
+                "Time_TH": "2026-10-25 11:51:40",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 96 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.43,
+                    19.488
+                ]
+            },
+            "properties": {
+                "Location": "ต.เวียงเหนือ อ.ปาย จ.แม่ฮ่องสอน (Tambon Wiang Nuea, Amphoe Pai, MaeHongSon)",
+                "Magnitude": 2.1,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-10-25 01:17:30 UTC",
+                "Time_TH": "2026-10-25 08:17:30",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.782,
                     22.389
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-24 10:46:54 UTC",
                 "Time_TH": "2026-10-24 17:46:54",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 87 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    102.325,
-                    19.204
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.0,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-10-24 10:40:17 UTC",
-                "Time_TH": "2026-10-24 17:40:17",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 123 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.765,
-                    23.395
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศอินเดีย (Myanmar-India Border Region)",
-                "Magnitude": 4.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-24 10:16:09 UTC",
-                "Time_TH": "2026-10-24 17:16:09",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 630 กม."
             }
         }
     ]
