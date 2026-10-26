@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.403,
+                    18.91
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-26 13:50:34 UTC",
+                "Time_TH": "2026-10-26 20:50:34",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 162 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.372,
+                    18.674
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 4.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-26 11:36:14 UTC",
+                "Time_TH": "2026-10-26 18:36:14",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 166 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.086,
+                    22.53
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.1,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-26 11:08:00 UTC",
+                "Time_TH": "2026-10-26 18:08:00",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 252 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     102.058,
                     19.065
                 ]
@@ -114,71 +168,17 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    97.203,
-                    3.629
+                    97.713,
+                    4.434
                 ]
             },
             "properties": {
                 "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
                 "Magnitude": 4.7,
                 "Depth_km": 10.0,
-                "Time_UTC": "2026-10-25 07:39:52 UTC",
-                "Time_TH": "2026-10-25 14:39:52",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 464 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.991,
-                    19.106
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 3.2,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-10-25 04:51:40 UTC",
-                "Time_TH": "2026-10-25 11:51:40",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 96 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.43,
-                    19.488
-                ]
-            },
-            "properties": {
-                "Location": "ต.เวียงเหนือ อ.ปาย จ.แม่ฮ่องสอน (Tambon Wiang Nuea, Amphoe Pai, MaeHongSon)",
-                "Magnitude": 2.1,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-10-25 01:17:30 UTC",
-                "Time_TH": "2026-10-25 08:17:30",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.782,
-                    22.389
-                ]
-            },
-            "properties": {
-                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
-                "Magnitude": 3.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-25 00:50:28 UTC",
-                "Time_TH": "2026-10-25 07:50:28",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 245 กม."
+                "Time_UTC": "2026-10-25 07:40:05 UTC",
+                "Time_TH": "2026-10-25 14:40:05",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 360 กม."
             }
         }
     ]
