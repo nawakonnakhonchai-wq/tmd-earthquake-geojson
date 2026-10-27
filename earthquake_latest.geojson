@@ -6,24 +6,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    100.057,
-                    19.892
-                ]
-            },
-            "properties": {
-                "Location": "ต.ผางาม อ.เวียงชัย จ.เชียงราย (Tambon Pha Ngam, Amphoe WiangChai, ChiangRai)",
-                "Magnitude": 1.6,
-                "Depth_km": 4.0,
-                "Time_UTC": "2026-10-27 09:51:42 UTC",
-                "Time_TH": "2026-10-27 16:51:42",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     99.604,
                     18.509
                 ]
@@ -179,6 +161,24 @@
                 "Time_UTC": "2026-10-26 08:59:47 UTC",
                 "Time_TH": "2026-10-26 15:59:47",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 104 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    108.147,
+                    15.133
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-26 03:33:48 UTC",
+                "Time_TH": "2026-10-26 10:33:48",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 285 กม."
             }
         }
     ]
