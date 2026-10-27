@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.701,
+                    19.784
+                ]
+            },
+            "properties": {
+                "Location": "ต.ป่าก่อดำ อ.แม่ลาว จ.เชียงราย (Tambon Pa Ko Dam, Amphoe MaeLao, ChiangRai)",
+                "Magnitude": 1.7,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-10-27 03:30:50 UTC",
+                "Time_TH": "2026-10-27 10:30:50",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.392,
                     18.687
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-25 11:23:23 UTC",
                 "Time_TH": "2026-10-25 18:23:23",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 256 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.998,
-                    21.01
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 1.8,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-25 10:44:16 UTC",
-                "Time_TH": "2026-10-25 17:44:16",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 98 กม."
             }
         }
     ]
