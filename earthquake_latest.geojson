@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    101.974,
+                    19.113
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 2.1,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-10-28 14:54:14 UTC",
+                "Time_TH": "2026-10-28 21:54:14",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 94 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.034,
+                    18.008
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.8,
+                "Depth_km": 5.0,
+                "Time_UTC": "2026-10-28 14:43:22 UTC",
+                "Time_TH": "2026-10-28 21:43:22",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 95 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.976,
+                    19.125
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 2.0,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-10-28 13:56:04 UTC",
+                "Time_TH": "2026-10-28 20:56:04",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 93 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.949,
                     19.943
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-10-26 22:16:31 UTC",
                 "Time_TH": "2026-10-27 05:16:31",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 60 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.873,
-                    20.862
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-26 20:13:38 UTC",
-                "Time_TH": "2026-10-27 03:13:38",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 111 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.403,
-                    18.91
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-26 13:50:34 UTC",
-                "Time_TH": "2026-10-26 20:50:34",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 162 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.372,
-                    18.674
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 4.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-26 11:36:14 UTC",
-                "Time_TH": "2026-10-26 18:36:14",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 166 กม."
             }
         }
     ]
