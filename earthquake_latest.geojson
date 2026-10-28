@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    98.523,
+                    22.341
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-28 20:15:59 UTC",
+                "Time_TH": "2026-10-29 03:15:59",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 254 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.924,
+                    21.177
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-28 19:54:56 UTC",
+                "Time_TH": "2026-10-29 02:54:56",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 186 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     101.974,
                     19.113
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-10-27 08:35:05 UTC",
                 "Time_TH": "2026-10-27 15:35:05",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 337 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.701,
-                    19.784
-                ]
-            },
-            "properties": {
-                "Location": "ต.ป่าก่อดำ อ.แม่ลาว จ.เชียงราย (Tambon Pa Ko Dam, Amphoe MaeLao, ChiangRai)",
-                "Magnitude": 1.7,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-10-27 03:30:50 UTC",
-                "Time_TH": "2026-10-27 10:30:50",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.392,
-                    18.687
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.9,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-10-26 22:16:31 UTC",
-                "Time_TH": "2026-10-27 05:16:31",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 60 กม."
             }
         }
     ]
