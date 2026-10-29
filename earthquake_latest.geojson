@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.141,
+                    21.737
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-10-29 14:00:27 UTC",
+                "Time_TH": "2026-10-29 21:00:27",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 330 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     94.739,
                     23.197
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-27 18:04:15 UTC",
                 "Time_TH": "2026-10-28 01:04:15",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 100 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.686,
-                    14.703
-                ]
-            },
-            "properties": {
-                "Location": "หมู่เกาะนิโคบาร์ ประเทศอินเดีย (Nicobar Islands, India Region)",
-                "Magnitude": 4.0,
-                "Depth_km": 7.0,
-                "Time_UTC": "2026-10-27 17:22:55 UTC",
-                "Time_TH": "2026-10-28 00:22:55",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 568 กม."
             }
         }
     ]
