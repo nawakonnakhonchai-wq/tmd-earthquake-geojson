@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    105.284,
+                    19.044
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-01 14:43:24 UTC",
+                "Time_TH": "2026-11-01 21:43:24",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.บ้านแพง จ.นครพนม ประมาณ 164 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.316,
                     19.135
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-10-31 07:53:34 UTC",
                 "Time_TH": "2026-10-31 14:53:34",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 258 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.936,
-                    19.827
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.0,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-10-30 18:01:20 UTC",
-                "Time_TH": "2026-10-31 01:01:20",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 221 กม."
             }
         }
     ]
