@@ -6,6 +6,78 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.327,
+                    19.129
+                ]
+            },
+            "properties": {
+                "Location": "ต.ควร อ.ปง จ.พะเยา (Tambon Kuan, Amphoe Pong, Phayao)",
+                "Magnitude": 2.0,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-11-01 05:55:17 UTC",
+                "Time_TH": "2026-11-01 12:55:17",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.432,
+                    4.887
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 4.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-01 05:39:02 UTC",
+                "Time_TH": "2026-11-01 12:39:02",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 398 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.3,
+                    19.115
+                ]
+            },
+            "properties": {
+                "Location": "ต.ปง อ.ปง จ.พะเยา (Tambon Pong, Amphoe Pong, Phayao)",
+                "Magnitude": 2.1,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-11-01 05:09:21 UTC",
+                "Time_TH": "2026-11-01 12:09:21",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.311,
+                    19.122
+                ]
+            },
+            "properties": {
+                "Location": "ต.ควร อ.ปง จ.พะเยา (Tambon Kuan, Amphoe Pong, Phayao)",
+                "Magnitude": 3.9,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-11-01 05:01:05 UTC",
+                "Time_TH": "2026-11-01 12:01:05",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.446,
                     4.077
                 ]
@@ -107,78 +179,6 @@
                 "Time_UTC": "2026-10-30 13:28:00 UTC",
                 "Time_TH": "2026-10-30 20:28:00",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ฝาง จ.เชียงใหม่ ประมาณ 97 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.189,
-                    24.262
-                ]
-            },
-            "properties": {
-                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
-                "Magnitude": 4.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-30 06:31:55 UTC",
-                "Time_TH": "2026-10-30 13:31:55",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 431 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.227,
-                    20.693
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.2,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-29 21:54:58 UTC",
-                "Time_TH": "2026-10-30 04:54:58",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 130 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.799,
-                    18.118
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.4,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-29 21:33:56 UTC",
-                "Time_TH": "2026-10-30 04:33:56",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.แม่สะเรียง จ.แม่ฮ่องสอน ประมาณ 120 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.55,
-                    4.161
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-29 18:58:28 UTC",
-                "Time_TH": "2026-10-30 01:58:28",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 394 กม."
             }
         }
     ]
