@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.927,
+                    21.012
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.8,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-02 14:52:15 UTC",
+                "Time_TH": "2026-11-02 21:52:15",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 64 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.436,
+                    21.795
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-02 14:07:34 UTC",
+                "Time_TH": "2026-11-02 21:07:34",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 315 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.548,
                     19.811
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-11-01 05:09:21 UTC",
                 "Time_TH": "2026-11-01 12:09:21",
                 "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.311,
-                    19.122
-                ]
-            },
-            "properties": {
-                "Location": "ต.ควร อ.ปง จ.พะเยา (Tambon Kuan, Amphoe Pong, Phayao)",
-                "Magnitude": 3.9,
-                "Depth_km": 1.0,
-                "Time_UTC": "2026-11-01 05:01:05 UTC",
-                "Time_TH": "2026-11-01 12:01:05",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.446,
-                    4.077
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-10-31 19:44:05 UTC",
-                "Time_TH": "2026-11-01 02:44:05",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 409 กม."
             }
         }
     ]
