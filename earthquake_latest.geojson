@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.54,
+                    22.662
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-02 20:19:14 UTC",
+                "Time_TH": "2026-11-03 03:19:14",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 255 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    105.961,
+                    18.098
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 2.9,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-02 17:43:20 UTC",
+                "Time_TH": "2026-11-03 00:43:20",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.ท่าอุเทน จ.นครพนม ประมาณ 155 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.927,
                     21.012
                 ]
@@ -142,42 +178,6 @@
                 "Depth_km": 2.0,
                 "Time_UTC": "2026-11-01 05:55:17 UTC",
                 "Time_TH": "2026-11-01 12:55:17",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.432,
-                    4.887
-                ]
-            },
-            "properties": {
-                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
-                "Magnitude": 4.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-01 05:39:02 UTC",
-                "Time_TH": "2026-11-01 12:39:02",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.ภูเก็ต ประมาณ 398 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.3,
-                    19.115
-                ]
-            },
-            "properties": {
-                "Location": "ต.ปง อ.ปง จ.พะเยา (Tambon Pong, Amphoe Pong, Phayao)",
-                "Magnitude": 2.1,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-11-01 05:09:21 UTC",
-                "Time_TH": "2026-11-01 12:09:21",
                 "Comments": ""
             }
         }
