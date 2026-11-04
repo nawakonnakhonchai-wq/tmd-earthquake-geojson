@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    100.293,
+                    19.127
+                ]
+            },
+            "properties": {
+                "Location": "ต.ปง อ.ปง จ.พะเยา (Tambon Pong, Amphoe Pong, Phayao)",
+                "Magnitude": 2.3,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-11-04 07:52:26 UTC",
+                "Time_TH": "2026-11-04 14:52:26",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     108.109,
                     15.048
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-11-03 06:54:40 UTC",
                 "Time_TH": "2026-11-03 13:54:40",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 100 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    94.53,
-                    19.227
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-03 06:43:35 UTC",
-                "Time_TH": "2026-11-03 13:43:35",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 361 กม."
             }
         }
     ]
