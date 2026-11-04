@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.906,
+                    22.143
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศเมียนมา - ประเทศจีน (Myanmar - China Border Region)",
+                "Magnitude": 2.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-04 18:53:45 UTC",
+                "Time_TH": "2026-11-05 01:53:45",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 190 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     100.293,
                     19.127
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-11-03 12:56:25 UTC",
                 "Time_TH": "2026-11-03 19:56:25",
                 "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.สังคม จ.หนองคาย ประมาณ 60 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.971,
-                    19.012
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.6,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-03 06:54:40 UTC",
-                "Time_TH": "2026-11-03 13:54:40",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 100 กม."
             }
         }
     ]
