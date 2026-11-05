@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.943,
+                    20.912
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-05 20:46:26 UTC",
+                "Time_TH": "2026-11-06 03:46:26",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 53 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.065,
+                    21.024
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.6,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-11-05 19:16:51 UTC",
+                "Time_TH": "2026-11-06 02:16:51",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 107 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     98.028,
                     20.03
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-11-04 00:39:34 UTC",
                 "Time_TH": "2026-11-04 07:39:34",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 99 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.789,
-                    14.859
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-03 20:08:34 UTC",
-                "Time_TH": "2026-11-04 03:08:34",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 251 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    93.567,
-                    23.331
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-03 18:15:13 UTC",
-                "Time_TH": "2026-11-04 01:15:13",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 640 กม."
             }
         }
     ]
