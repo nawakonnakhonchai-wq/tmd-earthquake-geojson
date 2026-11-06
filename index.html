@@ -12,38 +12,47 @@
 <style>
 :root {
   color-scheme: light;
-  --surface-0: #f4f3f7;
-  --surface-1: #fcfcfb;
-  --surface-2: #f0eff4;
-  --border: #e3e1ea;
-  --grid: #ebe9f0;
-  --text-primary: #0b0b0b;
-  --text-secondary: #52514e;
-  --text-muted: #77756f;
-  --accent: #6d28d9;
-  --accent-soft: #ede7fb;
-  --ring: #fcfcfb;
-  /* ลำดับขนาดแผ่นดินไหว (ordinal, สีฟ้าโทนเดียว อ่อน→เข้ม) */
-  --m1: #86b6ef; --m2: #3987e5; --m3: #256abf; --m4: #184f95; --m5: #0d366b;
+  --surface-0: #f6f1ea;
+  --surface-1: #fffdfa;
+  --surface-2: #f2eadf;
+  --border: #e6dccd;
+  --grid: #eee5d8;
+  --text-primary: #2a1f17;
+  --text-secondary: #5e4f42;
+  --text-muted: #85766a;
+  --accent: #7a4a24;
+  --accent-strong: #5c3418;
+  --accent-soft: #f2e5d4;
+  --ring: #fffdfa;
+  --header-bg: #4a2d17;
+  --header-text: #fffaf3;
+  --header-sub: #e3cdb4;
+  --map-filter: sepia(.35) saturate(.85) brightness(1.02);
+  /* ลำดับขนาดแผ่นดินไหว (ordinal, สีน้ำตาลโทนเดียว อ่อน→เข้ม) */
+  --m1: #e0a466; --m2: #c47a37; --m3: #9c5822; --m4: #713c14; --m5: #45230a;
   --critical: #d03b3b;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --surface-0: #111113; --surface-1: #1a1a19; --surface-2: #232325;
-    --border: #2f2f33; --grid: #2a2a2d;
-    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #96958c;
-    --accent: #a78bfa; --accent-soft: #2a2140; --ring: #1a1a19;
-    --m1: #184f95; --m2: #2a78d6; --m3: #5598e7; --m4: #86b6ef; --m5: #b7d3f6;
+    --surface-0: #17120e; --surface-1: #211a14; --surface-2: #2b221b;
+    --border: #3a2f26; --grid: #33291f;
+    --text-primary: #f3ece4; --text-secondary: #cfc2b4; --text-muted: #a19383;
+    --accent: #d9a46c; --accent-strong: #e8bb88; --accent-soft: #3a2a1c; --ring: #211a14;
+    --header-bg: #2b1c11; --header-text: #f3ece4; --header-sub: #cdb59c;
+    --map-filter: sepia(.28) saturate(.9) brightness(.95);
+    --m1: #8f4f1d; --m2: #b5692c; --m3: #d38a45; --m4: #e8ae6c; --m5: #f5d2a2;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface-0: #111113; --surface-1: #1a1a19; --surface-2: #232325;
-  --border: #2f2f33; --grid: #2a2a2d;
-  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #96958c;
-  --accent: #a78bfa; --accent-soft: #2a2140; --ring: #1a1a19;
-  --m1: #184f95; --m2: #2a78d6; --m3: #5598e7; --m4: #86b6ef; --m5: #b7d3f6;
+  --surface-0: #17120e; --surface-1: #211a14; --surface-2: #2b221b;
+  --border: #3a2f26; --grid: #33291f;
+  --text-primary: #f3ece4; --text-secondary: #cfc2b4; --text-muted: #a19383;
+  --accent: #d9a46c; --accent-strong: #e8bb88; --accent-soft: #3a2a1c; --ring: #211a14;
+  --header-bg: #2b1c11; --header-text: #f3ece4; --header-sub: #cdb59c;
+  --map-filter: sepia(.28) saturate(.9) brightness(.95);
+  --m1: #8f4f1d; --m2: #b5692c; --m3: #d38a45; --m4: #e8ae6c; --m5: #f5d2a2;
 }
 
 * { box-sizing: border-box; }
@@ -60,7 +69,13 @@ body {
 header {
   display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
   gap: 12px; margin-bottom: 18px;
+  background: var(--header-bg); color: var(--header-text);
+  border-radius: 14px; padding: 20px 22px;
 }
+header .eyebrow { color: var(--header-sub); }
+header .sub, header .status { color: var(--header-sub); }
+header .btn { background: transparent; color: var(--header-text); border-color: rgba(255,255,255,.28); }
+header .btn:hover { background: rgba(255,255,255,.1); color: var(--header-text); border-color: rgba(255,255,255,.5); }
 .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 h1 { margin: 2px 0 0; font-size: 26px; line-height: 1.2; font-weight: 700; }
 .sub { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
@@ -103,6 +118,7 @@ h1 { margin: 2px 0 0; font-size: 26px; line-height: 1.2; font-weight: 700; }
 .map-card { display: flex; flex-direction: column; }
 #map { flex: 1; min-height: 460px; border-radius: 8px; background: var(--surface-2); }
 .leaflet-container { font-family: inherit; }
+.leaflet-tile-pane { filter: var(--map-filter); }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface-1); color: var(--text-primary); }
 .leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.45; }
 
