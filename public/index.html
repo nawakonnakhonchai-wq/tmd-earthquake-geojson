@@ -104,6 +104,17 @@ button { font: inherit; color: inherit; }
 .leaflet-bar { border: 1px solid var(--border) !important; border-radius: 12px !important; box-shadow: var(--shadow) !important; overflow: hidden; }
 .leaflet-bar a { width: 38px !important; height: 38px !important; line-height: 38px !important; color: var(--ink) !important; border-bottom-color: var(--border) !important; }
 .leaflet-control-attribution { font-size: 10px; }
+.estate {
+  width: 11px; height: 11px; transform: translate(-50%, -50%) rotate(45deg); background: #fff;
+  border: 2px solid var(--ink); border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: pointer;
+}
+.estate.hq { background: var(--ink); }
+.map-legend .est { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.map-legend .est i { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); background: #fff; border: 2px solid var(--ink); box-shadow: none; }
+.near { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 0 0 14px; padding: 10px 12px; border: 1px dashed #c9c9cf; border-radius: 12px; }
+.near .dia { width: 10px; height: 10px; margin-top: 6px; flex: none; transform: rotate(45deg); border: 2px solid var(--ink); border-radius: 2px; background: #fff; }
+.near b { font-weight: 700; }
+.near span { color: var(--text-muted); }
 .tag {
   display: inline-block; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap;
   background: var(--surface); border-radius: 9px; padding: 3px 9px; font-size: 12.5px; color: var(--text-secondary);
@@ -370,6 +381,7 @@ footer a { color: var(--ink); }
 <script>
 (() => {
   const DATA_URLS = ["earthquake_history.geojson", "earthquake_latest.geojson"];
+  const ESTATE_URL = "ieat_estates.geojson";
   const PAGE = 50;
   const REFRESH_MS = 2 * 60 * 1000;
   const CLASSES = [
@@ -398,7 +410,7 @@ footer a { color: var(--ink); }
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const colorOf = m => css(CLASSES[cls(m)].v);
   const radiusOf = m => Math.max(4, 3 + m * 2.6);
-  const state = { all: [], region: "all", minMag: 0, days: 30, q: "", sel: null, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE, status: null };
+  const state = { all: [], estates: [], showEstates: true, region: "all", minMag: 0, days: 30, q: "", sel: null, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE, status: null };
 
   // ---------- helpers ----------
   const parseTH = s => s ? new Date(s.replace(" ", "T") + "+07:00") : null;
@@ -414,6 +426,16 @@ footer a { color: var(--ink); }
     return `${Math.floor(s / 86400)} วันที่แล้ว`;
   };
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const distKm = (a, b, c, d) => {
+    const R = 6371, rad = Math.PI / 180, dLa = (c - a) * rad, dLo = (d - b) * rad;
+    const h = Math.sin(dLa / 2) ** 2 + Math.cos(a * rad) * Math.cos(c * rad) * Math.sin(dLo / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  };
+  const nearestEstate = e => state.estates.reduce((best, x) => {
+    const d = distKm(e.lat, e.lon, x.lat, x.lon);
+    return !best || d < best.d ? { ...x, d } : best;
+  }, null);
+  const fmtKm = d => d < 10 ? d.toFixed(1) : Math.round(d).toLocaleString("th-TH");
   // ภาพวงคลื่นแทนรูปภาพ: จำนวนและขนาดวงตามแมกนิจูด
   const ripple = (mag, w, h) => {
     const n = Math.max(2, Math.min(6, Math.round(mag)));
@@ -434,6 +456,8 @@ footer a { color: var(--ink); }
   const base = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
   L.tileLayer(`${base}World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
   L.tileLayer(`${base}World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "labels" }).addTo(map);
+  map.createPane("estates"); map.getPane("estates").style.zIndex = 620;
+  const estateLayer = L.layerGroup().addTo(map);
   const dotLayer = L.layerGroup().addTo(map);
   const tagLayer = L.layerGroup().addTo(map);
   const markerById = new Map();
@@ -445,6 +469,37 @@ footer a { color: var(--ink); }
   }
 
   // ---------- data ----------
+  async function loadEstates() {
+    try {
+      const r = await fetch(ESTATE_URL);
+      if (!r.ok) return;
+      const gj = await r.json();
+      state.estates = (gj.features || []).map(f => ({ name: f.properties.Name, ops: f.properties.Operations || "", lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1] }));
+      renderEstates();
+      if (state.all.length) render();
+    } catch (e) { /* ไม่มีชั้นนิคมฯ ก็ยังใช้งานส่วนอื่นได้ */ }
+  }
+  function renderEstates() {
+    estateLayer.clearLayers();
+    if (!state.showEstates) return;
+    state.estates.forEach(x => {
+      const hq = /สำนักงานใหญ่/.test(x.ops);
+      const icon = L.divIcon({ className: "", iconSize: [0, 0], html: `<div class="estate${hq ? " hq" : ""}"></div>` });
+      L.marker([x.lat, x.lon], { icon, pane: "estates", keyboard: false })
+        .bindTooltip(`นิคมฯ ${esc(x.name)}`, { direction: "top", offset: [0, -8] })
+        .bindPopup(() => estatePopup(x))
+        .addTo(estateLayer);
+    });
+  }
+  function estatePopup(x) {
+    const rows = filtered().map(e => ({ e, d: distKm(e.lat, e.lon, x.lat, x.lon) })).sort((a, b) => a.d - b.d);
+    const within = r => rows.filter(o => o.d <= r).length;
+    const n = rows[0];
+    return `<b style="font-size:14.5px">${esc(x.name)}</b><br><span style="color:#8a8a93">${esc(x.ops || "-")}</span><br>
+      แผ่นดินไหวตามตัวกรอง: รัศมี 100 กม. <b>${within(100)}</b> ครั้ง · 300 กม. <b>${within(300)}</b> ครั้ง
+      ${n ? `<br>ใกล้ที่สุด <b>M ${n.e.mag.toFixed(1)}</b> ห่าง ${fmtKm(n.d)} กม. (${n.e.time ? fmtDate(n.e.time) : "-"})` : ""}`;
+  }
+
   async function load() {
     try {
       let gj = null;
@@ -574,7 +629,9 @@ footer a { color: var(--ink); }
     document.getElementById("legend").innerHTML = "<b>ขนาด (แมกนิจูด)</b><div class=row>" + CLASSES.map((c, i) => {
       const r = [3.5, 5, 6, 7.5, 9][i];
       return `<span><i style="width:${r * 2}px;height:${r * 2}px;background:${css(c.v)}"></i>${c.label}</span>`;
-    }).join("") + "</div>";
+    }).join("") + "</div>" + (state.estates.length ? `<label class="est"><input type="checkbox" id="estToggle" ${state.showEstates ? "checked" : ""}> <i></i>นิคมอุตสาหกรรม (${state.estates.length})</label>` : "");
+    const t = document.getElementById("estToggle");
+    if (t) t.onchange = () => { state.showEstates = t.checked; renderEstates(); };
   }
 
   function select(e, fly = true) {
@@ -616,6 +673,7 @@ footer a { color: var(--ink); }
           <span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span>
         </div>
         <p class="f-desc">${e.time ? fmtFull(e.time) : ""}${l.en ? `<br><span class="en">${esc(l.en)}</span>` : ""}<br><span class="en">${e.lat.toFixed(3)}, ${e.lon.toFixed(3)}</span></p>
+        ${(() => { const n = state.estates.length ? nearestEstate(e) : null; return n ? `<div class="near"><span class="dia"></span><div>นิคมฯ ที่ใกล้ที่สุด <b>${esc(n.name)}</b><br><span>ห่างประมาณ ${fmtKm(n.d)} กม. (ระยะตรงจากจุดศูนย์กลาง)</span></div></div>` : ""; })()}
         <div class="f-price">ขนาด <b>M ${e.mag.toFixed(1)}</b></div>
         <div class="f-actions">
           <button class="btn-dark" type="button" id="flyBtn">ดูบนแผนที่</button>
@@ -822,6 +880,7 @@ footer a { color: var(--ink); }
   setInterval(load, REFRESH_MS);
   setInterval(() => { if (state.all.length) { renderStatus(); renderFeatured(filtered()); } }, 60e3);
   load();
+  loadEstates();
 })();
 </script>
 </body>
