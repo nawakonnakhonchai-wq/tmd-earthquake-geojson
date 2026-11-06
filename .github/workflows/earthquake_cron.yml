@@ -1,8 +1,8 @@
 name: Generate TMD Earthquake GeoJSON File
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'  # สั่งให้บอตตื่นมาแปลงข้อมูลทุกๆ 5 นาที
+  # ย้ายการดึงข้อมูลอัตโนมัติไปที่ Cloudflare Worker (worker/index.js) แล้ว
+  # เหลือไว้เฉพาะปุ่มรันด้วยมือ สำหรับสำรองข้อมูลลง repo
   workflow_dispatch:      # สร้างปุ่มสำหรับกดรันเพื่อทดสอบด้วยมือตนเองได้
 
 concurrency:
