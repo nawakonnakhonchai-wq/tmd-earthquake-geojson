@@ -355,14 +355,20 @@ footer a { color: var(--accent); }
 
   // ---------- map ----------
   const map = L.map("map", { zoomControl: true, worldCopyJump: true }).setView([15, 100], 5);
-  let tiles;
+  // Esri Canvas basemap (ไม่ต้องใช้ API key) + ชั้นชื่อสถานที่ แยก pane ให้อยู่ใต้จุดแผ่นดินไหว
+  map.createPane("labels"); map.getPane("labels").style.zIndex = 350; map.getPane("labels").style.pointerEvents = "none";
+  let tiles = [];
   function setTiles() {
-    if (tiles) map.removeLayer(tiles);
-    const style = isDark() ? "dark_all" : "light_all";
-    tiles = L.tileLayer(`https://{s}.basemaps.cartocdn.com/${style}/{z}/{x}/{y}{r}.png`, {
-      maxZoom: 18, subdomains: "abcd",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
-    }).addTo(map);
+    tiles.forEach(t => map.removeLayer(t));
+    const v = isDark() ? "Dark" : "Light";
+    const base = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+    tiles = [
+      L.tileLayer(`${base}World_${v}_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+        maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"
+      }),
+      L.tileLayer(`${base}World_${v}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "labels" })
+    ];
+    tiles.forEach(t => t.addTo(map));
   }
   setTiles();
   const layer = L.layerGroup().addTo(map);
