@@ -14,5 +14,12 @@
   "kv_namespaces": [
     { "binding": "EQ", "id": "71cafdcc2111445c96e794d037e49450" }
   ],
+  // เงื่อนไขแจ้งเตือน LINE (ดู worker/alerts.js) — LINE_ACCESS_TOKEN ตั้งเป็น Secret ใน Cloudflare
+  "vars": {
+    "ALERT_MIN_MAG_TH": "2.5",
+    "ALERT_MIN_MAG_NEAR": "3.0",
+    "ALERT_NEAR_KM": "300",
+    "ALERT_MIN_MAG_ANY": "5.0"
+  },
   "observability": { "enabled": true }
 }

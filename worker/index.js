@@ -9,6 +9,8 @@
  * - หน้า dashboard (public/index.html) เสิร์ฟจาก Static Assets
  */
 
+import { processAlerts, alertPreview } from "./alerts.js";
+
 const RSS_URL = "https://earthquake.tmd.go.th/feed/rss_tmd.xml";
 // ใช้ตั้งต้นประวัติครั้งแรก (ข้อมูลที่บอต GitHub Actions เก็บไว้ตั้งแต่ พ.ค. 2569)
 const SEED_URL = "https://raw.githubusercontent.com/nawakonnakhonchai-wq/tmd-earthquake-geojson/main/earthquake_history.geojson";
@@ -130,6 +132,14 @@ export async function runUpdate(env) {
       await env.EQ.put(K_LATEST, JSON.stringify({ type: "FeatureCollection", features: feed }, null, 1));
       status.lastChange = now;
     }
+    // แจ้งเตือน LINE (ถ้าผิดพลาดไม่กระทบการเก็บข้อมูล)
+    try {
+      const a = await processAlerts(env, merged);
+      status.alerts = { at: now, ...a };
+    } catch (e) {
+      status.alerts = { at: now, error: "alert step failed" };
+      console.error("alerts", e);
+    }
     status.ok = true;
     status.error = null;
     status.count = merged.length;
@@ -170,6 +180,13 @@ export default {
       "/earthquake_latest.geojson": [K_LATEST, "application/geo+json"],
       "/status.json": [K_STATUS, "application/json"],
     };
+    if (pathname === "/alerts.json") {
+      const raw = await env.EQ.get(K_HISTORY);
+      const hist = raw ? JSON.parse(raw).features : [];
+      return new Response(JSON.stringify(await alertPreview(env, hist), null, 1), {
+        headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+      });
+    }
     const route = routes[pathname];
     if (route) {
       let body = await env.EQ.get(route[0]);
