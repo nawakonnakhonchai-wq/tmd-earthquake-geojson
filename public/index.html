@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Earthquake Monitor</title>
-<meta name="description" content="แดชบอร์ดติดตามแผ่นดินไหวล่าสุดจากกรมอุตุนิยมวิทยา อัปเดตอัตโนมัติทุก 5 นาที">
+<meta name="description" content="แดชบอร์ดติดตามแผ่นดินไหวจากกรมอุตุนิยมวิทยา ตรวจสอบข้อมูลใหม่ทุก 5 นาที พร้อมประวัติย้อนหลัง">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,307 +12,358 @@
 <style>
 :root {
   color-scheme: light;
-  --surface-0: #f6f1ea;
-  --surface-1: #fffdfa;
-  --surface-2: #f2eadf;
-  --border: #e6dccd;
-  --grid: #eee5d8;
-  --text-primary: #2a1f17;
-  --text-secondary: #5e4f42;
-  --text-muted: #85766a;
-  --accent: #7a4a24;
-  --accent-strong: #5c3418;
-  --accent-soft: #f2e5d4;
-  --ring: #fffdfa;
-  --header-bg: #4a2d17;
-  --header-text: #fffaf3;
-  --header-sub: #e3cdb4;
-  --map-filter: sepia(.35) saturate(.85) brightness(1.02);
-  /* ลำดับขนาดแผ่นดินไหว (ordinal, สีน้ำตาลโทนเดียว อ่อน→เข้ม) */
-  --m1: #e0a466; --m2: #c47a37; --m3: #9c5822; --m4: #713c14; --m5: #45230a;
-  --critical: #d03b3b;
+  --canvas: #e6e4eb;
+  --surface: #ffffff;
+  --surface-2: #f4f4f6;
+  --surface-3: #ececf0;
+  --border: #e4e4e9;
+  --grid: #ededf1;
+  --ink: #0e0e11;
+  --text-primary: #0e0e11;
+  --text-secondary: #4e4e57;
+  --text-muted: #8a8a93;
+  --ring: #ffffff;
+  --shadow: 0 1px 2px rgba(14,14,17,.06), 0 8px 24px rgba(14,14,17,.08);
+  /* ลำดับขนาดแผ่นดินไหว (ordinal, เทา→ดำ) */
+  --m1: #a3a3ab; --m2: #7b7b84; --m3: #55555d; --m4: #313137; --m5: #0e0e11;
+  --good: #0ca30c; --warn: #e09a00;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --surface-0: #17120e; --surface-1: #211a14; --surface-2: #2b221b;
-    --border: #3a2f26; --grid: #33291f;
-    --text-primary: #f3ece4; --text-secondary: #cfc2b4; --text-muted: #a19383;
-    --accent: #d9a46c; --accent-strong: #e8bb88; --accent-soft: #3a2a1c; --ring: #211a14;
-    --header-bg: #2b1c11; --header-text: #f3ece4; --header-sub: #cdb59c;
-    --map-filter: sepia(.28) saturate(.9) brightness(.95);
-    --m1: #8f4f1d; --m2: #b5692c; --m3: #d38a45; --m4: #e8ae6c; --m5: #f5d2a2;
-  }
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --surface-0: #17120e; --surface-1: #211a14; --surface-2: #2b221b;
-  --border: #3a2f26; --grid: #33291f;
-  --text-primary: #f3ece4; --text-secondary: #cfc2b4; --text-muted: #a19383;
-  --accent: #d9a46c; --accent-strong: #e8bb88; --accent-soft: #3a2a1c; --ring: #211a14;
-  --header-bg: #2b1c11; --header-text: #f3ece4; --header-sub: #cdb59c;
-  --map-filter: sepia(.28) saturate(.9) brightness(.95);
-  --m1: #8f4f1d; --m2: #b5692c; --m3: #d38a45; --m4: #e8ae6c; --m5: #f5d2a2;
-}
-
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
-  background: var(--surface-0);
-  color: var(--text-primary);
-  font-family: "Sarabun", Tahoma, system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  background: var(--canvas); color: var(--text-primary);
+  font-family: "Sarabun", Tahoma, system-ui, sans-serif; font-size: 15px; line-height: 1.55;
 }
-.wrap { max-width: 1280px; margin: 0 auto; padding: 20px 16px 40px; }
+button { font: inherit; color: inherit; }
+.app { max-width: 1440px; margin: 20px auto; background: var(--surface); border-radius: 28px; box-shadow: 0 30px 80px rgba(30,25,60,.12); overflow: hidden; }
 
-header {
-  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
-  gap: 12px; margin-bottom: 18px;
-  background: var(--header-bg); color: var(--header-text);
-  border-radius: 14px; padding: 20px 22px;
-}
-header .eyebrow { color: var(--header-sub); }
-header .sub, header .status { color: var(--header-sub); }
-header .btn { background: transparent; color: var(--header-text); border-color: rgba(255,255,255,.28); }
-header .btn:hover { background: rgba(255,255,255,.1); color: var(--header-text); border-color: rgba(255,255,255,.5); }
-.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-h1 { margin: 2px 0 0; font-size: 34px; line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
-.sub { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
-.head-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
-.dot-live { width: 8px; height: 8px; border-radius: 50%; background: #0ca30c; box-shadow: 0 0 0 3px rgba(12,163,12,.18); }
-.dot-live.stale { background: #fab219; box-shadow: 0 0 0 3px rgba(250,178,25,.2); }
-.btn {
-  font: inherit; font-size: 13px; cursor: pointer;
-  border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
-  border-radius: 8px; padding: 6px 12px;
-}
-.btn:hover { border-color: var(--accent); color: var(--accent); }
+/* ---------- nav ---------- */
+.nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 16px 28px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 21px; letter-spacing: -.01em; white-space: nowrap; }
+.logo-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; }
+.logo-mark svg { width: 18px; height: 18px; }
+.nav-links { display: flex; gap: 30px; font-size: 15px; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+.nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text-secondary); white-space: nowrap; }
+.dot-live { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px rgba(12,163,12,.15); flex: none; }
+.dot-live.stale { background: var(--warn); box-shadow: 0 0 0 3px rgba(224,154,0,.2); }
+.icon-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); text-decoration: none; display: grid; place-items: center; cursor: pointer; flex: none; }
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn svg { width: 18px; height: 18px; }
 
-.filters {
-  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
-  margin-bottom: 14px;
-}
-.seg { display: inline-flex; background: var(--surface-1); border: 1px solid var(--border); border-radius: 9px; padding: 3px; }
-.seg button {
-  font: inherit; font-size: 13px; border: 0; background: transparent; color: var(--text-secondary);
-  padding: 5px 12px; border-radius: 6px; cursor: pointer;
-}
-.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
-.filters label { font-size: 13px; color: var(--text-secondary); }
-
-.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
-.card {
-  background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
-  min-width: 0;
-}
-.kpi-label { font-size: 13px; color: var(--text-secondary); }
-.kpi-value { font-size: 34px; font-weight: 800; line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; }
-.kpi-value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 4px; }
-.kpi-note { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-.grid-main { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 12px; margin-bottom: 12px; }
-.card h2 { font-size: 17px; font-weight: 700; margin: 0 0 2px; }
-.card .hint { font-size: 12.5px; color: var(--text-muted); margin: 0 0 10px; }
-.map-card { display: flex; flex-direction: column; }
-#map { flex: 1; min-height: 460px; border-radius: 8px; background: var(--surface-2); }
+/* ---------- stage: map + panel ---------- */
+.stage { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); height: min(760px, calc(100vh - 120px)); min-height: 600px; border-top: 1px solid var(--border); }
+.map-wrap { position: relative; background: var(--surface-3); min-width: 0; }
+#map { position: absolute; inset: 0; background: var(--surface-3); }
 .leaflet-container { font-family: inherit; }
-.leaflet-tile-pane { filter: var(--map-filter); }
-.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface-1); color: var(--text-primary); }
-.leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.45; }
+.overlay { position: absolute; z-index: 500; left: 20px; right: 20px; top: 18px; display: flex; flex-direction: column; gap: 12px; pointer-events: none; }
+.overlay > * { pointer-events: auto; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  position: relative; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px;
+  border-radius: 12px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow);
+  cursor: pointer; font-size: 14px; white-space: nowrap;
+}
+.chip svg { width: 14px; height: 14px; }
+.chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip .x { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid currentColor; display: grid; place-items: center; opacity: .85; }
+.chip .x svg { width: 10px; height: 10px; }
+.menu {
+  position: absolute; top: calc(100% + 6px); left: 0; min-width: 170px; padding: 6px; z-index: 10;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); display: none;
+}
+.menu.open { display: block; }
+.menu button { display: flex; width: 100%; justify-content: space-between; gap: 12px; border: 0; background: none; padding: 8px 10px; border-radius: 9px; cursor: pointer; text-align: left; font-size: 14px; color: var(--text-primary); }
+.menu button:hover { background: var(--surface-2); }
+.menu button[aria-checked="true"] { font-weight: 700; }
+.menu button[aria-checked="true"]::after { content: "✓"; }
+.search {
+  display: flex; align-items: center; gap: 12px; max-width: 340px; padding: 8px 14px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow);
+}
+.search svg { width: 18px; height: 18px; flex: none; color: var(--text-secondary); }
+.search label { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.search label span { font-size: 11.5px; color: var(--text-muted); line-height: 1.2; }
+.search input { border: 0; outline: none; font: inherit; font-weight: 600; font-size: 15px; padding: 0; background: transparent; color: var(--ink); min-width: 0; }
+.search input::placeholder { color: var(--text-muted); font-weight: 500; }
+.search .clear { border: 0; background: none; cursor: pointer; color: var(--text-muted); padding: 0; display: none; }
+.search.has .clear { display: block; }
 
-.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--text-secondary); margin-top: 10px; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.legend i { display: inline-block; border-radius: 50%; border: 2px solid var(--ring); box-shadow: 0 0 0 1px var(--border); }
+.map-legend {
+  position: absolute; z-index: 500; right: 16px; bottom: 26px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; box-shadow: var(--shadow); padding: 10px 12px; font-size: 12.5px; color: var(--text-secondary);
+}
+.map-legend b { display: block; font-size: 12px; color: var(--text-primary); margin-bottom: 6px; font-weight: 700; }
+.map-legend .row { display: flex; gap: 10px; align-items: flex-end; }
+.map-legend .row span { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.map-legend i { display: block; border-radius: 50%; border: 2px solid var(--ring); box-shadow: 0 0 0 1px var(--border); }
+.leaflet-bottom.leaflet-left { margin: 0 0 14px 6px; }
+.leaflet-bar { border: 1px solid var(--border) !important; border-radius: 12px !important; box-shadow: var(--shadow) !important; overflow: hidden; }
+.leaflet-bar a { width: 38px !important; height: 38px !important; line-height: 38px !important; color: var(--ink) !important; border-bottom-color: var(--border) !important; }
+.leaflet-control-attribution { font-size: 10px; }
+.tag {
+  display: inline-block; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap;
+  background: var(--surface); border-radius: 9px; padding: 3px 9px; font-size: 12.5px; color: var(--text-secondary);
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.12); pointer-events: auto; cursor: pointer;
+}
+.tag b { color: var(--ink); font-weight: 800; }
+.tag.sel { background: var(--ink); color: #fff; }
+.tag.sel b { color: #fff; }
+.leaflet-popup-content-wrapper { border-radius: 14px; }
+.leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.5; }
 
-.side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.latest-mag { font-size: 48px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
-.latest-row { display: flex; gap: 14px; align-items: flex-start; }
-.latest-meta { font-size: 13.5px; color: var(--text-secondary); min-width: 0; }
-.latest-meta strong { color: var(--text-primary); display: block; font-size: 14.5px; }
-.pill { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; margin-top: 6px; }
+/* ---------- side panel ---------- */
+.panel { min-width: 0; overflow-y: auto; padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 18px; border-left: 1px solid var(--border); }
+.featured { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); gap: 20px; }
+.visual {
+  position: relative; border-radius: 22px; background: var(--surface-2); min-height: 300px; overflow: hidden;
+  display: grid; place-items: center;
+}
+.visual svg.ripple { width: 100%; height: 100%; position: absolute; inset: 0; }
+.visual .badge {
+  position: absolute; left: 14px; top: 14px; width: 44px; height: 44px; border-radius: 50%; background: var(--surface);
+  display: grid; place-items: center; font-weight: 800; font-size: 14px; box-shadow: var(--shadow);
+}
+.visual .corner { position: absolute; right: 14px; top: 14px; }
+.visual .dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; background: rgba(255,255,255,.85); padding: 6px 10px; border-radius: 999px; }
+.visual .dots i { width: 6px; height: 6px; border-radius: 50%; background: #c9c9cf; }
+.visual .dots i.on { background: var(--ink); box-shadow: 0 0 0 3px rgba(14,14,17,.15); }
+.f-head { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
+.f-head b { color: var(--text-primary); font-weight: 700; }
+.f-title { font-size: 24px; line-height: 1.25; font-weight: 800; margin: 10px 0 8px; letter-spacing: -.01em; }
+.f-addr { display: flex; gap: 8px; font-size: 13.5px; color: var(--text-secondary); }
+.f-addr svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
+.specs { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0; padding: 10px 14px; background: var(--surface-2); border-radius: 12px; font-size: 13.5px; font-weight: 600; }
+.specs span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.specs svg { width: 16px; height: 16px; color: var(--text-secondary); }
+.f-desc { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 14px; }
+.f-desc .en { color: var(--text-muted); }
+.f-price { display: flex; align-items: baseline; gap: 10px; font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px; }
+.f-price b { font-size: 34px; line-height: 1; color: var(--ink); font-weight: 800; letter-spacing: -.02em; }
+.f-actions { display: flex; gap: 10px; }
+.btn-dark { flex: 1; height: 46px; border-radius: 12px; border: 0; background: var(--ink); color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
+.btn-dark:hover { background: #26262c; }
+.btn-out { height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.btn-out:hover { background: var(--surface-2); }
+.btn-out svg { width: 16px; height: 16px; }
+.divider { height: 1px; background: var(--border); margin: 0 -22px; }
+.rail-head { display: flex; justify-content: space-between; align-items: baseline; }
+.rail-head h2 { font-size: 16px; margin: 0; font-weight: 700; }
+.rail-head span { font-size: 13px; color: var(--text-muted); }
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(176px, 1fr); gap: 12px; overflow-x: auto; padding: 2px 2px 10px; scroll-snap-type: x mandatory; }
+.ecard { scroll-snap-align: start; border: 1px solid var(--border); border-radius: 18px; padding: 8px; background: var(--surface); cursor: pointer; text-align: left; min-width: 0; }
+.ecard:hover { border-color: #c8c8cf; }
+.ecard.sel { border: 2px solid var(--ink); padding: 7px; }
+.ecard .thumb { height: 96px; border-radius: 12px; background: var(--surface-2); position: relative; overflow: hidden; }
+.ecard .thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ecard .thumb .th { position: absolute; left: 8px; top: 8px; font-size: 11px; font-weight: 700; background: var(--ink); color: #fff; padding: 1px 7px; border-radius: 6px; }
+.ecard .m { font-size: 22px; font-weight: 800; margin: 8px 4px 0; letter-spacing: -.01em; }
+.ecard .m small { font-size: 13px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
+.ecard .l { font-size: 12.5px; color: var(--text-secondary); margin: 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ecard .s { display: flex; gap: 12px; font-size: 12px; color: var(--text-muted); margin: 6px 4px 2px; }
+.ecard .s span { display: inline-flex; align-items: center; gap: 4px; }
+.ecard .s svg { width: 13px; height: 13px; }
+.empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
 
+/* ---------- below the fold ---------- */
+.below { padding: 26px 28px 30px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 16px; }
+.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px; }
+.sec-head h2 { font-size: 22px; margin: 0; font-weight: 800; letter-spacing: -.01em; }
+.sec-head p { margin: 2px 0 0; font-size: 13.5px; color: var(--text-muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 16px 18px; min-width: 0; }
+.card.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.card.dark .kpi-label, .card.dark .kpi-note, .card.dark .kpi-value small { color: rgba(255,255,255,.66); }
+.kpi-label { font-size: 13px; color: var(--text-secondary); }
+.kpi-value { font-size: 32px; font-weight: 800; line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.kpi-value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 4px; letter-spacing: 0; }
+.kpi-note { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px; }
+.card h3 { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
+.card .hint { font-size: 12.5px; color: var(--text-muted); margin: 0 0 10px; }
+.trend-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.trend-total { font-size: 13px; color: var(--text-secondary); }
+.trend-total b { color: var(--ink); font-size: 15px; }
 .chart-box { position: relative; }
 svg text { font-family: inherit; }
 .tip {
-  position: absolute; pointer-events: none; z-index: 5;
-  background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
-  padding: 8px 10px; font-size: 12.5px; line-height: 1.4; box-shadow: 0 6px 20px rgba(0,0,0,.12);
-  max-width: 240px; opacity: 0; transition: opacity .12s;
+  position: absolute; pointer-events: none; z-index: 5; background: var(--ink); color: #fff; border-radius: 10px;
+  padding: 8px 10px; font-size: 12.5px; line-height: 1.4; max-width: 240px; opacity: 0; transition: opacity .12s;
 }
 .tip.on { opacity: 1; }
 .tip b { font-size: 14px; }
-.tip .muted { color: var(--text-muted); }
-
-.bars { display: flex; flex-direction: column; gap: 8px; }
+.tip .muted { color: rgba(255,255,255,.66); }
+.bars { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
 .bar-row { display: grid; grid-template-columns: 64px 1fr 28px; align-items: center; gap: 8px; font-size: 13px; }
 .bar-row .lab { color: var(--text-secondary); }
-.bar-track { height: 14px; }
-.bar-fill { height: 100%; border-radius: 0 4px 4px 0; min-width: 2px; }
-.bar-row .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-primary); }
-
+.bar-track { height: 12px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; min-width: 2px; }
+.bar-row .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.table-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+.table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
-th { font-weight: 600; color: var(--text-secondary); font-size: 12.5px; white-space: nowrap; cursor: pointer; user-select: none; }
-th[aria-sort]::after { content: ""; margin-left: 4px; }
-th[aria-sort="ascending"]::after { content: "▲"; font-size: 9px; }
-th[aria-sort="descending"]::after { content: "▼"; font-size: 9px; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { font-weight: 600; color: var(--text-muted); font-size: 12.5px; white-space: nowrap; cursor: pointer; user-select: none; }
+th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
 tbody tr { cursor: pointer; }
 tbody tr:hover { background: var(--surface-2); }
 td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-.mag-chip { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.mag-chip { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
 .mag-chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.flag-th { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; font-weight: 600; vertical-align: 1px; }
+.flag-th { display: inline-block; font-size: 11px; padding: 0 7px; border-radius: 6px; background: var(--ink); color: #fff; margin-left: 6px; font-weight: 700; vertical-align: 1px; }
 .loc-en { color: var(--text-muted); font-size: 12px; }
-.table-wrap { overflow-x: auto; }
-.empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
-.trend-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.trend-total { font-size: 13px; color: var(--text-secondary); }
-.trend-total b { color: var(--text-primary); font-size: 15px; }
-.table-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .more-row { text-align: center; padding-top: 12px; }
 .more-row .count { font-size: 12.5px; color: var(--text-muted); margin-right: 10px; }
-footer { margin-top: 16px; font-size: 12.5px; color: var(--text-muted); }
-footer a { color: var(--accent); }
+footer { font-size: 12.5px; color: var(--text-muted); }
+footer a { color: var(--ink); }
 
-@media (max-width: 980px) {
-  .grid-main { grid-template-columns: 1fr; }
+@media (max-width: 1100px) {
+  .featured { grid-template-columns: 1fr; }
+  .visual { min-height: 200px; }
+}
+@media (max-width: 900px) {
+  .app { margin: 0; border-radius: 0; }
+  .nav { grid-template-columns: 1fr auto; padding: 14px 16px; }
+  .nav-links { display: none; }
+  .status #updated { display: none; }
+  .stage { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  .map-wrap { height: 62vh; min-height: 420px; }
+  .panel { border-left: 0; border-top: 1px solid var(--border); overflow: visible; padding: 18px 16px; }
+  .divider { margin: 0 -16px; }
+  .featured { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); }
+  .below { padding: 22px 16px; }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #map { min-height: 380px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .overlay { left: 12px; right: 12px; top: 12px; }
+  .chips { flex-wrap: nowrap; overflow-x: auto; margin: -4px -12px; padding: 4px 12px 8px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip .menu { position: fixed; top: auto; left: 12px; right: 12px; margin-top: 6px; }
+  .map-legend { right: 10px; bottom: 22px; }
 }
 @media (max-width: 560px) {
-  h1 { font-size: 26px; }
-  .kpi-value { font-size: 24px; }
+  .featured { grid-template-columns: 1fr; }
+  .visual { min-height: 170px; }
+  .kpi-value { font-size: 26px; }
   .col-depth, .col-cmt { display: none; }
+  .search { max-width: none; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div>
-      <div class="eyebrow">EMCC · Earthquake Monitor</div>
-      <h1>สถานการณ์แผ่นดินไหวล่าสุด</h1>
-      <div class="sub">ข้อมูลจากกรมอุตุนิยมวิทยา (TMD) ตรวจสอบข้อมูลใหม่ทุก 5 นาที พร้อมประวัติย้อนหลัง</div>
+<div class="app">
+  <nav class="nav" aria-label="เมนู">
+    <div class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg></span>
+      EMCC Earthquake
     </div>
-    <div class="head-right">
+    <div class="nav-links">
+      <a href="#top" class="on">แผนที่</a>
+      <a href="#overview">ภาพรวม</a>
+      <a href="#trendSec">แนวโน้ม</a>
+      <a href="#listSec">รายการ</a>
+    </div>
+    <div class="nav-right">
       <span class="status"><span class="dot-live" id="liveDot"></span><span id="updated">กำลังโหลด…</span></span>
-      <button class="btn" id="reload" type="button">โหลดใหม่</button>
-      <button class="btn" id="themeBtn" type="button" aria-label="สลับธีม">ธีม</button>
+      <button class="icon-btn" id="reload" type="button" aria-label="โหลดข้อมูลใหม่" title="โหลดข้อมูลใหม่">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+      </button>
     </div>
-  </header>
+  </nav>
 
-  <div class="filters" role="group" aria-label="ตัวกรอง">
-    <div class="seg" id="fRange" aria-label="ช่วงเวลา">
-      <button type="button" data-v="1" aria-pressed="false">24 ชม.</button>
-      <button type="button" data-v="7" aria-pressed="false">7 วัน</button>
-      <button type="button" data-v="30" aria-pressed="true">30 วัน</button>
-      <button type="button" data-v="90" aria-pressed="false">90 วัน</button>
-      <button type="button" data-v="0" aria-pressed="false">ทั้งหมด</button>
-    </div>
-    <div class="seg" id="fRegion">
-      <button type="button" data-v="all" aria-pressed="true">ทั้งหมด</button>
-      <button type="button" data-v="th" aria-pressed="false">ในประเทศไทย</button>
-      <button type="button" data-v="intl" aria-pressed="false">ต่างประเทศ</button>
-    </div>
-    <label for="fMag">ขนาดตั้งแต่</label>
-    <div class="seg" id="fMag">
-      <button type="button" data-v="0" aria-pressed="true">ทุกขนาด</button>
-      <button type="button" data-v="2" aria-pressed="false">≥ 2.0</button>
-      <button type="button" data-v="3" aria-pressed="false">≥ 3.0</button>
-      <button type="button" data-v="4" aria-pressed="false">≥ 4.0</button>
-    </div>
-  </div>
-
-  <section class="kpis">
-    <div class="card"><div class="kpi-label">จำนวนเหตุการณ์</div><div class="kpi-value" id="kCount">–</div><div class="kpi-note" id="kSpan">&nbsp;</div></div>
-    <div class="card"><div class="kpi-label">ขนาดสูงสุด</div><div class="kpi-value" id="kMax">–</div><div class="kpi-note" id="kMaxLoc">&nbsp;</div></div>
-    <div class="card"><div class="kpi-label">เกิดในประเทศไทย</div><div class="kpi-value" id="kTh">–</div><div class="kpi-note" id="kThNote">&nbsp;</div></div>
-    <div class="card"><div class="kpi-label">ความลึกเฉลี่ย</div><div class="kpi-value" id="kDepth">–</div><div class="kpi-note" id="kDepthNote">&nbsp;</div></div>
-  </section>
-
-  <section class="grid-main">
-    <div class="card map-card">
-      <h2>แผนที่จุดศูนย์กลางแผ่นดินไหว</h2>
-      <p class="hint">ขนาดและสีของวงกลมแสดงขนาดแผ่นดินไหว (แมกนิจูด) คลิกจุดเพื่อดูรายละเอียด</p>
-      <div id="map"></div>
-      <div class="legend" id="legend"></div>
-    </div>
-    <div class="side">
-      <div class="card">
-        <h2>เหตุการณ์ล่าสุด</h2>
-        <p class="hint" id="latestAgo">&nbsp;</p>
-        <div class="latest-row">
-          <div class="latest-mag" id="lMag">–</div>
-          <div class="latest-meta">
-            <strong id="lLoc">–</strong>
-            <span id="lCmt"></span>
-            <div id="lMeta"></div>
-          </div>
+  <section class="stage" id="top">
+    <div class="map-wrap">
+      <div id="map" role="region" aria-label="แผนที่จุดศูนย์กลางแผ่นดินไหว"></div>
+      <div class="overlay">
+        <div class="chips" id="chips"></div>
+        <div class="search" id="searchBox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label><span>ค้นหาสถานที่</span><input id="q" type="search" placeholder="เช่น เชียงใหม่, Myanmar" autocomplete="off"></label>
+          <button class="clear" id="qClear" type="button" aria-label="ล้างคำค้น">✕</button>
         </div>
       </div>
-      <div class="card">
-        <h2>ลำดับเวลา</h2>
-        <p class="hint">แต่ละจุดคือหนึ่งเหตุการณ์ แกนตั้งคือขนาด</p>
+      <div class="map-legend" id="legend"></div>
+    </div>
+
+    <aside class="panel">
+      <div class="featured" id="featured"></div>
+      <div class="divider"></div>
+      <div class="rail-head"><h2>เหตุการณ์ล่าสุด</h2><span id="railCount"></span></div>
+      <div class="rail" id="rail"></div>
+    </aside>
+  </section>
+
+  <div class="below">
+    <div class="sec-head" id="overview">
+      <div><h2>ภาพรวม</h2><p>ตามตัวกรองที่เลือกบนแผนที่</p></div>
+    </div>
+    <section class="kpis">
+      <div class="card dark"><div class="kpi-label">จำนวนเหตุการณ์</div><div class="kpi-value" id="kCount">–</div><div class="kpi-note" id="kSpan">&nbsp;</div></div>
+      <div class="card"><div class="kpi-label">ขนาดสูงสุด</div><div class="kpi-value" id="kMax">–</div><div class="kpi-note" id="kMaxLoc">&nbsp;</div></div>
+      <div class="card"><div class="kpi-label">เกิดในประเทศไทย</div><div class="kpi-value" id="kTh">–</div><div class="kpi-note" id="kThNote">&nbsp;</div></div>
+      <div class="card"><div class="kpi-label">ความลึกเฉลี่ย</div><div class="kpi-value" id="kDepth">–</div><div class="kpi-note" id="kDepthNote">&nbsp;</div></div>
+    </section>
+
+    <section class="card" id="trendSec">
+      <div class="trend-head">
+        <div><h3 id="trendTitle">จำนวนเหตุการณ์รายวัน</h3><p class="hint" id="trendHint">&nbsp;</p></div>
+        <div class="trend-total" id="trendTotal"></div>
+      </div>
+      <div class="chart-box" id="trBox">
+        <svg id="trend" width="100%" height="220" role="img" aria-label="แผนภูมิแท่งจำนวนเหตุการณ์แผ่นดินไหวตามช่วงเวลา"></svg>
+        <div class="tip" id="tip2"></div>
+      </div>
+    </section>
+
+    <div class="grid2">
+      <section class="card">
+        <h3>ลำดับเวลา</h3>
+        <p class="hint">แต่ละจุดคือหนึ่งเหตุการณ์ แกนตั้งคือขนาด คลิกจุดเพื่อดูบนแผนที่</p>
         <div class="chart-box" id="tlBox">
           <svg id="timeline" width="100%" height="200" role="img" aria-label="แผนภูมิลำดับเวลาของเหตุการณ์แผ่นดินไหว"></svg>
           <div class="tip" id="tip"></div>
         </div>
-      </div>
-      <div class="card">
-        <h2>จำนวนตามช่วงขนาด</h2>
-        <p class="hint">&nbsp;</p>
+      </section>
+      <section class="card">
+        <h3>จำนวนตามช่วงขนาด</h3>
+        <p class="hint">แมกนิจูด</p>
         <div class="bars" id="bars"></div>
-      </div>
+      </section>
     </div>
-  </section>
 
-  <section class="card" style="margin-bottom:12px">
-    <div class="trend-head">
-      <div>
-        <h2 id="trendTitle">จำนวนเหตุการณ์รายวัน</h2>
-        <p class="hint" id="trendHint">&nbsp;</p>
+    <section class="card" id="listSec">
+      <div class="table-head">
+        <div><h3>รายการเหตุการณ์</h3><p class="hint">คลิกหัวตารางเพื่อเรียงลำดับ คลิกแถวเพื่อดูบนแผนที่</p></div>
+        <button class="btn-out" id="csvBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>ดาวน์โหลด CSV
+        </button>
       </div>
-      <div class="trend-total" id="trendTotal"></div>
-    </div>
-    <div class="chart-box" id="trBox">
-      <svg id="trend" width="100%" height="220" role="img" aria-label="แผนภูมิแท่งจำนวนเหตุการณ์แผ่นดินไหวตามช่วงเวลา"></svg>
-      <div class="tip" id="tip2"></div>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="table-head">
-      <div>
-        <h2>รายการเหตุการณ์</h2>
-        <p class="hint">คลิกหัวตารางเพื่อเรียงลำดับ คลิกแถวเพื่อซูมไปยังจุดบนแผนที่</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-k="time" aria-sort="descending">เวลา (ไทย)</th>
+              <th data-k="mag">ขนาด</th>
+              <th data-k="depth" class="col-depth">ลึก (กม.)</th>
+              <th data-k="loc">ตำแหน่ง</th>
+              <th class="col-cmt">ระยะจากพื้นที่ในไทย</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
       </div>
-      <button class="btn" id="csvBtn" type="button">ดาวน์โหลด CSV</button>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th data-k="time" aria-sort="descending">เวลา (ไทย)</th>
-            <th data-k="mag">ขนาด</th>
-            <th data-k="depth" class="col-depth">ลึก (กม.)</th>
-            <th data-k="loc">ตำแหน่ง</th>
-            <th class="col-cmt">ระยะจากพื้นที่ในไทย</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-    <div class="more-row" id="moreRow"></div>
-  </section>
+      <div class="more-row" id="moreRow"></div>
+    </section>
 
-  <footer>
-    แหล่งข้อมูล: <a href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener">กองเฝ้าระวังแผ่นดินไหว กรมอุตุนิยมวิทยา</a>
-    · ไฟล์ <a href="earthquake_history.geojson" target="_blank" rel="noopener">earthquake_history.geojson</a> (ประวัติสะสม)
-    · <a href="earthquake_latest.geojson" target="_blank" rel="noopener">earthquake_latest.geojson</a> (10 รายการล่าสุด)
-    · <span id="histSpan"></span>
-  </footer>
+    <footer>
+      แหล่งข้อมูล: <a href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener">กองเฝ้าระวังแผ่นดินไหว กรมอุตุนิยมวิทยา</a>
+      · <a href="earthquake_history.geojson" target="_blank" rel="noopener">earthquake_history.geojson</a>
+      · <span id="histSpan"></span>
+    </footer>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -321,7 +372,6 @@ footer a { color: var(--accent); }
   const DATA_URLS = ["earthquake_history.geojson", "earthquake_latest.geojson"];
   const PAGE = 50;
   const REFRESH_MS = 2 * 60 * 1000;
-
   const CLASSES = [
     { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1" },
     { min: 2, max: 3,         label: "2.0–2.9", v: "--m2" },
@@ -329,73 +379,69 @@ footer a { color: var(--accent); }
     { min: 4, max: 5,         label: "4.0–4.9", v: "--m4" },
     { min: 5, max: Infinity,  label: "≥ 5.0",   v: "--m5" },
   ];
+  const FILTERS = {
+    days:   { label: "ช่วงเวลา", def: 30, opts: [[1, "24 ชม."], [7, "7 วัน"], [30, "30 วัน"], [90, "90 วัน"], [0, "ทั้งหมด"]] },
+    region: { label: "พื้นที่", def: "all", opts: [["all", "ทั้งหมด"], ["th", "ในประเทศไทย"], ["intl", "ต่างประเทศ"]] },
+    minMag: { label: "ขนาด", def: 0, opts: [[0, "ทุกขนาด"], [2, "≥ 2.0"], [3, "≥ 3.0"], [4, "≥ 4.0"]] },
+  };
+  const ICON = {
+    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
+    depth: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14M6 11l6 6 6-6M4 21h16"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+    chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
+    ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+  };
   const cls = m => CLASSES.findIndex(c => m >= c.min && m < c.max);
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const colorOf = m => css(CLASSES[cls(m)].v);
-  const radiusOf = m => Math.max(5, 4 + m * 3.2);
-
-  const state = { all: [], region: "all", minMag: 0, days: 30, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE };
-
-  // ---------- theme ----------
-  const themeBtn = document.getElementById("themeBtn");
-  const isDark = () => {
-    const t = document.documentElement.dataset.theme;
-    if (t) return t === "dark";
-    return matchMedia("(prefers-color-scheme: dark)").matches;
-  };
-  try { const saved = localStorage.getItem("eq-theme"); if (saved) document.documentElement.dataset.theme = saved; } catch (e) {}
-  themeBtn.addEventListener("click", () => {
-    const next = isDark() ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem("eq-theme", next); } catch (e) {}
-    setTiles(); render();
-  });
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { setTiles(); render(); });
+  const radiusOf = m => Math.max(4, 3 + m * 2.6);
+  const state = { all: [], region: "all", minMag: 0, days: 30, q: "", sel: null, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE, status: null };
 
   // ---------- helpers ----------
   const parseTH = s => s ? new Date(s.replace(" ", "T") + "+07:00") : null;
   const isThai = loc => /จ\.|ประเทศไทย|Thailand/.test(loc);
-  const splitLoc = loc => {
-    const m = loc.match(/^(.*?)\s*\((.*)\)\s*$/);
-    return m ? { th: m[1], en: m[2] } : { th: loc, en: "" };
-  };
+  const splitLoc = loc => { const m = loc.match(/^(.*?)\s*\((.*)\)\s*$/); return m ? { th: m[1], en: m[2] } : { th: loc, en: "" }; };
   const fmtDate = d => d.toLocaleString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
-  const fmtFull = d => d.toLocaleString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium", timeStyle: "medium" });
+  const fmtFull = d => d.toLocaleString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium", timeStyle: "short" });
+  const hm = d => d.toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
   const ago = d => {
     const s = Math.max(0, (Date.now() - d) / 1000);
-    if (s < 3600) return `${Math.round(s / 60)} นาทีที่แล้ว`;
-    if (s < 86400) return `${Math.floor(s / 3600)} ชั่วโมง ${Math.round((s % 3600) / 60)} นาทีที่แล้ว`;
+    if (s < 3600) return `${Math.max(1, Math.round(s / 60))} นาทีที่แล้ว`;
+    if (s < 86400) return `${Math.floor(s / 3600)} ชม. ${Math.round((s % 3600) / 60)} นาทีที่แล้ว`;
     return `${Math.floor(s / 86400)} วันที่แล้ว`;
   };
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  // ภาพวงคลื่นแทนรูปภาพ: จำนวนและขนาดวงตามแมกนิจูด
+  const ripple = (mag, w, h) => {
+    const n = Math.max(2, Math.min(6, Math.round(mag)));
+    const cx = w / 2, cy = h / 2, max = Math.min(w, h) * 0.48;
+    let s = `<svg class="ripple" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">`;
+    for (let i = n; i >= 1; i--) {
+      const r = max * i / n;
+      s += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#0e0e11" stroke-opacity="${0.05 + 0.13 * (1 - i / n)}" stroke-width="${i === n ? 1 : 1.5}"/>`;
+    }
+    s += `<circle cx="${cx}" cy="${cy}" r="${Math.max(5, max * 0.12)}" fill="${colorOf(mag)}" stroke="#fff" stroke-width="3"/>`;
+    return s + "</svg>";
+  };
 
   // ---------- map ----------
-  const map = L.map("map", { zoomControl: true, worldCopyJump: true, fadeAnimation: false }).setView([15, 100], 5);
-  // Esri Canvas basemap (ไม่ต้องใช้ API key) + ชั้นชื่อสถานที่ แยก pane ให้อยู่ใต้จุดแผ่นดินไหว
+  const map = L.map("map", { zoomControl: false, worldCopyJump: true, fadeAnimation: false }).setView([15, 100], 5);
+  L.control.zoom({ position: "bottomleft" }).addTo(map);
   map.createPane("labels"); map.getPane("labels").style.zIndex = 350; map.getPane("labels").style.pointerEvents = "none";
-  let tiles = [];
-  function setTiles() {
-    tiles.forEach(t => map.removeLayer(t));
-    const v = isDark() ? "Dark" : "Light";
-    const base = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
-    tiles = [
-      L.tileLayer(`${base}World_${v}_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
-        maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"
-      }),
-      L.tileLayer(`${base}World_${v}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "labels" })
-    ];
-    tiles.forEach(t => t.addTo(map));
-  }
-  setTiles();
-  const layer = L.layerGroup().addTo(map);
+  const base = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+  L.tileLayer(`${base}World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
+  L.tileLayer(`${base}World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "labels" }).addTo(map);
+  const dotLayer = L.layerGroup().addTo(map);
+  const tagLayer = L.layerGroup().addTo(map);
   const markerById = new Map();
   let firstFit = true;
 
   function popupHtml(e) {
     const l = splitLoc(e.loc);
-    return `<b style="font-size:15px">M ${e.mag.toFixed(1)}</b> · ลึก ${e.depth} กม.<br>
-      <b>${esc(l.th)}</b>${l.en ? `<br><span style="color:var(--text-muted)">${esc(l.en)}</span>` : ""}<br>
-      ${esc(e.cmt)}<br><span style="color:var(--text-muted)">${e.time ? fmtFull(e.time) : "-"}</span>`;
+    return `<b style="font-size:15px">M ${e.mag.toFixed(1)}</b> · ลึก ${e.depth} กม.<br><b>${esc(l.th)}</b>${l.en ? `<br><span style="color:#8a8a93">${esc(l.en)}</span>` : ""}<br>${esc(e.cmt)}<br><span style="color:#8a8a93">${e.time ? fmtFull(e.time) : "-"}</span>`;
   }
 
   // ---------- data ----------
@@ -403,79 +449,84 @@ footer a { color: var(--accent); }
     try {
       let gj = null;
       for (const url of DATA_URLS) {
-        try {
-          const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
-          if (r.ok) { gj = await r.json(); break; }
-        } catch (e) {}
+        try { const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" }); if (r.ok) { gj = await r.json(); break; } } catch (e) {}
       }
       if (!gj) throw new Error("no data");
-      try {
-        const sr = await fetch(`status.json?t=${Date.now()}`, { cache: "no-store" });
-        state.status = sr.ok ? await sr.json() : null;
-      } catch (e) { state.status = null; }
+      try { const sr = await fetch(`status.json?t=${Date.now()}`, { cache: "no-store" }); state.status = sr.ok ? await sr.json() : null; } catch (e) { state.status = null; }
       state.all = (gj.features || []).map((f, i) => {
-        const p = f.properties || {};
-        const [lon, lat] = f.geometry.coordinates;
-        return {
-          id: i, lat, lon,
-          loc: p.Location || "-",
-          mag: Number(p.Magnitude) || 0,
-          depth: Number(p.Depth_km) || 0,
-          time: parseTH(p.Time_TH),
-          cmt: p.Comments || "",
-          thai: isThai(p.Location || ""),
-        };
-      });
-      state.all.sort((a, b) => b.time - a.time);
+        const p = f.properties || {}; const [lon, lat] = f.geometry.coordinates;
+        return { id: i, key: p.Event_ID || `${p.Time_UTC}|${lon}|${lat}`, lat, lon, loc: p.Location || "-", mag: Number(p.Magnitude) || 0, depth: Number(p.Depth_km) || 0, time: parseTH(p.Time_TH), cmt: p.Comments || "", thai: isThai(p.Location || "") };
+      }).sort((a, b) => b.time - a.time);
+      state.all.forEach((e, i) => e.id = i);
+      // คงเหตุการณ์ที่เลือกไว้หลังรีเฟรช
+      if (state.selKey) { const s = state.all.find(e => e.key === state.selKey); state.sel = s ? s.id : null; }
       state.fetchedAt = new Date();
       const tt = state.all.map(e => e.time).filter(Boolean);
-      if (tt.length) document.getElementById("histSpan").textContent =
-        `มีข้อมูลตั้งแต่ ${tt[tt.length - 1].toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium" })} รวม ${state.all.length.toLocaleString("th-TH")} เหตุการณ์`;
+      if (tt.length) document.getElementById("histSpan").textContent = `มีข้อมูลตั้งแต่ ${tt[tt.length - 1].toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium" })} รวม ${state.all.length.toLocaleString("th-TH")} เหตุการณ์`;
       render();
     } catch (err) {
       document.getElementById("liveDot").classList.add("stale");
-      document.getElementById("updated").textContent = "โหลดข้อมูลไม่สำเร็จ ลองใหม่อีกครั้ง";
+      document.getElementById("updated").textContent = "โหลดข้อมูลไม่สำเร็จ";
     }
   }
 
   const since = () => state.days ? Date.now() - state.days * 86400e3 : -Infinity;
-  const filtered = () => { const t0 = since(); return state.all.filter(e =>
-    (e.time ? +e.time >= t0 : !state.days) &&
-    e.mag >= state.minMag &&
-    (state.region === "all" || (state.region === "th" ? e.thai : !e.thai))); };
+  const filtered = () => {
+    const t0 = since(), q = state.q.trim().toLowerCase();
+    return state.all.filter(e =>
+      (e.time ? +e.time >= t0 : !state.days) && e.mag >= state.minMag &&
+      (state.region === "all" || (state.region === "th" ? e.thai : !e.thai)) &&
+      (!q || e.loc.toLowerCase().includes(q) || e.cmt.toLowerCase().includes(q)));
+  };
+  const selected = rows => rows.find(e => e.id === state.sel) || rows[0] || null;
 
   // ---------- render ----------
   function render() {
     const rows = filtered();
-    const latestAll = [...state.all].sort((a, b) => b.time - a.time)[0];
-    renderStatus();
-    renderKpis(rows);
-    renderLatest(rows);
-    renderMap(rows);
-    renderLegend();
-    renderTimeline(rows);
-    renderBars(rows);
-    renderTrend(rows);
-    renderTable(rows);
+    renderStatus(); renderChips(); renderKpis(rows); renderMap(rows); renderLegend();
+    renderFeatured(rows); renderRail(rows); renderTimeline(rows); renderBars(rows); renderTrend(rows); renderTable(rows);
   }
 
   function renderStatus() {
-    const el = document.getElementById("updated"), dot = document.getElementById("liveDot");
-    const hm = d => d.toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
-    const st = state.status;
+    const el = document.getElementById("updated"), dot = document.getElementById("liveDot"), st = state.status;
     if (st && st.lastCheck) {
       const chk = new Date(st.lastCheck);
-      const late = Date.now() - chk > 20 * 60e3 || st.ok === false;
-      dot.classList.toggle("stale", late);
-      el.textContent = st.ok === false
-        ? `ดึงข้อมูลจากกรมอุตุฯ ไม่สำเร็จ (สำเร็จล่าสุด ${st.lastChange ? hm(new Date(st.lastChange)) : "-"} น.)`
-        : `ตรวจข้อมูลกรมอุตุฯ ล่าสุด ${hm(chk)} น.`;
-      el.title = st.lastChange ? `ข้อมูลเปลี่ยนล่าสุด ${new Date(st.lastChange).toLocaleString("th-TH", { timeZone: "Asia/Bangkok" })}` : "";
-    } else if (state.fetchedAt) {
-      dot.classList.remove("stale");
-      el.textContent = `โหลดข้อมูลเมื่อ ${hm(state.fetchedAt)} น.`;
-    }
+      dot.classList.toggle("stale", Date.now() - chk > 20 * 60e3 || st.ok === false);
+      el.textContent = st.ok === false ? "ดึงข้อมูลกรมอุตุฯ ไม่สำเร็จ" : `ตรวจข้อมูลล่าสุด ${hm(chk)} น.`;
+      dot.parentElement.title = st.lastChange ? `ข้อมูลเปลี่ยนล่าสุด ${new Date(st.lastChange).toLocaleString("th-TH", { timeZone: "Asia/Bangkok" })}` : "";
+    } else if (state.fetchedAt) { dot.classList.remove("stale"); el.textContent = `โหลดข้อมูลเมื่อ ${hm(state.fetchedAt)} น.`; }
   }
+
+  // filter chips: ค่าที่ไม่ใช่ค่าเริ่มต้นเป็นแคปซูลสีดำพร้อมปุ่ม × / ค่าเริ่มต้นเป็นสีขาวพร้อมลูกศร
+  function renderChips() {
+    const box = document.getElementById("chips");
+    box.innerHTML = Object.entries(FILTERS).map(([k, f]) => {
+      const cur = f.opts.find(o => o[0] === state[k]) || f.opts[0];
+      const active = state[k] !== f.def;
+      return `<div class="chip${active ? " active" : ""}" data-k="${k}" role="button" tabindex="0" aria-haspopup="true">
+        ${f.label}: ${cur[1]} ${active ? `<span class="x" data-reset="${k}" title="ล้างตัวกรอง">${ICON.x}</span>` : ICON.chev}
+        <div class="menu" role="menu">${f.opts.map(o => `<button type="button" role="menuitemradio" aria-checked="${o[0] === state[k]}" data-v="${o[0]}">${o[1]}</button>`).join("")}</div>
+      </div>`;
+    }).join("");
+  }
+  document.getElementById("chips").addEventListener("click", ev => {
+    const reset = ev.target.closest("[data-reset]");
+    if (reset) { const k = reset.dataset.reset; state[k] = FILTERS[k].def; return apply(); }
+    const opt = ev.target.closest(".menu button");
+    if (opt) { const k = opt.closest(".chip").dataset.k; const v = opt.dataset.v; state[k] = typeof FILTERS[k].def === "number" ? Number(v) : v; return apply(); }
+    const chip = ev.target.closest(".chip");
+    if (chip) {
+      const m = chip.querySelector(".menu"), open = m.classList.contains("open");
+      document.querySelectorAll(".menu.open").forEach(x => x.classList.remove("open"));
+      if (!open) m.classList.add("open");
+    }
+  });
+  document.addEventListener("click", ev => { if (!ev.target.closest(".chip")) document.querySelectorAll(".menu.open").forEach(x => x.classList.remove("open")); });
+  document.addEventListener("keydown", ev => {
+    if (ev.key === "Escape") document.querySelectorAll(".menu.open").forEach(x => x.classList.remove("open"));
+    if ((ev.key === "Enter" || ev.key === " ") && ev.target.classList?.contains("chip")) { ev.preventDefault(); ev.target.click(); }
+  });
+  function apply() { state.limit = PAGE; state.sel = null; state.selKey = null; firstFit = true; render(); }
 
   function renderKpis(rows) {
     const $ = id => document.getElementById(id);
@@ -489,63 +540,114 @@ footer a { color: var(--accent); }
     $("kTh").innerHTML = `${th.length}<small>ครั้ง</small>`;
     const prov = {};
     th.forEach(r => { const m = r.loc.match(/จ\.\s*([^\s(]+)/); if (m) prov[m[1]] = (prov[m[1]] || 0) + 1; });
-    const top = Object.entries(prov).sort((x, y) => y[1] - x[1]).slice(0, 3);
-    $("kThNote").textContent = th.length ? top.map(([p, c]) => `จ.${p} ${c}`).join(" · ") : "ไม่มีเหตุการณ์ในไทย";
+    $("kThNote").textContent = th.length ? Object.entries(prov).sort((x, y) => y[1] - x[1]).slice(0, 3).map(([p, c]) => `จ.${p} ${c}`).join(" · ") : "ไม่มีเหตุการณ์ในไทย";
     const avg = rows.length ? rows.reduce((s, r) => s + r.depth, 0) / rows.length : 0;
     $("kDepth").innerHTML = rows.length ? `${avg.toFixed(1)}<small>กม.</small>` : "–";
-    const shallow = rows.filter(r => r.depth <= 10).length;
-    $("kDepthNote").textContent = rows.length ? `ระดับตื้น (≤ 10 กม.) ${shallow} ครั้ง` : " ";
-  }
-
-  function renderLatest(rows) {
-    const e = [...rows].sort((a, b) => b.time - a.time)[0];
-    const $ = id => document.getElementById(id);
-    if (!e) { $("lMag").textContent = "–"; $("lLoc").textContent = "ไม่มีข้อมูลตามตัวกรอง"; $("lCmt").textContent = ""; $("lMeta").innerHTML = ""; $("latestAgo").innerHTML = "&nbsp;"; return; }
-    $("lMag").textContent = e.mag.toFixed(1);
-    $("lMag").style.color = "var(--text-primary)";
-    $("lLoc").textContent = splitLoc(e.loc).th;
-    $("lCmt").textContent = e.cmt;
-    $("lMeta").innerHTML = `<span class="pill">ลึก ${e.depth} กม.</span>${e.thai ? ' <span class="pill">ในประเทศไทย</span>' : ""}`;
-    $("latestAgo").textContent = e.time ? `${fmtFull(e.time)} · ${ago(e.time)}` : "";
+    $("kDepthNote").textContent = rows.length ? `ระดับตื้น (≤ 10 กม.) ${rows.filter(r => r.depth <= 10).length} ครั้ง` : " ";
   }
 
   function renderMap(rows) {
-    layer.clearLayers(); markerById.clear();
-    const ring = css("--ring");
-    const k = rows.length > 150 ? 0.55 : rows.length > 40 ? 0.75 : 1;
+    dotLayer.clearLayers(); tagLayer.clearLayers(); markerById.clear();
+    const k = rows.length > 150 ? 0.6 : rows.length > 40 ? 0.8 : 1;
+    const sel = selected(rows);
     [...rows].sort((a, b) => a.mag - b.mag).forEach(e => {
-      const m = L.circleMarker([e.lat, e.lon], {
-        radius: Math.max(3, radiusOf(e.mag) * k), color: ring, weight: k < 1 ? 1 : 2, fillColor: colorOf(e.mag), fillOpacity: k < 1 ? 0.8 : 0.88
-      }).bindPopup(popupHtml(e)).bindTooltip(`M ${e.mag.toFixed(1)} · ${esc(splitLoc(e.loc).th)}`, { direction: "top", offset: [0, -4] });
-      m.addTo(layer); markerById.set(e.id, m);
+      const m = L.circleMarker([e.lat, e.lon], { radius: Math.max(3, radiusOf(e.mag) * k), color: "#fff", weight: 1.5, fillColor: colorOf(e.mag), fillOpacity: 0.9 })
+        .bindPopup(popupHtml(e)).on("click", () => select(e, false));
+      m.addTo(dotLayer); markerById.set(e.id, m);
+    });
+    // ป้ายแบบในภาพตัวอย่าง: เหตุการณ์ขนาดใหญ่สุด 6 รายการ + รายการที่เลือก
+    const tagged = [...rows].sort((a, b) => b.mag - a.mag).slice(0, 6);
+    if (sel && !tagged.includes(sel)) tagged.push(sel);
+    tagged.forEach(e => {
+      const isSel = sel && e.id === sel.id;
+      const icon = L.divIcon({ className: "", iconSize: [0, 0], html: `<span class="tag${isSel ? " sel" : ""}"><b>M ${e.mag.toFixed(1)}</b> / ${esc(splitLoc(e.loc).th.replace(/^ประเทศ/, "").slice(0, 18))}</span>` });
+      L.marker([e.lat, e.lon], { icon, zIndexOffset: isSel ? 1000 : 0, keyboard: false }).on("click", () => select(e, false)).addTo(tagLayer);
     });
     if (firstFit && rows.length) {
-      map.invalidateSize(); map.fitBounds(L.latLngBounds(rows.map(e => [e.lat, e.lon])).pad(0.25), { maxZoom: 7 });
+      map.invalidateSize();
+      map.fitBounds(L.latLngBounds(rows.map(e => [e.lat, e.lon])).pad(0.18), { maxZoom: 7, paddingTopLeft: [0, 110] });
       firstFit = false;
     }
   }
 
   function renderLegend() {
-    document.getElementById("legend").innerHTML = "<span>ขนาด:</span>" + CLASSES.map((c, i) => {
-      const r = [4, 6, 7.5, 9, 10.5][i];
+    document.getElementById("legend").innerHTML = "<b>ขนาด (แมกนิจูด)</b><div class=row>" + CLASSES.map((c, i) => {
+      const r = [3.5, 5, 6, 7.5, 9][i];
       return `<span><i style="width:${r * 2}px;height:${r * 2}px;background:${css(c.v)}"></i>${c.label}</span>`;
-    }).join("");
+    }).join("") + "</div>";
   }
 
-  function focus(e) {
-    const m = markerById.get(e.id);
-    map.flyTo([e.lat, e.lon], Math.max(map.getZoom(), 7), { duration: 0.8 });
-    if (m) setTimeout(() => m.openPopup(), 850);
-    document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+  function select(e, fly = true) {
+    if (!e) return;
+    state.sel = e.id; state.selKey = e.key;
+    const rows = filtered();
+    renderFeatured(rows); renderRail(rows); renderMap(rows);
+    if (fly) {
+      map.flyTo([e.lat, e.lon], Math.max(map.getZoom(), 7), { duration: 0.8 });
+      setTimeout(() => markerById.get(e.id)?.openPopup(), 850);
+    } else {
+      markerById.get(e.id)?.openPopup(); // วาดจุดใหม่แล้ว เปิด popup ของจุดที่คลิกอีกครั้ง
+    }
+    const card = document.querySelector(`.ecard[data-id="${e.id}"]`);
+    card?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
   }
 
-  // timeline: time on x, magnitude on y
+  function renderFeatured(rows) {
+    const box = document.getElementById("featured");
+    const e = selected(rows);
+    if (!e) { box.innerHTML = `<div class="empty" style="grid-column:1/-1">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</div>`; return; }
+    const l = splitLoc(e.loc);
+    const isLatest = rows[0] && rows[0].id === e.id;
+    const idx = rows.indexOf(e);
+    box.innerHTML = `
+      <div class="visual">
+        ${ripple(e.mag, 400, 400)}
+        <span class="badge">${e.mag.toFixed(1)}</span>
+        <a class="icon-btn corner" href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener" title="เปิดเว็บกรมอุตุฯ" aria-label="เปิดเว็บกรมอุตุฯ">${ICON.ext}</a>
+        <span class="dots">${[0, 1, 2, 3, 4].map(i => `<i class="${i === Math.min(idx, 4) ? "on" : ""}"></i>`).join("")}</span>
+      </div>
+      <div>
+        <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b><span>${e.time ? ago(e.time) : ""}</span></div>
+        <div class="f-title">${esc(l.th)}</div>
+        <div class="f-addr">${ICON.pin}<span>${esc(e.cmt || l.en || "-")}</span></div>
+        <div class="specs">
+          <span>${ICON.depth}${e.depth} กม.</span>
+          <span>${ICON.clock}${e.time ? hm(e.time) + " น." : "-"}</span>
+          <span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span>
+        </div>
+        <p class="f-desc">${e.time ? fmtFull(e.time) : ""}${l.en ? `<br><span class="en">${esc(l.en)}</span>` : ""}<br><span class="en">${e.lat.toFixed(3)}, ${e.lon.toFixed(3)}</span></p>
+        <div class="f-price">ขนาด <b>M ${e.mag.toFixed(1)}</b></div>
+        <div class="f-actions">
+          <button class="btn-dark" type="button" id="flyBtn">ดูบนแผนที่</button>
+          <button class="btn-out" type="button" id="copyBtn" title="คัดลอกพิกัด" aria-label="คัดลอกพิกัด">${ICON.copy}</button>
+        </div>
+      </div>`;
+    document.getElementById("flyBtn").onclick = () => { select(e, true); document.querySelector(".map-wrap").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
+    document.getElementById("copyBtn").onclick = async ev => {
+      const b = ev.currentTarget;
+      try { await navigator.clipboard.writeText(`${e.lat}, ${e.lon}`); b.textContent = "คัดลอกแล้ว"; } catch (err) { b.textContent = `${e.lat}, ${e.lon}`; }
+      setTimeout(() => { b.innerHTML = ICON.copy; }, 1600);
+    };
+  }
+
+  function renderRail(rows) {
+    const rail = document.getElementById("rail");
+    const items = rows.slice(0, 12), sel = selected(rows);
+    document.getElementById("railCount").textContent = rows.length ? `${Math.min(12, rows.length)} จาก ${rows.length} รายการ` : "";
+    if (!items.length) { rail.innerHTML = `<div class="empty">ไม่มีข้อมูล</div>`; return; }
+    rail.innerHTML = items.map(e => `
+      <button class="ecard${sel && sel.id === e.id ? " sel" : ""}" type="button" data-id="${e.id}">
+        <div class="thumb">${ripple(e.mag, 220, 96)}${e.thai ? '<span class="th">ไทย</span>' : ""}</div>
+        <div class="m">M ${e.mag.toFixed(1)}<small> / ลึก ${e.depth} กม.</small></div>
+        <div class="l">${esc(splitLoc(e.loc).th)}</div>
+        <div class="s"><span>${ICON.clock}${e.time ? fmtDate(e.time) : "-"}</span></div>
+      </button>`).join("");
+    rail.querySelectorAll(".ecard").forEach(b => b.addEventListener("click", () => select(state.all[+b.dataset.id], true)));
+  }
+
   function renderTimeline(rows) {
-    const svg = document.getElementById("timeline");
-    const box = document.getElementById("tlBox");
-    const tip = document.getElementById("tip");
-    const W = Math.max(260, box.clientWidth), H = 200;
-    const P = { l: 34, r: 14, t: 12, b: 28 };
+    const svg = document.getElementById("timeline"), box = document.getElementById("tlBox"), tip = document.getElementById("tip");
+    const W = Math.max(260, box.clientWidth), H = 200, P = { l: 30, r: 12, t: 12, b: 28 };
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     const data = rows.filter(r => r.time);
     if (!data.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" fill="${css("--text-muted")}" font-size="13">ไม่มีข้อมูลตามตัวกรอง</text>`; return; }
@@ -555,45 +657,34 @@ footer a { color: var(--accent); }
     const yMax = Math.max(4, Math.ceil(Math.max(...data.map(d => d.mag))));
     const x = t => P.l + (t - t0) / (t1 - t0) * (W - P.l - P.r);
     const y = m => P.t + (1 - m / yMax) * (H - P.t - P.b);
-    const grid = css("--grid"), muted = css("--text-muted"), ring = css("--ring");
+    const grid = css("--grid"), muted = css("--text-muted");
     let s = "";
     for (let m = 0; m <= yMax; m++) {
-      s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(m)}" y2="${y(m)}" stroke="${grid}" stroke-width="1"/>`;
+      s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(m)}" y2="${y(m)}" stroke="${grid}"/>`;
       s += `<text x="${P.l - 8}" y="${y(m) + 4}" text-anchor="end" font-size="11" fill="${muted}">${m}</text>`;
     }
-    // day ticks at midnight Bangkok
-    const dayMs = 86400e3, off = 7 * 3600e3;
-    const spanDays = (t1 - t0) / dayMs;
-    const step = spanDays > 6 ? Math.ceil(spanDays / 5) : 1;
+    const dayMs = 86400e3, off = 7 * 3600e3, spanDays = (t1 - t0) / dayMs, step = spanDays > 6 ? Math.ceil(spanDays / 5) : 1;
     for (let d = Math.ceil((t0 + off) / dayMs) * dayMs - off; d <= t1; d += dayMs * step) {
-      const dt = new Date(d);
-      s += `<line x1="${x(d)}" x2="${x(d)}" y1="${P.t}" y2="${H - P.b}" stroke="${grid}" stroke-dasharray="2 3"/>`;
-      s += `<text x="${x(d)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${dt.toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short" })}</text>`;
+      s += `<text x="${x(d)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${new Date(d).toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short" })}</text>`;
     }
-    // now marker
-    s += `<line x1="${x(Date.now())}" x2="${x(Date.now())}" y1="${P.t}" y2="${H - P.b}" stroke="${css("--accent")}" stroke-width="1.5" opacity=".6"/>`;
-    s += `<text x="${x(Date.now()) - 4}" y="${P.t + 10}" text-anchor="end" font-size="10.5" fill="${css("--accent")}">ตอนนี้</text>`;
-    // stems + dots
-    if (!dense) data.forEach(d => {
-      s += `<line x1="${x(+d.time)}" x2="${x(+d.time)}" y1="${y(0)}" y2="${y(d.mag)}" stroke="${colorOf(d.mag)}" stroke-width="2" opacity=".55"/>`;
-    });
+    if (!dense) data.forEach(d => { s += `<line x1="${x(+d.time)}" x2="${x(+d.time)}" y1="${y(0)}" y2="${y(d.mag)}" stroke="${colorOf(d.mag)}" stroke-width="2" opacity=".45"/>`; });
     [...data].sort((a, b) => a.mag - b.mag).forEach(d => {
-      const rr = dense ? Math.max(3, radiusOf(d.mag) * 0.32) : Math.max(4.5, radiusOf(d.mag) * 0.6);
-      s += `<circle cx="${x(+d.time)}" cy="${y(d.mag)}" r="${rr}" fill="${colorOf(d.mag)}" stroke="${ring}" stroke-width="${dense ? 1 : 2}"/>`;
+      const rr = dense ? Math.max(2.8, radiusOf(d.mag) * 0.38) : Math.max(4.5, radiusOf(d.mag) * 0.7);
+      s += `<circle cx="${x(+d.time)}" cy="${y(d.mag)}" r="${rr}" fill="${colorOf(d.mag)}" stroke="#fff" stroke-width="${dense ? 1 : 2}"/>`;
       s += `<circle class="hit" data-id="${d.id}" cx="${x(+d.time)}" cy="${y(d.mag)}" r="${dense ? 7 : 14}" fill="transparent" style="cursor:pointer"/>`;
     });
     svg.innerHTML = s;
     svg.querySelectorAll(".hit").forEach(c => {
-      const d = data.find(r => r.id === +c.dataset.id);
+      const d = state.all[+c.dataset.id];
       c.addEventListener("mouseenter", () => {
         tip.innerHTML = `<b>M ${d.mag.toFixed(1)}</b> · ลึก ${d.depth} กม.<br>${esc(splitLoc(d.loc).th)}<br><span class="muted">${fmtDate(d.time)}</span>`;
-        const cx = +c.getAttribute("cx") * box.clientWidth / W, cy = +c.getAttribute("cy");
+        const cx = +c.getAttribute("cx") * box.clientWidth / W;
         tip.style.left = Math.min(box.clientWidth - 200, Math.max(0, cx - 100)) + "px";
-        tip.style.top = Math.max(0, cy - 78) + "px";
+        tip.style.top = Math.max(0, +c.getAttribute("cy") - 78) + "px";
         tip.classList.add("on");
       });
       c.addEventListener("mouseleave", () => tip.classList.remove("on"));
-      c.addEventListener("click", () => focus(d));
+      c.addEventListener("click", () => { select(d, true); window.scrollTo({ top: 0, behavior: "smooth" }); });
     });
   }
 
@@ -609,20 +700,14 @@ footer a { color: var(--accent); }
       </div>`).join("");
   }
 
-  // daily / weekly counts (Bangkok calendar days)
   function renderTrend(rows) {
     const svg = document.getElementById("trend"), box = document.getElementById("trBox"), tip = document.getElementById("tip2");
-    const W = Math.max(280, box.clientWidth), H = 220, P = { l: 34, r: 10, t: 12, b: 28 };
+    const W = Math.max(280, box.clientWidth), H = 220, P = { l: 30, r: 8, t: 12, b: 28 };
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    const off = 7 * 3600e3, DAY = 86400e3;
-    const dayIdx = t => Math.floor((+t + off) / DAY);
-    const data = rows.filter(r => r.time);
-    const now = dayIdx(Date.now());
+    const off = 7 * 3600e3, DAY = 86400e3, dayIdx = t => Math.floor((+t + off) / DAY);
+    const data = rows.filter(r => r.time), now = dayIdx(Date.now());
     const first = state.days ? dayIdx(since()) : (data.length ? Math.min(...data.map(d => dayIdx(d.time))) : now);
-    const spanDays = now - first + 1;
-    const weekly = spanDays > 60;
-    const bucket = weekly ? 7 : 1;
-    // weekly buckets aligned to Monday
+    const spanDays = now - first + 1, weekly = spanDays > 60, bucket = weekly ? 7 : 1;
     const start = weekly ? first - ((first + 3) % 7) : first;
     const n = Math.floor((now - start) / bucket) + 1;
     const counts = Array.from({ length: n }, () => ({ n: 0, max: 0 }));
@@ -633,17 +718,14 @@ footer a { color: var(--accent); }
     document.getElementById("trendHint").textContent = weekly ? "ช่วงเวลายาวกว่า 60 วันจึงรวมเป็นรายสัปดาห์ (เริ่มวันจันทร์)" : "นับตามวันตามเวลาประเทศไทย";
     const avg = data.length / Math.max(1, spanDays);
     const peak = counts.reduce((b, c, i) => c.n > b.n ? { n: c.n, i } : b, { n: 0, i: -1 });
-    document.getElementById("trendTotal").innerHTML = data.length
-      ? `เฉลี่ย <b>${avg.toFixed(1)}</b> ครั้ง/วัน${peak.i >= 0 ? ` · สูงสุด <b>${peak.n}</b> ครั้ง (${weekly ? "สัปดาห์ " : ""}${fmtD(lab(peak.i))})` : ""}`
-      : "";
+    document.getElementById("trendTotal").innerHTML = data.length ? `เฉลี่ย <b>${avg.toFixed(1)}</b> ครั้ง/วัน${peak.i >= 0 ? ` · สูงสุด <b>${peak.n}</b> ครั้ง (${weekly ? "สัปดาห์ " : ""}${fmtD(lab(peak.i))})` : ""}` : "";
     const yMax = Math.max(4, Math.ceil(Math.max(...counts.map(c => c.n)) / 2) * 2);
-    const iw = W - P.l - P.r, bw = iw / n, gap = Math.min(2, bw * 0.25);
+    const iw = W - P.l - P.r, bw = iw / n, gap = Math.min(3, bw * 0.3);
     const y = v => P.t + (1 - v / yMax) * (H - P.t - P.b);
-    const grid = css("--grid"), muted = css("--text-muted"), fill = css("--accent");
+    const grid = css("--grid"), muted = css("--text-muted"), ink = css("--ink");
     let s = "";
-    const ticks = 4;
-    for (let k = 0; k <= ticks; k++) {
-      const v = Math.round(yMax / ticks * k);
+    for (let k = 0; k <= 4; k++) {
+      const v = Math.round(yMax / 4 * k);
       s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="${grid}"/>`;
       s += `<text x="${P.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${muted}">${v}</text>`;
     }
@@ -651,8 +733,8 @@ footer a { color: var(--accent); }
     counts.forEach((c, i) => {
       const x0 = P.l + i * bw + gap / 2, w = Math.max(1, bw - gap), h = y(0) - y(c.n);
       if (c.n) {
-        const r = Math.min(4, w / 2, h);
-        s += `<path d="M${x0},${y(0)} V${y(c.n) + r} Q${x0},${y(c.n)} ${x0 + r},${y(c.n)} H${x0 + w - r} Q${x0 + w},${y(c.n)} ${x0 + w},${y(c.n) + r} V${y(0)} Z" fill="${fill}" opacity=".85"/>`;
+        const r = Math.min(6, w / 2, h);
+        s += `<path d="M${x0},${y(0)} V${y(c.n) + r} Q${x0},${y(c.n)} ${x0 + r},${y(c.n)} H${x0 + w - r} Q${x0 + w},${y(c.n)} ${x0 + w},${y(c.n) + r} V${y(0)} Z" fill="${i === peak.i ? ink : "#c9c9d0"}"/>`;
       }
       s += `<rect class="hit" data-i="${i}" x="${P.l + i * bw}" y="${P.t}" width="${bw}" height="${H - P.t - P.b}" fill="transparent"/>`;
       if (i % every === 0) s += `<text x="${P.l + i * bw + bw / 2}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${fmtD(lab(i))}</text>`;
@@ -667,11 +749,15 @@ footer a { color: var(--accent); }
         const cx = (P.l + i * bw + bw / 2) * box.clientWidth / W;
         tip.style.left = Math.min(box.clientWidth - 180, Math.max(0, cx - 90)) + "px";
         tip.style.top = Math.max(0, y(c.n) - 70) + "px";
-        tip.classList.add("on");
-        rc.setAttribute("fill", "rgba(127,127,127,.08)");
+        tip.classList.add("on"); rc.setAttribute("fill", "rgba(14,14,17,.05)");
       });
       rc.addEventListener("mouseleave", () => { tip.classList.remove("on"); rc.setAttribute("fill", "transparent"); });
     });
+    // ชี้แท่งสูงสุดด้วยข้อความ (ไม่ใช้สีอย่างเดียว)
+    if (peak.i >= 0 && data.length) {
+      const px = P.l + peak.i * bw + bw / 2;
+      svg.insertAdjacentHTML("beforeend", `<text x="${Math.min(W - 20, Math.max(P.l + 16, px))}" y="${Math.max(10, y(peak.n) - 6)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${ink}">${peak.n}</text>`);
+    }
   }
 
   function exportCsv() {
@@ -679,28 +765,22 @@ footer a { color: var(--accent); }
     const head = ["Time_TH", "Magnitude", "Depth_km", "Latitude", "Longitude", "Location", "Comments", "In_Thailand"];
     const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const lines = rows.map(r => [r.time ? r.time.toLocaleString("sv-SE", { timeZone: "Asia/Bangkok" }) : "", r.mag, r.depth, r.lat, r.lon, r.loc, r.cmt, r.thai ? "Y" : "N"].map(q).join(","));
-    const blob = new Blob(["\ufeff" + [head.join(","), ...lines].join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const blob = new Blob(["﻿" + [head.join(","), ...lines].join("\r\n")], { type: "text/csv;charset=utf-8" });
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `earthquake_${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    a.href = URL.createObjectURL(blob); a.download = `earthquake_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
   function renderTable(rows) {
     const k = state.sortK, dir = state.sortDir;
     const val = r => k === "time" ? +r.time : k === "mag" ? r.mag : k === "depth" ? r.depth : r.loc;
     const sorted = [...rows].sort((a, b) => (val(a) > val(b) ? 1 : val(a) < val(b) ? -1 : 0) * dir);
-    document.querySelectorAll("th[data-k]").forEach(th => {
-      if (th.dataset.k === k) th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending");
-      else th.removeAttribute("aria-sort");
-    });
-    const tb = document.getElementById("tbody");
-    if (!sorted.length) { tb.innerHTML = `<tr><td colspan="5" class="empty">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</td></tr>`; document.getElementById("moreRow").innerHTML = ""; return; }
-    const more = document.getElementById("moreRow");
+    document.querySelectorAll("th[data-k]").forEach(th => { if (th.dataset.k === k) th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending"); else th.removeAttribute("aria-sort"); });
+    const tb = document.getElementById("tbody"), more = document.getElementById("moreRow");
+    if (!sorted.length) { tb.innerHTML = `<tr><td colspan="5" class="empty">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</td></tr>`; more.innerHTML = ""; return; }
     const shown = sorted.slice(0, state.limit);
     more.innerHTML = sorted.length > shown.length
-      ? `<span class="count">แสดง ${shown.length} จาก ${sorted.length} รายการ</span><button class="btn" type="button" id="moreBtn">แสดงเพิ่ม</button>`
+      ? `<span class="count">แสดง ${shown.length} จาก ${sorted.length} รายการ</span><button class="btn-out" type="button" id="moreBtn">แสดงเพิ่ม</button>`
       : (sorted.length > PAGE ? `<span class="count">แสดงครบ ${sorted.length} รายการ</span>` : "");
     const mb = document.getElementById("moreBtn");
     if (mb) mb.addEventListener("click", () => { state.limit += PAGE; renderTable(filtered()); });
@@ -714,37 +794,33 @@ footer a { color: var(--accent); }
         <td class="col-cmt">${esc(r.cmt)}</td>
       </tr>`;
     }).join("");
-    tb.querySelectorAll("tr[data-id]").forEach(tr =>
-      tr.addEventListener("click", () => focus(state.all.find(e => e.id === +tr.dataset.id))));
+    tb.querySelectorAll("tr[data-id]").forEach(tr => tr.addEventListener("click", () => { select(state.all[+tr.dataset.id], true); window.scrollTo({ top: 0, behavior: "smooth" }); }));
   }
 
   // ---------- controls ----------
-  function seg(id, key, cast) {
-    const el = document.getElementById(id);
-    el.addEventListener("click", ev => {
-      const b = ev.target.closest("button"); if (!b) return;
-      el.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
-      state[key] = cast(b.dataset.v);
-      state.limit = PAGE;
-      firstFit = true;
-      render();
-    });
-  }
-  seg("fRegion", "region", String);
-  seg("fMag", "minMag", Number);
-  seg("fRange", "days", Number);
+  const qIn = document.getElementById("q"), qBox = document.getElementById("searchBox");
+  let qt;
+  qIn.addEventListener("input", () => {
+    qBox.classList.toggle("has", !!qIn.value);
+    clearTimeout(qt); qt = setTimeout(() => { state.q = qIn.value; apply(); }, 200);
+  });
+  document.getElementById("qClear").addEventListener("click", () => { qIn.value = ""; qBox.classList.remove("has"); state.q = ""; apply(); qIn.focus(); });
   document.getElementById("csvBtn").addEventListener("click", exportCsv);
+  document.getElementById("reload").addEventListener("click", load);
   document.querySelectorAll("th[data-k]").forEach(th => th.addEventListener("click", () => {
     if (state.sortK === th.dataset.k) state.sortDir *= -1;
     else { state.sortK = th.dataset.k; state.sortDir = th.dataset.k === "loc" ? 1 : -1; }
-    state.limit = PAGE;
-    renderTable(filtered());
+    state.limit = PAGE; renderTable(filtered());
   }));
-  document.getElementById("reload").addEventListener("click", load);
-  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderTimeline(filtered()); renderTrend(filtered()); }, 150); });
+  const navLinks = [...document.querySelectorAll(".nav-links a")];
+  const secs = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+  addEventListener("scroll", () => {
+    let k = 0; secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top < 140) k = i; });
+    navLinks.forEach((a, i) => a.classList.toggle("on", i === k));
+  }, { passive: true });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { map.invalidateSize(); const r = filtered(); renderTimeline(r); renderTrend(r); }, 150); });
   setInterval(load, REFRESH_MS);
-  setInterval(() => { if (state.all.length) { renderLatest(filtered()); renderStatus(); } }, 60e3);
-
+  setInterval(() => { if (state.all.length) { renderStatus(); renderFeatured(filtered()); } }, 60e3);
   load();
 })();
 </script>
