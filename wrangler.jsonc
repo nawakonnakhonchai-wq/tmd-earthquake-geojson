@@ -1,0 +1,18 @@
+{
+  // Cloudflare Worker: ดึงข้อมูลแผ่นดินไหวจากกรมอุตุฯ ทุก 5 นาที และเสิร์ฟ dashboard
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tmd-earthquake",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  "kv_namespaces": [
+    { "binding": "EQ", "id": "71cafdcc2111445c96e794d037e49450" }
+  ],
+  "observability": { "enabled": true }
+}

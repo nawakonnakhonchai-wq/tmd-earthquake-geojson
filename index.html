@@ -194,7 +194,7 @@ footer a { color: var(--accent); }
     <div>
       <div class="eyebrow">EMCC · Earthquake Monitor</div>
       <h1>สถานการณ์แผ่นดินไหวล่าสุด</h1>
-      <div class="sub">ข้อมูลจากกรมอุตุนิยมวิทยา (TMD) อัปเดตอัตโนมัติทุก 5 นาที พร้อมประวัติย้อนหลัง</div>
+      <div class="sub">ข้อมูลจากกรมอุตุนิยมวิทยา (TMD) ตรวจสอบข้อมูลใหม่ทุก 5 นาที พร้อมประวัติย้อนหลัง</div>
     </div>
     <div class="head-right">
       <span class="status"><span class="dot-live" id="liveDot"></span><span id="updated">กำลังโหลด…</span></span>
@@ -320,7 +320,7 @@ footer a { color: var(--accent); }
 (() => {
   const DATA_URLS = ["earthquake_history.geojson", "earthquake_latest.geojson"];
   const PAGE = 50;
-  const REFRESH_MS = 5 * 60 * 1000;
+  const REFRESH_MS = 2 * 60 * 1000;
 
   const CLASSES = [
     { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1" },
@@ -409,6 +409,10 @@ footer a { color: var(--accent); }
         } catch (e) {}
       }
       if (!gj) throw new Error("no data");
+      try {
+        const sr = await fetch(`status.json?t=${Date.now()}`, { cache: "no-store" });
+        state.status = sr.ok ? await sr.json() : null;
+      } catch (e) { state.status = null; }
       state.all = (gj.features || []).map((f, i) => {
         const p = f.properties || {};
         const [lon, lat] = f.geometry.coordinates;
@@ -427,7 +431,6 @@ footer a { color: var(--accent); }
       const tt = state.all.map(e => e.time).filter(Boolean);
       if (tt.length) document.getElementById("histSpan").textContent =
         `มีข้อมูลตั้งแต่ ${tt[tt.length - 1].toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium" })} รวม ${state.all.length.toLocaleString("th-TH")} เหตุการณ์`;
-      document.getElementById("liveDot").classList.remove("stale");
       render();
     } catch (err) {
       document.getElementById("liveDot").classList.add("stale");
@@ -445,10 +448,7 @@ footer a { color: var(--accent); }
   function render() {
     const rows = filtered();
     const latestAll = [...state.all].sort((a, b) => b.time - a.time)[0];
-    if (state.fetchedAt) {
-      document.getElementById("updated").textContent =
-        `ดึงข้อมูลเมื่อ ${state.fetchedAt.toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" })} น.`;
-    }
+    renderStatus();
     renderKpis(rows);
     renderLatest(rows);
     renderMap(rows);
@@ -457,6 +457,24 @@ footer a { color: var(--accent); }
     renderBars(rows);
     renderTrend(rows);
     renderTable(rows);
+  }
+
+  function renderStatus() {
+    const el = document.getElementById("updated"), dot = document.getElementById("liveDot");
+    const hm = d => d.toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
+    const st = state.status;
+    if (st && st.lastCheck) {
+      const chk = new Date(st.lastCheck);
+      const late = Date.now() - chk > 20 * 60e3 || st.ok === false;
+      dot.classList.toggle("stale", late);
+      el.textContent = st.ok === false
+        ? `ดึงข้อมูลจากกรมอุตุฯ ไม่สำเร็จ (สำเร็จล่าสุด ${st.lastChange ? hm(new Date(st.lastChange)) : "-"} น.)`
+        : `ตรวจข้อมูลกรมอุตุฯ ล่าสุด ${hm(chk)} น.`;
+      el.title = st.lastChange ? `ข้อมูลเปลี่ยนล่าสุด ${new Date(st.lastChange).toLocaleString("th-TH", { timeZone: "Asia/Bangkok" })}` : "";
+    } else if (state.fetchedAt) {
+      dot.classList.remove("stale");
+      el.textContent = `โหลดข้อมูลเมื่อ ${hm(state.fetchedAt)} น.`;
+    }
   }
 
   function renderKpis(rows) {
@@ -725,7 +743,7 @@ footer a { color: var(--accent); }
   document.getElementById("reload").addEventListener("click", load);
   let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderTimeline(filtered()); renderTrend(filtered()); }, 150); });
   setInterval(load, REFRESH_MS);
-  setInterval(() => { if (state.all.length) renderLatest(filtered()); }, 60e3);
+  setInterval(() => { if (state.all.length) { renderLatest(filtered()); renderStatus(); } }, 60e3);
 
   load();
 })();
