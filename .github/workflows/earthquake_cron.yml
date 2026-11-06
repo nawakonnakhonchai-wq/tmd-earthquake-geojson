@@ -5,6 +5,10 @@ on:
     - cron: '*/5 * * * *'  # สั่งให้บอตตื่นมาแปลงข้อมูลทุกๆ 5 นาที
   workflow_dispatch:      # สร้างปุ่มสำหรับกดรันเพื่อทดสอบด้วยมือตนเองได้
 
+concurrency:
+  group: earthquake-update
+  cancel-in-progress: false
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
@@ -32,7 +36,9 @@ jobs:
         git config --global user.email "actions@github.com"
         if [ -f earthquake_latest.geojson ]; then
           git add earthquake_latest.geojson
+          [ -f earthquake_history.geojson ] && git add earthquake_history.geojson
           git commit -m "Automated update earthquake GeoJSON data" || echo "No changes to commit"
+          git pull --rebase origin main || true
           git push
         else
           echo "[-] ไม่พบไฟล์ earthquake_latest.geojson"

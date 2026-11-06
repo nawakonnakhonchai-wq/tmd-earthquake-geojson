@@ -4,6 +4,61 @@ import json
 import pandas as pd
 from bs4 import BeautifulSoup
 
+HISTORY_FILE = "earthquake_history.geojson"
+
+
+def event_key(feature):
+    """คีย์กันรายการซ้ำ: เวลา UTC + พิกัด (ทศนิยม 3 ตำแหน่ง)"""
+    lon, lat = feature["geometry"]["coordinates"]
+    t = feature["properties"].get("Time_UTC", "")
+    return f"{t}|{lon:.3f}|{lat:.3f}"
+
+
+def merge_history(history_features, feed_features):
+    """
+    รวมเหตุการณ์จาก RSS เข้ากับประวัติสะสม
+    - เหตุการณ์ใหม่: เพิ่มเข้าไป
+    - เหตุการณ์เดิม: อัปเดตค่าล่าสุด (กรณีกรมอุตุฯ ปรับขนาด/ความลึก)
+    - เหตุการณ์ในประวัติที่อยู่ในช่วงเวลาของ feed แต่หายไปจาก feed แล้ว
+      แปลว่ากรมอุตุฯ แก้ไขหรือยกเลิกรายการนั้น จึงลบออก
+    """
+    feed = {event_key(f): f for f in feed_features}
+    feed_times = [f["properties"].get("Time_UTC", "") for f in feed_features if f["properties"].get("Time_UTC")]
+    oldest_feed = min(feed_times) if feed_times else None
+
+    merged = {}
+    for f in history_features:
+        k = event_key(f)
+        t = f["properties"].get("Time_UTC", "")
+        if oldest_feed and t >= oldest_feed and k not in feed:
+            continue  # ถูกแก้ไข/ยกเลิกใน feed ล่าสุด
+        merged[k] = f
+    for k, f in feed.items():
+        f = json.loads(json.dumps(f))
+        f["properties"]["Event_ID"] = k
+        merged[k] = f
+    for k, f in merged.items():
+        f["properties"].setdefault("Event_ID", k)
+    return sorted(merged.values(), key=lambda f: f["properties"].get("Time_UTC", ""), reverse=True)
+
+
+def load_history(path=HISTORY_FILE):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f).get("features", [])
+    except FileNotFoundError:
+        return []
+
+
+def save_history(features, path=HISTORY_FILE):
+    """เขียน 1 เหตุการณ์ต่อ 1 บรรทัด เพื่อให้ไฟล์เล็กและดู diff ใน git ง่าย"""
+    lines = [json.dumps(f, ensure_ascii=False, separators=(",", ":")) for f in features]
+    with open(path, "w", encoding="utf-8") as f:
+        f.write('{"type":"FeatureCollection","features":[\n')
+        f.write(",\n".join(lines))
+        f.write("\n]}\n")
+
+
 def parse_item_data(item):
     """
     ฟังก์ชันย่อยสำหรับแกะข้อมูลและสกัดพิกัดจากแต่ละ Item 
@@ -131,6 +186,12 @@ def fetch_tmd_earthquake():
             json.dump(geojson_data, f, ensure_ascii=False, indent=4)
             
         print(f"[+] สำเร็จ! ดึงข้อมูลและสร้างไฟล์ {output_file} เรียบร้อยแล้ว จำนวน {len(geojson_features)} เหตุการณ์")
+
+        # เก็บประวัติสะสม
+        history = load_history()
+        merged = merge_history(history, geojson_features)
+        save_history(merged)
+        print(f"[+] ประวัติสะสม {HISTORY_FILE}: {len(merged)} เหตุการณ์ (เดิม {len(history)})")
         
     except Exception as e:
         print(f"[-] เกิดข้อผิดพลาดในระบบประมวลผลหลัก: {str(e)}")
