@@ -370,7 +370,7 @@ footer a { color: var(--accent); }
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   // ---------- map ----------
-  const map = L.map("map", { zoomControl: true, worldCopyJump: true }).setView([15, 100], 5);
+  const map = L.map("map", { zoomControl: true, worldCopyJump: true, fadeAnimation: false }).setView([15, 100], 5);
   // Esri Canvas basemap (ไม่ต้องใช้ API key) + ชั้นชื่อสถานที่ แยก pane ให้อยู่ใต้จุดแผ่นดินไหว
   map.createPane("labels"); map.getPane("labels").style.zIndex = 350; map.getPane("labels").style.pointerEvents = "none";
   let tiles = [];
