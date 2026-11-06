@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earthquake Monitor</title>
+<meta name="description" content="แดชบอร์ดติดตามแผ่นดินไหวล่าสุดจากกรมอุตุนิยมวิทยา อัปเดตอัตโนมัติทุก 5 นาที">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root {
+  color-scheme: dark;
+  --surface-0: #0b1810;
+  --surface-1: rgba(255,255,255,.055);
+  --surface-solid: #16261b;
+  --surface-2: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.13);
+  --grid: rgba(255,255,255,.08);
+  --text-primary: #f3f6ee;
+  --text-secondary: rgba(243,246,238,.74);
+  --text-muted: rgba(243,246,238,.56);
+  --accent: #d4f34a;
+  --accent-ink: #12200c;
+  --accent-soft: rgba(212,243,74,.14);
+  --ring: #16261b;
+  --map-filter: sepia(.45) hue-rotate(48deg) saturate(1.25) brightness(.92);
+  /* ลำดับขนาดแผ่นดินไหว (ordinal, เขียวมะนาวโทนเดียว เข้ม→สว่าง บนพื้นมืด) */
+  --m1: #5a7d1e; --m2: #7fa827; --m3: #a6cf2f; --m4: #cdee45; --m5: #eefca8;
+  --critical: #ff6b5e;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font-family: "Sarabun", Tahoma, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 20px 16px 40px; }
+
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { margin: 2px 0 0; font-size: 34px; line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
+.sub { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+.head-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+.dot-live { width: 8px; height: 8px; border-radius: 50%; background: #0ca30c; box-shadow: 0 0 0 3px rgba(12,163,12,.18); }
+.dot-live.stale { background: #fab219; box-shadow: 0 0 0 3px rgba(250,178,25,.2); }
+.btn {
+  font: inherit; font-size: 13px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  border-radius: 8px; padding: 6px 12px;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.filters {
+  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
+  margin-bottom: 14px;
+}
+.seg { display: inline-flex; background: var(--surface-1); border: 1px solid var(--border); border-radius: 9px; padding: 3px; }
+.seg button {
+  font: inherit; font-size: 13px; border: 0; background: transparent; color: var(--text-secondary);
+  padding: 5px 12px; border-radius: 6px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.filters label { font-size: 13px; color: var(--text-secondary); }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+.card {
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
+  min-width: 0;
+}
+.kpi-label { font-size: 13px; color: var(--text-secondary); }
+.kpi-value { font-size: 34px; font-weight: 800; line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.kpi-value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 4px; }
+.kpi-note { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.grid-main { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 12px; margin-bottom: 12px; }
+.card h2 { font-size: 17px; font-weight: 700; margin: 0 0 2px; }
+.card .hint { font-size: 12.5px; color: var(--text-muted); margin: 0 0 10px; }
+.map-card { display: flex; flex-direction: column; }
+#map { flex: 1; min-height: 460px; border-radius: 8px; background: var(--surface-2); }
+.leaflet-container { font-family: inherit; }
+.leaflet-tile-pane { filter: var(--map-filter); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface-1); color: var(--text-primary); }
+.leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.45; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--text-secondary); margin-top: 10px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; border-radius: 50%; border: 2px solid var(--ring); box-shadow: 0 0 0 1px var(--border); }
+
+.side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.latest-mag { font-size: 48px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.latest-row { display: flex; gap: 14px; align-items: flex-start; }
+.latest-meta { font-size: 13.5px; color: var(--text-secondary); min-width: 0; }
+.latest-meta strong { color: var(--text-primary); display: block; font-size: 14.5px; }
+.pill { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+.chart-box { position: relative; }
+svg text { font-family: inherit; }
+.tip {
+  position: absolute; pointer-events: none; z-index: 5;
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 10px; font-size: 12.5px; line-height: 1.4; box-shadow: 0 6px 20px rgba(0,0,0,.12);
+  max-width: 240px; opacity: 0; transition: opacity .12s;
+}
+.tip.on { opacity: 1; }
+.tip b { font-size: 14px; }
+.tip .muted { color: var(--text-muted); }
+
+.bars { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: grid; grid-template-columns: 64px 1fr 28px; align-items: center; gap: 8px; font-size: 13px; }
+.bar-row .lab { color: var(--text-secondary); }
+.bar-track { height: 14px; }
+.bar-fill { height: 100%; border-radius: 0 4px 4px 0; min-width: 2px; }
+.bar-row .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-primary); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { font-weight: 600; color: var(--text-secondary); font-size: 12.5px; white-space: nowrap; cursor: pointer; user-select: none; }
+th[aria-sort]::after { content: ""; margin-left: 4px; }
+th[aria-sort="ascending"]::after { content: "▲"; font-size: 9px; }
+th[aria-sort="descending"]::after { content: "▼"; font-size: 9px; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: var(--surface-2); }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mag-chip { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.mag-chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.flag-th { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; font-weight: 600; vertical-align: 1px; }
+.loc-en { color: var(--text-muted); font-size: 12px; }
+.table-wrap { overflow-x: auto; }
+.empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
+.trend-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.trend-total { font-size: 13px; color: var(--text-secondary); }
+.trend-total b { color: var(--text-primary); font-size: 15px; }
+.table-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.more-row { text-align: center; padding-top: 12px; }
+.more-row .count { font-size: 12.5px; color: var(--text-muted); margin-right: 10px; }
+footer { margin-top: 16px; font-size: 12.5px; color: var(--text-muted); }
+footer a { color: var(--accent); }
+
+@media (max-width: 980px) {
+  .grid-main { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #map { min-height: 380px; }
+}
+@media (max-width: 560px) {
+  h1 { font-size: 26px; }
+  .kpi-value { font-size: 24px; }
+  .col-depth, .col-cmt { display: none; }
+}
+
+/* ===== Forest theme ===== */
+body {
+  background:
+    radial-gradient(1100px 600px at 78% -8%, rgba(120,170,70,.30), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(40,95,55,.45), transparent 62%),
+    radial-gradient(1200px 900px at 50% 110%, rgba(25,70,40,.55), transparent 60%),
+    linear-gradient(180deg, #0f2216 0%, #0b1810 45%, #09140d 100%);
+  background-attachment: fixed;
+}
+.wrap { max-width: 1320px; }
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.tip, .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #18291d; border-color: var(--border); color: var(--text-primary); }
+.leaflet-bar a { background: #18291d; color: var(--text-primary); border-color: var(--border); }
+.leaflet-control-attribution { background: rgba(11,24,16,.7) !important; color: var(--text-muted); }
+.leaflet-control-attribution a { color: var(--text-secondary); }
+#map { border-radius: 14px; }
+
+/* nav pill */
+.nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 14px 12px 24px; margin-bottom: 8px;
+  border: 1px solid rgba(255,255,255,.18); border-radius: 22px;
+  background: rgba(255,255,255,.06);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+}
+.logo { font-weight: 800; font-size: 20px; letter-spacing: .04em; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.logo small { font-size: 12px; font-weight: 500; letter-spacing: .02em; color: var(--text-muted); }
+.nav-links { display: flex; gap: 28px; font-size: 15px; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a.on { color: var(--accent); border-bottom-color: var(--accent); }
+.btn-lime {
+  font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; border: 0;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 999px; padding: 10px 18px; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.btn-lime:hover { filter: brightness(1.06); }
+.btn-lime svg { width: 16px; height: 16px; }
+
+/* hero */
+.hero { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; padding: 44px 8px 30px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.12; font-weight: 800; letter-spacing: -.015em; margin: 0; }
+.hero h1 .hl { color: var(--accent); }
+.hero p { max-width: 560px; color: var(--text-secondary); margin: 14px 0 0; font-size: 16px; }
+.status-chip {
+  display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: rgba(255,255,255,.05);
+}
+
+/* search-bar style filters */
+.filters {
+  display: flex; flex-wrap: wrap; align-items: stretch; gap: 0;
+  border: 1px solid rgba(255,255,255,.18); border-radius: 20px; padding: 6px;
+  background: rgba(255,255,255,.06); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  margin-bottom: 16px;
+}
+.fgroup { padding: 8px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fgroup + .fgroup { border-left: 1px solid var(--border); }
+.fgroup > span { font-size: 12.5px; color: var(--text-muted); }
+.seg { background: transparent; border: 0; padding: 0; gap: 6px; flex-wrap: wrap; border-radius: 0; }
+.seg button {
+  border: 1px solid rgba(212,243,74,.45); color: var(--text-primary); border-radius: 999px;
+  padding: 4px 12px; font-size: 13px; background: transparent;
+}
+.seg button:hover { background: var(--accent-soft); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+
+.btn { border-radius: 999px; background: transparent; border-color: rgba(212,243,74,.45); color: var(--text-primary); }
+.btn:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.kpi-value { color: var(--text-primary); }
+.kpis .card:first-child { background: linear-gradient(140deg, rgba(212,243,74,.16), rgba(255,255,255,.05)); border-color: rgba(212,243,74,.35); }
+.pill, .flag-th { background: var(--accent-soft); color: var(--accent); }
+th { color: var(--text-muted); }
+tbody tr:hover { background: rgba(255,255,255,.05); }
+footer a { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .fgroup + .fgroup { border-left: 0; border-top: 1px solid var(--border); }
+  .filters { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .logo small { display: none; }
+  .hero { padding-top: 28px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="เมนู">
+    <div class="logo">EMCC <small>Earthquake Monitor</small></div>
+    <div class="nav-links">
+      <a href="#top" class="on">ภาพรวม</a>
+      <a href="#mapSec">แผนที่</a>
+      <a href="#trendSec">แนวโน้ม</a>
+      <a href="#listSec">รายการ</a>
+    </div>
+    <button class="btn-lime" id="reload" type="button">โหลดใหม่
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button id="themeBtn" type="button" hidden></button>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>ติดตามแผ่นดินไหว<br><span class="hl">ใกล้ตัวคุณ</span></h1>
+      <p>ข้อมูลจากกรมอุตุนิยมวิทยา (TMD) ตรวจสอบข้อมูลใหม่ทุก 5 นาที พร้อมแผนที่จุดศูนย์กลาง แนวโน้มรายวัน และประวัติย้อนหลัง</p>
+    </div>
+    <span class="status-chip"><span class="dot-live" id="liveDot"></span><span id="updated">กำลังโหลด…</span></span>
+  </header>
+
+  <div class="filters" role="group" aria-label="ตัวกรอง">
+    <div class="fgroup"><span>ช่วงเวลา</span>
+      <div class="seg" id="fRange" aria-label="ช่วงเวลา">
+        <button type="button" data-v="1" aria-pressed="false">24 ชม.</button>
+        <button type="button" data-v="7" aria-pressed="false">7 วัน</button>
+        <button type="button" data-v="30" aria-pressed="true">30 วัน</button>
+        <button type="button" data-v="90" aria-pressed="false">90 วัน</button>
+        <button type="button" data-v="0" aria-pressed="false">ทั้งหมด</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>พื้นที่</span>
+      <div class="seg" id="fRegion">
+        <button type="button" data-v="all" aria-pressed="true">ทั้งหมด</button>
+        <button type="button" data-v="th" aria-pressed="false">ในประเทศไทย</button>
+        <button type="button" data-v="intl" aria-pressed="false">ต่างประเทศ</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>ขนาดตั้งแต่</span>
+      <div class="seg" id="fMag">
+        <button type="button" data-v="0" aria-pressed="true">ทุกขนาด</button>
+        <button type="button" data-v="2" aria-pressed="false">≥ 2.0</button>
+        <button type="button" data-v="3" aria-pressed="false">≥ 3.0</button>
+        <button type="button" data-v="4" aria-pressed="false">≥ 4.0</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="kpis">
+    <div class="card"><div class="kpi-label">จำนวนเหตุการณ์</div><div class="kpi-value" id="kCount">–</div><div class="kpi-note" id="kSpan">&nbsp;</div></div>
+    <div class="card"><div class="kpi-label">ขนาดสูงสุด</div><div class="kpi-value" id="kMax">–</div><div class="kpi-note" id="kMaxLoc">&nbsp;</div></div>
+    <div class="card"><div class="kpi-label">เกิดในประเทศไทย</div><div class="kpi-value" id="kTh">–</div><div class="kpi-note" id="kThNote">&nbsp;</div></div>
+    <div class="card"><div class="kpi-label">ความลึกเฉลี่ย</div><div class="kpi-value" id="kDepth">–</div><div class="kpi-note" id="kDepthNote">&nbsp;</div></div>
+  </section>
+
+  <section class="grid-main">
+    <div class="card map-card" id="mapSec">
+      <h2>แผนที่จุดศูนย์กลางแผ่นดินไหว</h2>
+      <p class="hint">ขนาดและสีของวงกลมแสดงขนาดแผ่นดินไหว (แมกนิจูด) คลิกจุดเพื่อดูรายละเอียด</p>
+      <div id="map"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <h2>เหตุการณ์ล่าสุด</h2>
+        <p class="hint" id="latestAgo">&nbsp;</p>
+        <div class="latest-row">
+          <div class="latest-mag" id="lMag">–</div>
+          <div class="latest-meta">
+            <strong id="lLoc">–</strong>
+            <span id="lCmt"></span>
+            <div id="lMeta"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>ลำดับเวลา</h2>
+        <p class="hint">แต่ละจุดคือหนึ่งเหตุการณ์ แกนตั้งคือขนาด</p>
+        <div class="chart-box" id="tlBox">
+          <svg id="timeline" width="100%" height="200" role="img" aria-label="แผนภูมิลำดับเวลาของเหตุการณ์แผ่นดินไหว"></svg>
+          <div class="tip" id="tip"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>จำนวนตามช่วงขนาด</h2>
+        <p class="hint">&nbsp;</p>
+        <div class="bars" id="bars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:12px" id="trendSec">
+    <div class="trend-head">
+      <div>
+        <h2 id="trendTitle">จำนวนเหตุการณ์รายวัน</h2>
+        <p class="hint" id="trendHint">&nbsp;</p>
+      </div>
+      <div class="trend-total" id="trendTotal"></div>
+    </div>
+    <div class="chart-box" id="trBox">
+      <svg id="trend" width="100%" height="220" role="img" aria-label="แผนภูมิแท่งจำนวนเหตุการณ์แผ่นดินไหวตามช่วงเวลา"></svg>
+      <div class="tip" id="tip2"></div>
+    </div>
+  </section>
+
+  <section class="card" id="listSec">
+    <div class="table-head">
+      <div>
+        <h2>รายการเหตุการณ์</h2>
+        <p class="hint">คลิกหัวตารางเพื่อเรียงลำดับ คลิกแถวเพื่อซูมไปยังจุดบนแผนที่</p>
+      </div>
+      <button class="btn" id="csvBtn" type="button">ดาวน์โหลด CSV</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-k="time" aria-sort="descending">เวลา (ไทย)</th>
+            <th data-k="mag">ขนาด</th>
+            <th data-k="depth" class="col-depth">ลึก (กม.)</th>
+            <th data-k="loc">ตำแหน่ง</th>
+            <th class="col-cmt">ระยะจากพื้นที่ในไทย</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="more-row" id="moreRow"></div>
+  </section>
+
+  <footer>
+    แหล่งข้อมูล: <a href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener">กองเฝ้าระวังแผ่นดินไหว กรมอุตุนิยมวิทยา</a>
+    · ไฟล์ <a href="earthquake_history.geojson" target="_blank" rel="noopener">earthquake_history.geojson</a> (ประวัติสะสม)
+    · <a href="earthquake_latest.geojson" target="_blank" rel="noopener">earthquake_latest.geojson</a> (10 รายการล่าสุด)
+    · <span id="histSpan"></span>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(() => {
+  const DATA_URLS = ["earthquake_history.geojson", "earthquake_latest.geojson"];
+  const PAGE = 50;
+  const REFRESH_MS = 2 * 60 * 1000;
+
+  const CLASSES = [
+    { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1" },
+    { min: 2, max: 3,         label: "2.0–2.9", v: "--m2" },
+    { min: 3, max: 4,         label: "3.0–3.9", v: "--m3" },
+    { min: 4, max: 5,         label: "4.0–4.9", v: "--m4" },
+    { min: 5, max: Infinity,  label: "≥ 5.0",   v: "--m5" },
+  ];
+  const cls = m => CLASSES.findIndex(c => m >= c.min && m < c.max);
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const colorOf = m => css(CLASSES[cls(m)].v);
+  const radiusOf = m => Math.max(5, 4 + m * 3.2);
+
+  const state = { all: [], region: "all", minMag: 0, days: 30, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE };
+
+  // ---------- theme ----------
+  const themeBtn = document.getElementById("themeBtn");
+  const isDark = () => {
+    const t = document.documentElement.dataset.theme;
+    if (t) return t === "dark";
+    return matchMedia("(prefers-color-scheme: dark)").matches;
+  };
+  document.documentElement.dataset.theme = "dark"; // ธีมป่า: โหมดมืดอย่างเดียว
+  const navLinks = [...document.querySelectorAll(".nav-links a")];
+  const secs = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+  addEventListener("scroll", () => {
+    let k = 0; secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top < 160) k = i; });
+    navLinks.forEach((a, i) => a.classList.toggle("on", i === k));
+  }, { passive: true });
+  themeBtn.addEventListener("click", () => {
+    const next = isDark() ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("eq-theme", next); } catch (e) {}
+    setTiles(); render();
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { setTiles(); render(); });
+
+  // ---------- helpers ----------
+  const parseTH = s => s ? new Date(s.replace(" ", "T") + "+07:00") : null;
+  const isThai = loc => /จ\.|ประเทศไทย|Thailand/.test(loc);
+  const splitLoc = loc => {
+    const m = loc.match(/^(.*?)\s*\((.*)\)\s*$/);
+    return m ? { th: m[1], en: m[2] } : { th: loc, en: "" };
+  };
+  const fmtDate = d => d.toLocaleString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  const fmtFull = d => d.toLocaleString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium", timeStyle: "medium" });
+  const ago = d => {
+    const s = Math.max(0, (Date.now() - d) / 1000);
+    if (s < 3600) return `${Math.round(s / 60)} นาทีที่แล้ว`;
+    if (s < 86400) return `${Math.floor(s / 3600)} ชั่วโมง ${Math.round((s % 3600) / 60)} นาทีที่แล้ว`;
+    return `${Math.floor(s / 86400)} วันที่แล้ว`;
+  };
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  // ---------- map ----------
+  const map = L.map("map", { zoomControl: true, worldCopyJump: true, fadeAnimation: false }).setView([15, 100], 5);
+  // Esri Canvas basemap (ไม่ต้องใช้ API key) + ชั้นชื่อสถานที่ แยก pane ให้อยู่ใต้จุดแผ่นดินไหว
+  map.createPane("labels"); map.getPane("labels").style.zIndex = 350; map.getPane("labels").style.pointerEvents = "none";
+  let tiles = [];
+  function setTiles() {
+    tiles.forEach(t => map.removeLayer(t));
+    const v = isDark() ? "Dark" : "Light";
+    const base = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+    tiles = [
+      L.tileLayer(`${base}World_${v}_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+        maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"
+      }),
+      L.tileLayer(`${base}World_${v}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 16, pane: "labels" })
+    ];
+    tiles.forEach(t => t.addTo(map));
+  }
+  setTiles();
+  const layer = L.layerGroup().addTo(map);
+  const markerById = new Map();
+  let firstFit = true;
+
+  function popupHtml(e) {
+    const l = splitLoc(e.loc);
+    return `<b style="font-size:15px">M ${e.mag.toFixed(1)}</b> · ลึก ${e.depth} กม.<br>
+      <b>${esc(l.th)}</b>${l.en ? `<br><span style="color:var(--text-muted)">${esc(l.en)}</span>` : ""}<br>
+      ${esc(e.cmt)}<br><span style="color:var(--text-muted)">${e.time ? fmtFull(e.time) : "-"}</span>`;
+  }
+
+  // ---------- data ----------
+  async function load() {
+    try {
+      let gj = null;
+      for (const url of DATA_URLS) {
+        try {
+          const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+          if (r.ok) { gj = await r.json(); break; }
+        } catch (e) {}
+      }
+      if (!gj) throw new Error("no data");
+      try {
+        const sr = await fetch(`status.json?t=${Date.now()}`, { cache: "no-store" });
+        state.status = sr.ok ? await sr.json() : null;
+      } catch (e) { state.status = null; }
+      state.all = (gj.features || []).map((f, i) => {
+        const p = f.properties || {};
+        const [lon, lat] = f.geometry.coordinates;
+        return {
+          id: i, lat, lon,
+          loc: p.Location || "-",
+          mag: Number(p.Magnitude) || 0,
+          depth: Number(p.Depth_km) || 0,
+          time: parseTH(p.Time_TH),
+          cmt: p.Comments || "",
+          thai: isThai(p.Location || ""),
+        };
+      });
+      state.all.sort((a, b) => b.time - a.time);
+      state.fetchedAt = new Date();
+      const tt = state.all.map(e => e.time).filter(Boolean);
+      if (tt.length) document.getElementById("histSpan").textContent =
+        `มีข้อมูลตั้งแต่ ${tt[tt.length - 1].toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", dateStyle: "medium" })} รวม ${state.all.length.toLocaleString("th-TH")} เหตุการณ์`;
+      render();
+    } catch (err) {
+      document.getElementById("liveDot").classList.add("stale");
+      document.getElementById("updated").textContent = "โหลดข้อมูลไม่สำเร็จ ลองใหม่อีกครั้ง";
+    }
+  }
+
+  const since = () => state.days ? Date.now() - state.days * 86400e3 : -Infinity;
+  const filtered = () => { const t0 = since(); return state.all.filter(e =>
+    (e.time ? +e.time >= t0 : !state.days) &&
+    e.mag >= state.minMag &&
+    (state.region === "all" || (state.region === "th" ? e.thai : !e.thai))); };
+
+  // ---------- render ----------
+  function render() {
+    const rows = filtered();
+    const latestAll = [...state.all].sort((a, b) => b.time - a.time)[0];
+    renderStatus();
+    renderKpis(rows);
+    renderLatest(rows);
+    renderMap(rows);
+    renderLegend();
+    renderTimeline(rows);
+    renderBars(rows);
+    renderTrend(rows);
+    renderTable(rows);
+  }
+
+  function renderStatus() {
+    const el = document.getElementById("updated"), dot = document.getElementById("liveDot");
+    const hm = d => d.toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
+    const st = state.status;
+    if (st && st.lastCheck) {
+      const chk = new Date(st.lastCheck);
+      const late = Date.now() - chk > 20 * 60e3 || st.ok === false;
+      dot.classList.toggle("stale", late);
+      el.textContent = st.ok === false
+        ? `ดึงข้อมูลจากกรมอุตุฯ ไม่สำเร็จ (สำเร็จล่าสุด ${st.lastChange ? hm(new Date(st.lastChange)) : "-"} น.)`
+        : `ตรวจข้อมูลกรมอุตุฯ ล่าสุด ${hm(chk)} น.`;
+      el.title = st.lastChange ? `ข้อมูลเปลี่ยนล่าสุด ${new Date(st.lastChange).toLocaleString("th-TH", { timeZone: "Asia/Bangkok" })}` : "";
+    } else if (state.fetchedAt) {
+      dot.classList.remove("stale");
+      el.textContent = `โหลดข้อมูลเมื่อ ${hm(state.fetchedAt)} น.`;
+    }
+  }
+
+  function renderKpis(rows) {
+    const $ = id => document.getElementById(id);
+    $("kCount").innerHTML = `${rows.length}<small>ครั้ง</small>`;
+    const times = rows.map(r => r.time).filter(Boolean).sort((a, b) => a - b);
+    $("kSpan").textContent = times.length ? `${fmtDate(times[0])} – ${fmtDate(times[times.length - 1])}` : "ไม่มีข้อมูล";
+    const max = rows.reduce((m, r) => (!m || r.mag > m.mag ? r : m), null);
+    $("kMax").innerHTML = max ? `${max.mag.toFixed(1)}<small>แมกนิจูด</small>` : "–";
+    $("kMaxLoc").textContent = max ? splitLoc(max.loc).th : " ";
+    const th = rows.filter(r => r.thai);
+    $("kTh").innerHTML = `${th.length}<small>ครั้ง</small>`;
+    const prov = {};
+    th.forEach(r => { const m = r.loc.match(/จ\.\s*([^\s(]+)/); if (m) prov[m[1]] = (prov[m[1]] || 0) + 1; });
+    const top = Object.entries(prov).sort((x, y) => y[1] - x[1]).slice(0, 3);
+    $("kThNote").textContent = th.length ? top.map(([p, c]) => `จ.${p} ${c}`).join(" · ") : "ไม่มีเหตุการณ์ในไทย";
+    const avg = rows.length ? rows.reduce((s, r) => s + r.depth, 0) / rows.length : 0;
+    $("kDepth").innerHTML = rows.length ? `${avg.toFixed(1)}<small>กม.</small>` : "–";
+    const shallow = rows.filter(r => r.depth <= 10).length;
+    $("kDepthNote").textContent = rows.length ? `ระดับตื้น (≤ 10 กม.) ${shallow} ครั้ง` : " ";
+  }
+
+  function renderLatest(rows) {
+    const e = [...rows].sort((a, b) => b.time - a.time)[0];
+    const $ = id => document.getElementById(id);
+    if (!e) { $("lMag").textContent = "–"; $("lLoc").textContent = "ไม่มีข้อมูลตามตัวกรอง"; $("lCmt").textContent = ""; $("lMeta").innerHTML = ""; $("latestAgo").innerHTML = "&nbsp;"; return; }
+    $("lMag").textContent = e.mag.toFixed(1);
+    $("lMag").style.color = "var(--text-primary)";
+    $("lLoc").textContent = splitLoc(e.loc).th;
+    $("lCmt").textContent = e.cmt;
+    $("lMeta").innerHTML = `<span class="pill">ลึก ${e.depth} กม.</span>${e.thai ? ' <span class="pill">ในประเทศไทย</span>' : ""}`;
+    $("latestAgo").textContent = e.time ? `${fmtFull(e.time)} · ${ago(e.time)}` : "";
+  }
+
+  function renderMap(rows) {
+    layer.clearLayers(); markerById.clear();
+    const ring = css("--ring");
+    const k = rows.length > 150 ? 0.55 : rows.length > 40 ? 0.75 : 1;
+    [...rows].sort((a, b) => a.mag - b.mag).forEach(e => {
+      const m = L.circleMarker([e.lat, e.lon], {
+        radius: Math.max(3, radiusOf(e.mag) * k), color: ring, weight: k < 1 ? 1 : 2, fillColor: colorOf(e.mag), fillOpacity: k < 1 ? 0.8 : 0.88
+      }).bindPopup(popupHtml(e)).bindTooltip(`M ${e.mag.toFixed(1)} · ${esc(splitLoc(e.loc).th)}`, { direction: "top", offset: [0, -4] });
+      m.addTo(layer); markerById.set(e.id, m);
+    });
+    if (firstFit && rows.length) {
+      map.invalidateSize(); map.fitBounds(L.latLngBounds(rows.map(e => [e.lat, e.lon])).pad(0.25), { maxZoom: 7 });
+      firstFit = false;
+    }
+  }
+
+  function renderLegend() {
+    document.getElementById("legend").innerHTML = "<span>ขนาด:</span>" + CLASSES.map((c, i) => {
+      const r = [4, 6, 7.5, 9, 10.5][i];
+      return `<span><i style="width:${r * 2}px;height:${r * 2}px;background:${css(c.v)}"></i>${c.label}</span>`;
+    }).join("");
+  }
+
+  function focus(e) {
+    const m = markerById.get(e.id);
+    map.flyTo([e.lat, e.lon], Math.max(map.getZoom(), 7), { duration: 0.8 });
+    if (m) setTimeout(() => m.openPopup(), 850);
+    document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  // timeline: time on x, magnitude on y
+  function renderTimeline(rows) {
+    const svg = document.getElementById("timeline");
+    const box = document.getElementById("tlBox");
+    const tip = document.getElementById("tip");
+    const W = Math.max(260, box.clientWidth), H = 200;
+    const P = { l: 34, r: 14, t: 12, b: 28 };
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const data = rows.filter(r => r.time);
+    if (!data.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" fill="${css("--text-muted")}" font-size="13">ไม่มีข้อมูลตามตัวกรอง</text>`; return; }
+    let t0 = state.days ? since() : Math.min(...data.map(d => +d.time)), t1 = Date.now();
+    const pad = (t1 - t0) * 0.03 || 3600e3; t0 -= pad; t1 += pad * 0.5;
+    const dense = data.length > 60;
+    const yMax = Math.max(4, Math.ceil(Math.max(...data.map(d => d.mag))));
+    const x = t => P.l + (t - t0) / (t1 - t0) * (W - P.l - P.r);
+    const y = m => P.t + (1 - m / yMax) * (H - P.t - P.b);
+    const grid = css("--grid"), muted = css("--text-muted"), ring = css("--ring");
+    let s = "";
+    for (let m = 0; m <= yMax; m++) {
+      s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(m)}" y2="${y(m)}" stroke="${grid}" stroke-width="1"/>`;
+      s += `<text x="${P.l - 8}" y="${y(m) + 4}" text-anchor="end" font-size="11" fill="${muted}">${m}</text>`;
+    }
+    // day ticks at midnight Bangkok
+    const dayMs = 86400e3, off = 7 * 3600e3;
+    const spanDays = (t1 - t0) / dayMs;
+    const step = spanDays > 6 ? Math.ceil(spanDays / 5) : 1;
+    for (let d = Math.ceil((t0 + off) / dayMs) * dayMs - off; d <= t1; d += dayMs * step) {
+      const dt = new Date(d);
+      s += `<line x1="${x(d)}" x2="${x(d)}" y1="${P.t}" y2="${H - P.b}" stroke="${grid}" stroke-dasharray="2 3"/>`;
+      s += `<text x="${x(d)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${dt.toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short" })}</text>`;
+    }
+    // now marker
+    s += `<line x1="${x(Date.now())}" x2="${x(Date.now())}" y1="${P.t}" y2="${H - P.b}" stroke="${css("--accent")}" stroke-width="1.5" opacity=".6"/>`;
+    s += `<text x="${x(Date.now()) - 4}" y="${P.t + 10}" text-anchor="end" font-size="10.5" fill="${css("--accent")}">ตอนนี้</text>`;
+    // stems + dots
+    if (!dense) data.forEach(d => {
+      s += `<line x1="${x(+d.time)}" x2="${x(+d.time)}" y1="${y(0)}" y2="${y(d.mag)}" stroke="${colorOf(d.mag)}" stroke-width="2" opacity=".55"/>`;
+    });
+    [...data].sort((a, b) => a.mag - b.mag).forEach(d => {
+      const rr = dense ? Math.max(3, radiusOf(d.mag) * 0.32) : Math.max(4.5, radiusOf(d.mag) * 0.6);
+      s += `<circle cx="${x(+d.time)}" cy="${y(d.mag)}" r="${rr}" fill="${colorOf(d.mag)}" stroke="${ring}" stroke-width="${dense ? 1 : 2}"/>`;
+      s += `<circle class="hit" data-id="${d.id}" cx="${x(+d.time)}" cy="${y(d.mag)}" r="${dense ? 7 : 14}" fill="transparent" style="cursor:pointer"/>`;
+    });
+    svg.innerHTML = s;
+    svg.querySelectorAll(".hit").forEach(c => {
+      const d = data.find(r => r.id === +c.dataset.id);
+      c.addEventListener("mouseenter", () => {
+        tip.innerHTML = `<b>M ${d.mag.toFixed(1)}</b> · ลึก ${d.depth} กม.<br>${esc(splitLoc(d.loc).th)}<br><span class="muted">${fmtDate(d.time)}</span>`;
+        const cx = +c.getAttribute("cx") * box.clientWidth / W, cy = +c.getAttribute("cy");
+        tip.style.left = Math.min(box.clientWidth - 200, Math.max(0, cx - 100)) + "px";
+        tip.style.top = Math.max(0, cy - 78) + "px";
+        tip.classList.add("on");
+      });
+      c.addEventListener("mouseleave", () => tip.classList.remove("on"));
+      c.addEventListener("click", () => focus(d));
+    });
+  }
+
+  function renderBars(rows) {
+    const counts = CLASSES.map(() => 0);
+    rows.forEach(r => counts[cls(r.mag)]++);
+    const max = Math.max(1, ...counts);
+    document.getElementById("bars").innerHTML = CLASSES.map((c, i) => `
+      <div class="bar-row" title="${c.label}: ${counts[i]} ครั้ง">
+        <span class="lab">${c.label}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${counts[i] / max * 100}%;background:${counts[i] ? css(c.v) : "transparent"}"></div></div>
+        <span class="num">${counts[i]}</span>
+      </div>`).join("");
+  }
+
+  // daily / weekly counts (Bangkok calendar days)
+  function renderTrend(rows) {
+    const svg = document.getElementById("trend"), box = document.getElementById("trBox"), tip = document.getElementById("tip2");
+    const W = Math.max(280, box.clientWidth), H = 220, P = { l: 34, r: 10, t: 12, b: 28 };
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const off = 7 * 3600e3, DAY = 86400e3;
+    const dayIdx = t => Math.floor((+t + off) / DAY);
+    const data = rows.filter(r => r.time);
+    const now = dayIdx(Date.now());
+    const first = state.days ? dayIdx(since()) : (data.length ? Math.min(...data.map(d => dayIdx(d.time))) : now);
+    const spanDays = now - first + 1;
+    const weekly = spanDays > 60;
+    const bucket = weekly ? 7 : 1;
+    // weekly buckets aligned to Monday
+    const start = weekly ? first - ((first + 3) % 7) : first;
+    const n = Math.floor((now - start) / bucket) + 1;
+    const counts = Array.from({ length: n }, () => ({ n: 0, max: 0 }));
+    data.forEach(d => { const i = Math.floor((dayIdx(d.time) - start) / bucket); if (i >= 0 && i < n) { counts[i].n++; counts[i].max = Math.max(counts[i].max, d.mag); } });
+    const lab = i => new Date((start + i * bucket) * DAY - off + 12 * 3600e3);
+    const fmtD = d => d.toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short" });
+    document.getElementById("trendTitle").textContent = weekly ? "จำนวนเหตุการณ์รายสัปดาห์" : "จำนวนเหตุการณ์รายวัน";
+    document.getElementById("trendHint").textContent = weekly ? "ช่วงเวลายาวกว่า 60 วันจึงรวมเป็นรายสัปดาห์ (เริ่มวันจันทร์)" : "นับตามวันตามเวลาประเทศไทย";
+    const avg = data.length / Math.max(1, spanDays);
+    const peak = counts.reduce((b, c, i) => c.n > b.n ? { n: c.n, i } : b, { n: 0, i: -1 });
+    document.getElementById("trendTotal").innerHTML = data.length
+      ? `เฉลี่ย <b>${avg.toFixed(1)}</b> ครั้ง/วัน${peak.i >= 0 ? ` · สูงสุด <b>${peak.n}</b> ครั้ง (${weekly ? "สัปดาห์ " : ""}${fmtD(lab(peak.i))})` : ""}`
+      : "";
+    const yMax = Math.max(4, Math.ceil(Math.max(...counts.map(c => c.n)) / 2) * 2);
+    const iw = W - P.l - P.r, bw = iw / n, gap = Math.min(2, bw * 0.25);
+    const y = v => P.t + (1 - v / yMax) * (H - P.t - P.b);
+    const grid = css("--grid"), muted = css("--text-muted"), fill = css("--accent");
+    let s = "";
+    const ticks = 4;
+    for (let k = 0; k <= ticks; k++) {
+      const v = Math.round(yMax / ticks * k);
+      s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="${grid}"/>`;
+      s += `<text x="${P.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${muted}">${v}</text>`;
+    }
+    const every = Math.max(1, Math.ceil(n / Math.max(3, Math.floor(iw / 70))));
+    counts.forEach((c, i) => {
+      const x0 = P.l + i * bw + gap / 2, w = Math.max(1, bw - gap), h = y(0) - y(c.n);
+      if (c.n) {
+        const r = Math.min(4, w / 2, h);
+        s += `<path d="M${x0},${y(0)} V${y(c.n) + r} Q${x0},${y(c.n)} ${x0 + r},${y(c.n)} H${x0 + w - r} Q${x0 + w},${y(c.n)} ${x0 + w},${y(c.n) + r} V${y(0)} Z" fill="${fill}" opacity=".85"/>`;
+      }
+      s += `<rect class="hit" data-i="${i}" x="${P.l + i * bw}" y="${P.t}" width="${bw}" height="${H - P.t - P.b}" fill="transparent"/>`;
+      if (i % every === 0) s += `<text x="${P.l + i * bw + bw / 2}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${fmtD(lab(i))}</text>`;
+    });
+    if (!data.length) s += `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" fill="${muted}" font-size="13">ไม่มีข้อมูลตามตัวกรอง</text>`;
+    svg.innerHTML = s;
+    svg.querySelectorAll(".hit").forEach(rc => {
+      const i = +rc.dataset.i, c = counts[i];
+      rc.addEventListener("mouseenter", () => {
+        const d0 = lab(i), d1 = new Date(+d0 + (bucket - 1) * DAY);
+        tip.innerHTML = `<b>${c.n} ครั้ง</b><br><span class="muted">${weekly ? `${fmtD(d0)} – ${fmtD(d1)}` : d0.toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", weekday: "short", day: "numeric", month: "short", year: "numeric" })}</span>${c.n ? `<br>ขนาดสูงสุด M ${c.max.toFixed(1)}` : ""}`;
+        const cx = (P.l + i * bw + bw / 2) * box.clientWidth / W;
+        tip.style.left = Math.min(box.clientWidth - 180, Math.max(0, cx - 90)) + "px";
+        tip.style.top = Math.max(0, y(c.n) - 70) + "px";
+        tip.classList.add("on");
+        rc.setAttribute("fill", "rgba(127,127,127,.08)");
+      });
+      rc.addEventListener("mouseleave", () => { tip.classList.remove("on"); rc.setAttribute("fill", "transparent"); });
+    });
+  }
+
+  function exportCsv() {
+    const rows = filtered();
+    const head = ["Time_TH", "Magnitude", "Depth_km", "Latitude", "Longitude", "Location", "Comments", "In_Thailand"];
+    const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const lines = rows.map(r => [r.time ? r.time.toLocaleString("sv-SE", { timeZone: "Asia/Bangkok" }) : "", r.mag, r.depth, r.lat, r.lon, r.loc, r.cmt, r.thai ? "Y" : "N"].map(q).join(","));
+    const blob = new Blob(["\ufeff" + [head.join(","), ...lines].join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `earthquake_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  function renderTable(rows) {
+    const k = state.sortK, dir = state.sortDir;
+    const val = r => k === "time" ? +r.time : k === "mag" ? r.mag : k === "depth" ? r.depth : r.loc;
+    const sorted = [...rows].sort((a, b) => (val(a) > val(b) ? 1 : val(a) < val(b) ? -1 : 0) * dir);
+    document.querySelectorAll("th[data-k]").forEach(th => {
+      if (th.dataset.k === k) th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending");
+      else th.removeAttribute("aria-sort");
+    });
+    const tb = document.getElementById("tbody");
+    if (!sorted.length) { tb.innerHTML = `<tr><td colspan="5" class="empty">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</td></tr>`; document.getElementById("moreRow").innerHTML = ""; return; }
+    const more = document.getElementById("moreRow");
+    const shown = sorted.slice(0, state.limit);
+    more.innerHTML = sorted.length > shown.length
+      ? `<span class="count">แสดง ${shown.length} จาก ${sorted.length} รายการ</span><button class="btn" type="button" id="moreBtn">แสดงเพิ่ม</button>`
+      : (sorted.length > PAGE ? `<span class="count">แสดงครบ ${sorted.length} รายการ</span>` : "");
+    const mb = document.getElementById("moreBtn");
+    if (mb) mb.addEventListener("click", () => { state.limit += PAGE; renderTable(filtered()); });
+    tb.innerHTML = shown.map(r => {
+      const l = splitLoc(r.loc);
+      return `<tr data-id="${r.id}">
+        <td class="num">${r.time ? fmtDate(r.time) : "-"}</td>
+        <td class="num"><span class="mag-chip"><i style="background:${colorOf(r.mag)}"></i>${r.mag.toFixed(1)}</span></td>
+        <td class="num col-depth">${r.depth}</td>
+        <td>${esc(l.th)}${r.thai ? '<span class="flag-th">ไทย</span>' : ""}${l.en ? `<div class="loc-en">${esc(l.en)}</div>` : ""}</td>
+        <td class="col-cmt">${esc(r.cmt)}</td>
+      </tr>`;
+    }).join("");
+    tb.querySelectorAll("tr[data-id]").forEach(tr =>
+      tr.addEventListener("click", () => focus(state.all.find(e => e.id === +tr.dataset.id))));
+  }
+
+  // ---------- controls ----------
+  function seg(id, key, cast) {
+    const el = document.getElementById(id);
+    el.addEventListener("click", ev => {
+      const b = ev.target.closest("button"); if (!b) return;
+      el.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      state[key] = cast(b.dataset.v);
+      state.limit = PAGE;
+      firstFit = true;
+      render();
+    });
+  }
+  seg("fRegion", "region", String);
+  seg("fMag", "minMag", Number);
+  seg("fRange", "days", Number);
+  document.getElementById("csvBtn").addEventListener("click", exportCsv);
+  document.querySelectorAll("th[data-k]").forEach(th => th.addEventListener("click", () => {
+    if (state.sortK === th.dataset.k) state.sortDir *= -1;
+    else { state.sortK = th.dataset.k; state.sortDir = th.dataset.k === "loc" ? 1 : -1; }
+    state.limit = PAGE;
+    renderTable(filtered());
+  }));
+  document.getElementById("reload").addEventListener("click", load);
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderTimeline(filtered()); renderTrend(filtered()); }, 150); });
+  setInterval(load, REFRESH_MS);
+  setInterval(() => { if (state.all.length) { renderLatest(filtered()); renderStatus(); } }, 60e3);
+
+  load();
+})();
+</script>
+</body>
+</html>
