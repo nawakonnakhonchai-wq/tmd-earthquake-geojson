@@ -6,6 +6,42 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    96.243,
+                    17.489
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.0,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-06 01:14:51 UTC",
+                "Time_TH": "2026-11-06 08:14:51",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.สบเมย จ.แม่ฮ่องสอน ประมาณ 187 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.618,
+                    4.184
+                ]
+            },
+            "properties": {
+                "Location": "ตอนเหนือของหมู่เกาะสุมาตรา ประเทศอินโดนีเซีย (Northern Sumatra, Indonesia)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-05 22:25:01 UTC",
+                "Time_TH": "2026-11-06 05:25:01",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.สตูล ประมาณ 387 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.943,
                     20.912
                 ]
@@ -143,42 +179,6 @@
                 "Time_UTC": "2026-11-04 06:41:17 UTC",
                 "Time_TH": "2026-11-04 13:41:17",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 282 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    105.094,
-                    19.097
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-04 06:00:55 UTC",
-                "Time_TH": "2026-11-04 13:00:55",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.บ้านแพง จ.นครพนม ประมาณ 156 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    101.94,
-                    18.991
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศลาว (Laos)",
-                "Magnitude": 2.1,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-11-04 00:39:34 UTC",
-                "Time_TH": "2026-11-04 07:39:34",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ บ้านน้ำช้าง ต.ขุนน่าน อ.เฉลิมพระเกียรติ จ.น่าน ประมาณ 99 กม."
             }
         }
     ]
