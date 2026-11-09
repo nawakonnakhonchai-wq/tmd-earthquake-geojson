@@ -341,7 +341,7 @@ footer a { color: var(--ink); }
 }
 @media (max-width: 560px) {
   .featured { grid-template-columns: 1fr; }
-  .visual { min-height: 170px; }
+  .visual { min-height: 300px; }
   .kpi-value { font-size: 26px; }
   .col-depth, .col-cmt { display: none; }
   .search { max-width: none; }
@@ -540,6 +540,52 @@ footer a { color: var(--ink); }
       s += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${css("--ink")}" stroke-opacity="${0.05 + 0.13 * (1 - i / n)}" stroke-width="${i === n ? 1 : 1.5}"/>`;
     }
     s += `<circle cx="${cx}" cy="${cy}" r="${Math.max(5, max * 0.12)}" fill="${colorOf(mag)}" stroke="${css("--ring")}" stroke-width="3"/>`;
+    return s + "</svg>";
+  };
+
+  // ทิศทาง (องศาจากทิศเหนือ ตามเข็มนาฬิกา) จากจุด a ไปจุด b
+  const bearing = (lat1, lon1, lat2, lon2) => {
+    const rad = Math.PI / 180, y = Math.sin((lon2 - lon1) * rad) * Math.cos(lat2 * rad);
+    const x = Math.cos(lat1 * rad) * Math.sin(lat2 * rad) - Math.sin(lat1 * rad) * Math.cos(lat2 * rad) * Math.cos((lon2 - lon1) * rad);
+    return Math.atan2(y, x);
+  };
+  // วงระยะทางรอบจุดศูนย์กลาง + นิคมฯ ที่ใกล้ที่สุดวางตามทิศและระยะจริง (วาดเป็นพิกเซลตามขนาดกล่องจริง)
+  const distanceViz = (e, n, w, h) => {
+    if (!n || !w || !h) return ripple(e.mag, w || 400, h || 400);
+    const ink = css("--ink"), muted = css("--text-muted"), grid = css("--border-strong"), surf = css("--surface"), ring = css("--ring");
+    // เว้นด้านล่างให้ปุ่มเลื่อน (สูง ~56px) ด้านบนเหลือที่เล็กน้อย (ป้ายมุมซ้าย/ขวาอยู่นอกวงเพราะวงกลม)
+    const top = 22, bottom = 70, cx = w / 2, cy = (top + h - bottom) / 2;
+    const R = Math.max(40, Math.min(w / 2 - 22, cy - top, h - bottom - cy));
+    const step = [5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000].find(st => Math.ceil(n.d / st) <= 4) || 5000;
+    const k = Math.max(2, Math.ceil(n.d / step)), ppk = R / (k * step);
+    const th = bearing(e.lat, e.lon, n.lat, n.lon), rr = n.d * ppk;
+    const ex = cx + rr * Math.sin(th), ey = cy - rr * Math.cos(th);
+    const opp = th + Math.PI; // วางป้ายวงไว้ฝั่งตรงข้ามกับเส้น
+    let s = `<svg class="ripple" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="ระยะจากจุดศูนย์กลางถึงนิคมฯ ${esc(n.name)} ประมาณ ${fmtKm(n.d)} กม.">`;
+    for (let i = k; i >= 1; i--) {
+      const ri = R * i / k;
+      s += `<circle cx="${cx}" cy="${cy}" r="${ri}" fill="none" stroke="${grid}" stroke-width="1" ${i === k ? "" : 'stroke-dasharray="3 4"'}/>`;
+      const lx = cx + ri * Math.sin(opp), ly = cy - ri * Math.cos(opp);
+      s += `<text x="${lx}" y="${ly}" dy="4" text-anchor="middle" font-size="11" fill="${muted}" paint-order="stroke" stroke="${css("--surface-2")}" stroke-width="4">${(step * i).toLocaleString("th-TH")}</text>`;
+    }
+    s += `<text x="${cx + (R + 0) * Math.sin(opp)}" y="${cy - R * Math.cos(opp)}" dy="17" text-anchor="middle" font-size="10.5" fill="${muted}">กม.</text>`;
+    s += `<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="${ink}" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="11" fill="${colorOf(e.mag)}" stroke="${ring}" stroke-width="3"/>`;
+    s += `<rect x="${ex - 7}" y="${ey - 7}" width="14" height="14" rx="2" transform="rotate(45 ${ex} ${ey})" fill="${surf}" stroke="${ink}" stroke-width="2.5"/>`;
+    // ชื่อนิคมฯ วางต่อออกไปด้านนอกของสัญลักษณ์ (ไม่ทับป้ายระยะที่อยู่กลางเส้น) และไม่ล้นกล่อง
+    const nm = n.name.length > 18 ? n.name.slice(0, 17) + "…" : n.name, tw = nm.length * 7 + 4;
+    const sx = Math.sin(th), cyv = Math.cos(th);
+    let tx = ex + sx * 14, ty = ey - cyv * 14 + 4, anchor = sx > 0.35 ? "start" : sx < -0.35 ? "end" : "middle";
+    const sideLeft = anchor === "start" ? tx : tx - tw;
+    // ด้านข้างไม่พอ (จะล้นกล่อง) → ย้ายไปไว้เหนือ/ใต้สัญลักษณ์แทน
+    if (anchor !== "middle" && (sideLeft < 8 || sideLeft + tw > w - 8)) anchor = "middle";
+    if (anchor === "middle") { tx = Math.min(w - 8 - tw / 2, Math.max(8 + tw / 2, ex)); ty = ey + (ey < cy ? -15 : 24); }
+    ty = Math.min(h - bottom + 4, Math.max(16, ty));
+    s += `<text x="${tx}" y="${ty}" text-anchor="${anchor}" font-size="12" font-weight="700" fill="${ink}" paint-order="stroke" stroke="${css("--surface-2")}" stroke-width="4">${esc(nm)}</text>`;
+    // ป้ายระยะทางกลางเส้น
+    const mx = (cx + ex) / 2, my = (cy + ey) / 2, label = `${fmtKm(n.d)} กม.`, lw = label.length * 7.4 + 18;
+    s += `<rect x="${mx - lw / 2}" y="${my - 13}" width="${lw}" height="26" rx="13" fill="${ink}"/>`;
+    s += `<text x="${mx}" y="${my}" dy="4.5" text-anchor="middle" font-size="13" font-weight="800" fill="${css("--on-ink")}">${label}</text>`;
     return s + "</svg>";
   };
 
@@ -778,7 +824,6 @@ footer a { color: var(--ink); }
     const idx = rows.indexOf(e);
     box.innerHTML = `
       <div class="visual">
-        ${ripple(e.mag, 400, 400)}
         <span class="badge">${e.mag.toFixed(1)}</span>
         <a class="icon-btn corner" href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener" title="เปิดเว็บกรมอุตุฯ" aria-label="เปิดเว็บกรมอุตุฯ">${ICON.ext}</a>
         ${idx >= RECENT ? `<div class="stepper"><button type="button" class="back" id="backEv" title="กลับไปเหตุการณ์ล่าสุด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>กลับไปเหตุการณ์ล่าสุด</button></div>` : `
@@ -805,6 +850,8 @@ footer a { color: var(--ink); }
           <button class="btn-out" type="button" id="copyBtn" title="คัดลอกพิกัด" aria-label="คัดลอกพิกัด">${ICON.copy}</button>
         </div>
       </div>`;
+    const vis = box.querySelector(".visual");
+    vis.insertAdjacentHTML("afterbegin", distanceViz(e, state.estates.length ? nearestEstate(e) : null, vis.clientWidth, vis.clientHeight));
     const on = (id, fn) => { const b = document.getElementById(id); if (b) b.onclick = fn; };
     on("prevEv", () => step(-1));
     on("nextEv", () => step(1));
@@ -1020,7 +1067,7 @@ footer a { color: var(--ink); }
     let k = 0; secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top < 140) k = i; });
     navLinks.forEach((a, i) => a.classList.toggle("on", i === k));
   }, { passive: true });
-  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { map.invalidateSize(); const r = filtered(); renderTimeline(r); renderTrend(r); }, 150); });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { map.invalidateSize(); const r = filtered(); renderFeatured(r); renderTimeline(r); renderTrend(r); }, 150); });
   setInterval(load, REFRESH_MS);
   setInterval(() => { if (state.all.length) { renderStatus(); renderFeatured(filtered()); } }, 60e3);
   load();
