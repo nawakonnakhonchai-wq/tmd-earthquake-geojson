@@ -236,6 +236,11 @@ button { font: inherit; color: inherit; }
 .rail-head { display: flex; justify-content: space-between; align-items: baseline; }
 .rail-head h2 { font-size: 16px; margin: 0; font-weight: 700; }
 .rail-head span { font-size: 13px; color: var(--text-muted); }
+.rail-more { display: inline-flex; align-items: center; gap: 6px; align-self: center; margin-top: -6px; padding: 8px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); text-decoration: none; }
+.rail-more:hover { background: var(--surface-2); color: var(--ink); }
+.rail-more[hidden] { display: none; }
+.rail-more svg { width: 15px; height: 15px; }
+.stepper .back { width: auto; padding: 0 12px 0 6px; border-radius: 999px; display: inline-flex; gap: 2px; font-size: 13px; font-weight: 600; }
 .rail { display: flex; flex-direction: column; gap: 2px; margin: -4px -8px 0; }
 .erow {
   display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: 12px;
@@ -387,6 +392,7 @@ footer a { color: var(--ink); }
       <div class="divider"></div>
       <div class="rail-head"><h2>เหตุการณ์ล่าสุด</h2><span id="railCount"></span></div>
       <div class="rail" id="rail"></div>
+      <a class="rail-more" id="railMore" href="#listSec" hidden>ดูเหตุการณ์ทั้งหมดใน "รายการเหตุการณ์" <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     </aside>
   </section>
 
@@ -466,6 +472,7 @@ footer a { color: var(--ink); }
   const DATA_URLS = ["earthquake_history.geojson", "earthquake_latest.geojson"];
   const ESTATE_URL = "ieat_estates.geojson";
   const PAGE = 50;
+  const RECENT = 12; // จำนวนเหตุการณ์ในรายการ "เหตุการณ์ล่าสุด" และขอบเขตของปุ่มเลื่อน
   const REFRESH_MS = 2 * 60 * 1000;
   const CLASSES = [
     { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1" },
@@ -754,8 +761,9 @@ footer a { color: var(--ink); }
   // เลื่อนไปเหตุการณ์ก่อนหน้า (-1 = ใหม่กว่า) / ถัดไป (+1 = เก่ากว่า) ตามลำดับในรายการที่กรองอยู่
   function step(d) {
     const rows = filtered(), cur = selected(rows);
-    const next = rows[rows.indexOf(cur) + d];
-    if (!next) return;
+    const i = rows.indexOf(cur), j = i + d;
+    if (i < 0 || i >= RECENT || j < 0 || j >= Math.min(RECENT, rows.length)) return;
+    const next = rows[j];
     select(next, true);
     const btn = document.getElementById(d < 0 ? "prevEv" : "nextEv");
     (btn && !btn.disabled ? btn : document.getElementById(d < 0 ? "nextEv" : "prevEv"))?.focus({ preventScroll: true });
@@ -773,11 +781,12 @@ footer a { color: var(--ink); }
         ${ripple(e.mag, 400, 400)}
         <span class="badge">${e.mag.toFixed(1)}</span>
         <a class="icon-btn corner" href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener" title="เปิดเว็บกรมอุตุฯ" aria-label="เปิดเว็บกรมอุตุฯ">${ICON.ext}</a>
-        <div class="stepper" role="group" aria-label="เลื่อนดูเหตุการณ์">
+        ${idx >= RECENT ? `<div class="stepper"><button type="button" class="back" id="backEv" title="กลับไปเหตุการณ์ล่าสุด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>กลับไปเหตุการณ์ล่าสุด</button></div>` : `
+        <div class="stepper" role="group" aria-label="เลื่อนดูเหตุการณ์ล่าสุด">
           <button type="button" id="prevEv" title="เหตุการณ์ใหม่กว่า (←)" aria-label="เหตุการณ์ใหม่กว่า"${idx <= 0 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
-          <span class="pos" aria-live="polite">${idx + 1} <small>/ ${rows.length}</small></span>
-          <button type="button" id="nextEv" title="เหตุการณ์เก่ากว่า (→)" aria-label="เหตุการณ์เก่ากว่า"${idx >= rows.length - 1 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
-        </div>
+          <span class="pos" aria-live="polite">${idx + 1} <small>/ ${Math.min(RECENT, rows.length)}</small></span>
+          <button type="button" id="nextEv" title="เหตุการณ์เก่ากว่า (→)" aria-label="เหตุการณ์เก่ากว่า"${idx >= Math.min(RECENT, rows.length) - 1 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        </div>`}
       </div>
       <div>
         <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b>${e.time ? `<span class="ag${Date.now() - e.time < 3600e3 ? " new" : ""}" title="${fmtFull(e.time)}">${ICON.clock}${ago(e.time)}</span>` : ""}</div>
@@ -796,8 +805,10 @@ footer a { color: var(--ink); }
           <button class="btn-out" type="button" id="copyBtn" title="คัดลอกพิกัด" aria-label="คัดลอกพิกัด">${ICON.copy}</button>
         </div>
       </div>`;
-    document.getElementById("prevEv").onclick = () => step(-1);
-    document.getElementById("nextEv").onclick = () => step(1);
+    const on = (id, fn) => { const b = document.getElementById(id); if (b) b.onclick = fn; };
+    on("prevEv", () => step(-1));
+    on("nextEv", () => step(1));
+    on("backEv", () => select(rows[0], true));
     document.getElementById("flyBtn").onclick = () => { select(e, true); document.querySelector(".map-wrap").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
     document.getElementById("copyBtn").onclick = async ev => {
       const b = ev.currentTarget;
@@ -808,8 +819,9 @@ footer a { color: var(--ink); }
 
   function renderRail(rows) {
     const rail = document.getElementById("rail");
-    const items = rows.slice(0, 12), sel = selected(rows);
-    document.getElementById("railCount").textContent = rows.length ? `${Math.min(12, rows.length)} จาก ${rows.length} รายการ` : "";
+    const items = rows.slice(0, RECENT), sel = selected(rows);
+    document.getElementById("railCount").textContent = rows.length ? `${Math.min(RECENT, rows.length)} จาก ${rows.length} รายการ` : "";
+    document.getElementById("railMore").hidden = rows.length <= RECENT;
     if (!items.length) { rail.innerHTML = `<div class="empty">ไม่มีข้อมูล</div>`; return; }
     rail.innerHTML = items.map(e => `
       <button class="erow${sel && sel.id === e.id ? " sel" : ""}" type="button" data-id="${e.id}"${sel && sel.id === e.id ? ' aria-current="true"' : ""}>
