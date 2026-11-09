@@ -208,6 +208,7 @@ button { font: inherit; color: inherit; }
 .visual .dots i.on { background: var(--ink); box-shadow: 0 0 0 3px var(--hover-fill); }
 .f-head { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
 .f-head b { color: var(--text-primary); font-weight: 700; }
+.f-head .ag { font-size: 13px; padding: 4px 11px; }
 .f-title { font-size: 24px; line-height: 1.25; font-weight: 800; margin: 10px 0 8px; letter-spacing: -.01em; }
 .f-addr { display: flex; gap: 8px; font-size: 13.5px; color: var(--text-secondary); }
 .f-addr svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
@@ -243,11 +244,11 @@ button { font: inherit; color: inherit; }
 .erow .l { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .s { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .th { display: inline-block; font-size: 10.5px; font-weight: 700; background: var(--ink); color: var(--on-ink); padding: 0 6px; border-radius: 5px; margin-left: 6px; vertical-align: 1px; }
-.erow .ag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); font-size: 12.5px; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
-.erow .ag svg { width: 13px; height: 13px; color: var(--text-secondary); }
+.ag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); font-size: 12.5px; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+.ag svg { width: 13px; height: 13px; color: var(--text-secondary); }
 .erow:hover .ag, .erow.sel .ag { background: var(--surface); }
-.erow .ag.new { background: var(--ink); color: var(--on-ink); }
-.erow .ag.new svg { color: var(--on-ink); }
+.ag.new { background: var(--ink); color: var(--on-ink); }
+.ag.new svg { color: var(--on-ink); }
 .empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
 
 /* ---------- below the fold ---------- */
@@ -753,7 +754,7 @@ footer a { color: var(--ink); }
         <span class="dots">${[0, 1, 2, 3, 4].map(i => `<i class="${i === Math.min(idx, 4) ? "on" : ""}"></i>`).join("")}</span>
       </div>
       <div>
-        <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b><span>${e.time ? ago(e.time) : ""}</span></div>
+        <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b>${e.time ? `<span class="ag${Date.now() - e.time < 3600e3 ? " new" : ""}" title="${fmtFull(e.time)}">${ICON.clock}${ago(e.time)}</span>` : ""}</div>
         <div class="f-title">${esc(l.th)}</div>
         <div class="f-addr">${ICON.pin}<span>${esc(e.cmt || l.en || "-")}</span></div>
         <div class="specs">
