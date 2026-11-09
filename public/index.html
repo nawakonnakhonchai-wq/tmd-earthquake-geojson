@@ -154,10 +154,19 @@ button { font: inherit; color: inherit; }
 .estate.hq { background: var(--ink); }
 .map-legend .est { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
 .map-legend .est i { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); background: var(--surface); border: 2px solid var(--ink); box-shadow: none; }
-.near { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 0 0 14px; padding: 10px 12px; border: 1px dashed var(--border-strong); border-radius: 12px; }
-.near .dia { width: 10px; height: 10px; margin-top: 6px; flex: none; transform: rotate(45deg); border: 2px solid var(--ink); border-radius: 2px; background: var(--surface); }
-.near b { font-weight: 700; }
-.near span { color: var(--text-muted); }
+.near {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  margin: 0 0 14px; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border);
+  box-shadow: inset 4px 0 0 var(--ink);
+}
+.near .ico { width: 38px; height: 38px; border-radius: 10px; background: var(--surface); display: grid; place-items: center; box-shadow: 0 0 0 1px var(--border); }
+.near .dia { width: 13px; height: 13px; transform: rotate(45deg); border: 2.5px solid var(--ink); border-radius: 2px; background: var(--surface); }
+.near .k { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
+.near .nm { font-size: 16.5px; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.near .op { font-size: 12px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.near .dist { text-align: right; }
+.near .dist b { display: block; font-size: 24px; font-weight: 800; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.near .dist b small { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-left: 3px; letter-spacing: 0; }
 .tag {
   display: inline-block; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap;
   background: var(--surface); border-radius: 9px; padding: 3px 9px; font-size: 12.5px; color: var(--text-secondary);
@@ -843,7 +852,11 @@ footer a { color: var(--ink); }
           <span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span>
         </div>
         <p class="f-desc">${e.time ? fmtFull(e.time) : ""}${l.en ? `<br><span class="en">${esc(l.en)}</span>` : ""}<br><span class="en">${e.lat.toFixed(3)}, ${e.lon.toFixed(3)}</span></p>
-        ${(() => { const n = state.estates.length ? nearestEstate(e) : null; return n ? `<div class="near"><span class="dia"></span><div>นิคมฯ ที่ใกล้ที่สุด <b>${esc(n.name)}</b><br><span>ห่างประมาณ ${fmtKm(n.d)} กม. (ระยะตรงจากจุดศูนย์กลาง)</span></div></div>` : ""; })()}
+        ${(() => { const n = state.estates.length ? nearestEstate(e) : null; return n ? `<div class="near" title="ระยะตรงจากจุดศูนย์กลางแผ่นดินไหวถึงนิคมฯ">
+          <span class="ico"><span class="dia"></span></span>
+          <div style="min-width:0"><div class="k">นิคมฯ ที่ใกล้ที่สุด</div><div class="nm">${esc(n.name)}</div>${n.ops ? `<div class="op">${esc(n.ops)}</div>` : ""}</div>
+          <div class="dist"><div class="k">ห่างประมาณ</div><b>${fmtKm(n.d)}<small>กม.</small></b></div>
+        </div>` : ""; })()}
         <div class="f-price">ขนาด <b>M ${e.mag.toFixed(1)}</b></div>
         <div class="f-actions">
           <button class="btn-dark" type="button" id="flyBtn">ดูบนแผนที่</button>
