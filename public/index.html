@@ -243,7 +243,11 @@ button { font: inherit; color: inherit; }
 .erow .l { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .s { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .th { display: inline-block; font-size: 10.5px; font-weight: 700; background: var(--ink); color: var(--on-ink); padding: 0 6px; border-radius: 5px; margin-left: 6px; vertical-align: 1px; }
-.erow .ag { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; text-align: right; }
+.erow .ag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); font-size: 12.5px; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+.erow .ag svg { width: 13px; height: 13px; color: var(--text-secondary); }
+.erow:hover .ag, .erow.sel .ag { background: var(--surface); }
+.erow .ag.new { background: var(--ink); color: var(--on-ink); }
+.erow .ag.new svg { color: var(--on-ink); }
 .empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
 
 /* ---------- below the fold ---------- */
@@ -785,7 +789,7 @@ footer a { color: var(--ink); }
           <div class="l">${esc(splitLoc(e.loc).th)}${e.thai ? '<span class="th">ไทย</span>' : ""}</div>
           <div class="s">${e.time ? fmtDate(e.time) : "-"} · ลึก ${e.depth} กม.</div>
         </span>
-        <span class="ag">${e.time ? agoShort(e.time) : ""}</span>
+        ${e.time ? `<span class="ag${Date.now() - e.time < 3600e3 ? " new" : ""}" title="${fmtFull(e.time)}">${ICON.clock}${agoShort(e.time)}ที่แล้ว</span>` : ""}
       </button>`).join("");
     rail.querySelectorAll(".erow").forEach(b => b.addEventListener("click", () => select(state.all[+b.dataset.id], true)));
   }
