@@ -167,7 +167,28 @@ button { font: inherit; color: inherit; }
 .tag.sel { background: var(--ink); color: var(--on-ink); }
 .tag.sel b { color: var(--on-ink); }
 .leaflet-popup-content-wrapper { border-radius: 14px; }
-.leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.5; }
+.leaflet-popup-content { margin: 14px 16px; font-size: 13px; line-height: 1.5; }
+.leaflet-popup-content-wrapper { box-shadow: var(--shadow); border: 1px solid var(--border); }
+.leaflet-container a.leaflet-popup-close-button { top: 8px; right: 8px; width: 24px; height: 24px; font-size: 18px; line-height: 22px; border-radius: 8px; }
+.leaflet-container a.leaflet-popup-close-button:hover { background: var(--surface-2); color: var(--ink); }
+/* popup แผ่นดินไหว / นิคมฯ */
+.pop-head { display: flex; align-items: center; gap: 10px; padding-right: 22px; }
+.pop-mag { display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px 3px 7px; border-radius: 999px; background: var(--surface-2); font-weight: 800; font-size: 16px; letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
+.pop-mag i { width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 0 2px var(--ring), 0 0 0 3px var(--border); }
+.pop-ago { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.pop-title { font-size: 16px; font-weight: 800; line-height: 1.3; margin: 10px 0 0; color: var(--text-primary); }
+.pop-en { font-size: 12.5px; color: var(--text-muted); }
+.pop-row { display: flex; gap: 8px; margin-top: 10px; color: var(--text-secondary); }
+.pop-row svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--text-muted); }
+.pop-specs { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; padding: 7px 10px; border-radius: 10px; background: var(--surface-2); font-weight: 600; font-size: 12.5px; color: var(--text-primary); }
+.pop-specs span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.pop-specs svg { width: 14px; height: 14px; color: var(--text-secondary); }
+.pop-near { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-secondary); }
+.pop-near .dia { width: 9px; height: 9px; margin-top: 5px; flex: none; transform: rotate(45deg); border: 2px solid var(--ink); border-radius: 2px; background: var(--surface); }
+.pop-near b { color: var(--text-primary); }
+.pop-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.pop-stats div { padding: 7px 10px; border-radius: 10px; background: var(--surface-2); font-size: 12px; color: var(--text-muted); }
+.pop-stats b { display: block; font-size: 18px; line-height: 1.2; color: var(--text-primary); font-weight: 800; }
 
 /* ---------- side panel ---------- */
 .panel { min-width: 0; overflow-y: auto; padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 18px; border-left: 1px solid var(--border); }
@@ -510,10 +531,17 @@ footer a { color: var(--ink); }
   const tagLayer = L.layerGroup().addTo(map);
   const markerById = new Map();
   let firstFit = true;
+  // เว้นที่ด้านบนให้พ้นแถบตัวกรอง/ช่องค้นหาที่ลอยอยู่บนแผนที่
+  const POP_OPTS = { minWidth: 250, maxWidth: 300, autoPanPaddingTopLeft: [20, 150], autoPanPaddingBottomRight: [20, 20] };
 
   function popupHtml(e) {
     const l = splitLoc(e.loc);
-    return `<b style="font-size:15px">M ${e.mag.toFixed(1)}</b> · ลึก ${e.depth} กม.<br><b>${esc(l.th)}</b>${l.en ? `<br><span style="color:var(--text-muted)">${esc(l.en)}</span>` : ""}<br>${esc(e.cmt)}<br><span style="color:var(--text-muted)">${e.time ? fmtFull(e.time) : "-"}</span>`;
+    const n = state.estates.length ? nearestEstate(e) : null;
+    return `<div class="pop-head"><span class="pop-mag"><i style="background:${colorOf(e.mag)}"></i>M ${e.mag.toFixed(1)}</span><span class="pop-ago">${e.time ? ago(e.time) : ""}</span></div>
+      <div class="pop-title">${esc(l.th)}</div>${l.en ? `<div class="pop-en">${esc(l.en)}</div>` : ""}
+      ${e.cmt ? `<div class="pop-row">${ICON.pin}<span>${esc(e.cmt)}</span></div>` : ""}
+      <div class="pop-specs"><span>${ICON.depth}ลึก ${e.depth} กม.</span><span>${ICON.clock}${e.time ? fmtFull(e.time) : "-"}</span><span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span></div>
+      ${n ? `<div class="pop-near"><span class="dia"></span><div>นิคมฯ ใกล้สุด <b>${esc(n.name)}</b> · ${fmtKm(n.d)} กม.</div></div>` : ""}`;
   }
 
   // ---------- data ----------
@@ -535,7 +563,7 @@ footer a { color: var(--ink); }
       const icon = L.divIcon({ className: "", iconSize: [0, 0], html: `<div class="estate${hq ? " hq" : ""}"></div>` });
       L.marker([x.lat, x.lon], { icon, pane: "estates", keyboard: false })
         .bindTooltip(`นิคมฯ ${esc(x.name)}`, { direction: "top", offset: [0, -8] })
-        .bindPopup(() => estatePopup(x))
+        .bindPopup(() => estatePopup(x), POP_OPTS)
         .addTo(estateLayer);
     });
   }
@@ -543,9 +571,11 @@ footer a { color: var(--ink); }
     const rows = filtered().map(e => ({ e, d: distKm(e.lat, e.lon, x.lat, x.lon) })).sort((a, b) => a.d - b.d);
     const within = r => rows.filter(o => o.d <= r).length;
     const n = rows[0];
-    return `<b style="font-size:14.5px">${esc(x.name)}</b><br><span style="color:var(--text-muted)">${esc(x.ops || "-")}</span><br>
-      แผ่นดินไหวตามตัวกรอง: รัศมี 100 กม. <b>${within(100)}</b> ครั้ง · 300 กม. <b>${within(300)}</b> ครั้ง
-      ${n ? `<br>ใกล้ที่สุด <b>M ${n.e.mag.toFixed(1)}</b> ห่าง ${fmtKm(n.d)} กม. (${n.e.time ? fmtDate(n.e.time) : "-"})` : ""}`;
+    return `<div class="pop-head"><span class="pop-mag"><span class="dia" style="width:10px;height:10px;transform:rotate(45deg);border:2px solid var(--ink);border-radius:2px;background:var(--surface)"></span>นิคมฯ</span></div>
+      <div class="pop-title">${esc(x.name)}</div><div class="pop-en">${esc(x.ops || "-")}</div>
+      <div class="pop-stats"><div><b>${within(100)}</b>ครั้ง ในรัศมี 100 กม.</div><div><b>${within(300)}</b>ครั้ง ในรัศมี 300 กม.</div></div>
+      ${n ? `<div class="pop-near"><span class="pop-mag" style="font-size:12.5px;padding:1px 8px 1px 5px"><i style="background:${colorOf(n.e.mag)};width:9px;height:9px"></i>M ${n.e.mag.toFixed(1)}</span><div>ใกล้ที่สุด ห่าง <b>${fmtKm(n.d)} กม.</b><br>${n.e.time ? fmtDate(n.e.time) : "-"}</div></div>` : ""}
+      <div class="pop-en" style="margin-top:8px">นับตามตัวกรองที่เลือกบนแผนที่</div>`;
   }
 
   async function load() {
@@ -655,7 +685,7 @@ footer a { color: var(--ink); }
     const sel = selected(rows);
     [...rows].sort((a, b) => a.mag - b.mag).forEach(e => {
       const m = L.circleMarker([e.lat, e.lon], { radius: Math.max(3, radiusOf(e.mag) * k), color: css("--ring"), weight: 1.5, fillColor: colorOf(e.mag), fillOpacity: 0.9 })
-        .bindPopup(popupHtml(e)).on("click", () => select(e, false));
+        .bindPopup(() => popupHtml(e), POP_OPTS).on("click", () => select(e, false));
       m.addTo(dotLayer); markerById.set(e.id, m);
     });
     // ป้ายแบบในภาพตัวอย่าง: เหตุการณ์ขนาดใหญ่สุด 6 รายการ + รายการที่เลือก
