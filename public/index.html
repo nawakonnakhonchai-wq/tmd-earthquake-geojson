@@ -203,11 +203,19 @@ button { font: inherit; color: inherit; }
   display: grid; place-items: center; font-weight: 800; font-size: 14px; box-shadow: var(--shadow);
 }
 .visual .corner { position: absolute; right: 14px; top: 14px; }
-.visual .dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; background: var(--glass); padding: 6px 10px; border-radius: 999px; }
-.visual .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--bar); }
-.visual .dots i.on { background: var(--ink); box-shadow: 0 0 0 3px var(--hover-fill); }
+.stepper {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px;
+  background: var(--surface); padding: 4px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap;
+}
+.stepper button { width: 34px; height: 34px; border-radius: 50%; border: 0; background: none; color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+.stepper button:hover:not(:disabled) { background: var(--surface-2); }
+.stepper button:disabled { color: var(--text-muted); opacity: .45; cursor: default; }
+.stepper button svg { width: 18px; height: 18px; }
+.stepper .pos { min-width: 64px; text-align: center; font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stepper .pos small { font-weight: 500; color: var(--text-muted); font-size: 13px; }
 .f-head { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
 .f-head b { color: var(--text-primary); font-weight: 700; }
+.f-head .ag { font-size: 13px; padding: 4px 11px; }
 .f-title { font-size: 24px; line-height: 1.25; font-weight: 800; margin: 10px 0 8px; letter-spacing: -.01em; }
 .f-addr { display: flex; gap: 8px; font-size: 13.5px; color: var(--text-secondary); }
 .f-addr svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
@@ -243,11 +251,11 @@ button { font: inherit; color: inherit; }
 .erow .l { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .s { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .erow .th { display: inline-block; font-size: 10.5px; font-weight: 700; background: var(--ink); color: var(--on-ink); padding: 0 6px; border-radius: 5px; margin-left: 6px; vertical-align: 1px; }
-.erow .ag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); font-size: 12.5px; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
-.erow .ag svg { width: 13px; height: 13px; color: var(--text-secondary); }
+.ag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); font-size: 12.5px; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+.ag svg { width: 13px; height: 13px; color: var(--text-secondary); }
 .erow:hover .ag, .erow.sel .ag { background: var(--surface); }
-.erow .ag.new { background: var(--ink); color: var(--on-ink); }
-.erow .ag.new svg { color: var(--on-ink); }
+.ag.new { background: var(--ink); color: var(--on-ink); }
+.ag.new svg { color: var(--on-ink); }
 .empty { color: var(--text-muted); padding: 18px 4px; text-align: center; }
 
 /* ---------- below the fold ---------- */
@@ -669,6 +677,11 @@ footer a { color: var(--ink); }
   document.addEventListener("keydown", ev => {
     if (ev.key === "Escape") document.querySelectorAll(".menu.open").forEach(x => x.classList.remove("open"));
     if ((ev.key === "Enter" || ev.key === " ") && ev.target.classList?.contains("chip")) { ev.preventDefault(); ev.target.click(); }
+    // ลูกศรซ้าย/ขวา เลื่อนดูเหตุการณ์ (ยกเว้นตอนพิมพ์ในช่องค้นหา หรือโฟกัสอยู่ในแผนที่ซึ่งใช้ลูกศรเลื่อนแผนที่)
+    if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && !ev.altKey && !ev.ctrlKey && !ev.metaKey && !ev.shiftKey
+        && !ev.target.closest?.("input, textarea, select, [contenteditable], #map")) {
+      ev.preventDefault(); step(ev.key === "ArrowLeft" ? -1 : 1);
+    }
   });
   function apply() { state.limit = PAGE; state.sel = null; state.selKey = null; firstFit = true; render(); }
 
@@ -738,6 +751,16 @@ footer a { color: var(--ink); }
     card?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
   }
 
+  // เลื่อนไปเหตุการณ์ก่อนหน้า (-1 = ใหม่กว่า) / ถัดไป (+1 = เก่ากว่า) ตามลำดับในรายการที่กรองอยู่
+  function step(d) {
+    const rows = filtered(), cur = selected(rows);
+    const next = rows[rows.indexOf(cur) + d];
+    if (!next) return;
+    select(next, true);
+    const btn = document.getElementById(d < 0 ? "prevEv" : "nextEv");
+    (btn && !btn.disabled ? btn : document.getElementById(d < 0 ? "nextEv" : "prevEv"))?.focus({ preventScroll: true });
+  }
+
   function renderFeatured(rows) {
     const box = document.getElementById("featured");
     const e = selected(rows);
@@ -750,10 +773,14 @@ footer a { color: var(--ink); }
         ${ripple(e.mag, 400, 400)}
         <span class="badge">${e.mag.toFixed(1)}</span>
         <a class="icon-btn corner" href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener" title="เปิดเว็บกรมอุตุฯ" aria-label="เปิดเว็บกรมอุตุฯ">${ICON.ext}</a>
-        <span class="dots">${[0, 1, 2, 3, 4].map(i => `<i class="${i === Math.min(idx, 4) ? "on" : ""}"></i>`).join("")}</span>
+        <div class="stepper" role="group" aria-label="เลื่อนดูเหตุการณ์">
+          <button type="button" id="prevEv" title="เหตุการณ์ใหม่กว่า (←)" aria-label="เหตุการณ์ใหม่กว่า"${idx <= 0 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+          <span class="pos" aria-live="polite">${idx + 1} <small>/ ${rows.length}</small></span>
+          <button type="button" id="nextEv" title="เหตุการณ์เก่ากว่า (→)" aria-label="เหตุการณ์เก่ากว่า"${idx >= rows.length - 1 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        </div>
       </div>
       <div>
-        <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b><span>${e.time ? ago(e.time) : ""}</span></div>
+        <div class="f-head"><b>${isLatest ? "ล่าสุด" : "เหตุการณ์ที่เลือก"}</b>${e.time ? `<span class="ag${Date.now() - e.time < 3600e3 ? " new" : ""}" title="${fmtFull(e.time)}">${ICON.clock}${ago(e.time)}</span>` : ""}</div>
         <div class="f-title">${esc(l.th)}</div>
         <div class="f-addr">${ICON.pin}<span>${esc(e.cmt || l.en || "-")}</span></div>
         <div class="specs">
@@ -769,6 +796,8 @@ footer a { color: var(--ink); }
           <button class="btn-out" type="button" id="copyBtn" title="คัดลอกพิกัด" aria-label="คัดลอกพิกัด">${ICON.copy}</button>
         </div>
       </div>`;
+    document.getElementById("prevEv").onclick = () => step(-1);
+    document.getElementById("nextEv").onclick = () => step(1);
     document.getElementById("flyBtn").onclick = () => { select(e, true); document.querySelector(".map-wrap").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
     document.getElementById("copyBtn").onclick = async ev => {
       const b = ev.currentTarget;
