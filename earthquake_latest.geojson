@@ -6,6 +6,60 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    97.871,
+                    20.03
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.0,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-11-16 22:45:55 UTC",
+                "Time_TH": "2026-11-17 05:45:55",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 69 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.886,
+                    20.024
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.9,
+                "Depth_km": 9.0,
+                "Time_UTC": "2026-11-16 13:22:24 UTC",
+                "Time_TH": "2026-11-16 20:22:24",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 67 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.546,
+                    18.638
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.6,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-16 08:25:45 UTC",
+                "Time_TH": "2026-11-16 15:25:45",
+                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 149 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     99.222,
                     21.062
                 ]
@@ -125,60 +179,6 @@
                 "Time_UTC": "2026-11-15 05:33:46 UTC",
                 "Time_TH": "2026-11-15 12:33:46",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 230 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    95.187,
-                    19.253
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 02:50:02 UTC",
-                "Time_TH": "2026-11-15 09:50:02",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 292 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.808,
-                    15.903
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 00:31:38 UTC",
-                "Time_TH": "2026-11-15 07:31:38",
-                "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.พบพระ จ.ตาก ประมาณ 108 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.868,
-                    20.8
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-14 19:40:25 UTC",
-                "Time_TH": "2026-11-15 02:40:25",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 40 กม."
             }
         }
     ]
