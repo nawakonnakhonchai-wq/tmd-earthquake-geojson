@@ -355,6 +355,18 @@ footer a { color: var(--ink); }
   .col-depth, .col-cmt { display: none; }
   .search { max-width: none; }
 }
+
+/* sliding highlight (slide-hl.js) */
+.hl-on { isolation: isolate; }
+.shl { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: transform .32s cubic-bezier(.3, 1.25, .5, 1), width .32s cubic-bezier(.3, 1.25, .5, 1), height .32s cubic-bezier(.3, 1.25, .5, 1), opacity .2s; }
+.shl-line { height: 2px; border-radius: 2px !important; }
+@media (prefers-reduced-motion: reduce) { .shl { transition: none; } }
+@media print { .shl { display: none; } }
+.nav-links.hl-on { position: relative; }
+.nav-links .shl { background: var(--ink); }
+.nav-links.hl-on a, .nav-links.hl-on a.on { border-bottom-color: transparent; }
+.nav-links.hl-on.hl-hov a.on:not(:hover) { color: var(--text-secondary); }
 </style>
 </head>
 <body>
@@ -1087,5 +1099,6 @@ footer a { color: var(--ink); }
   loadEstates();
 })();
 </script>
+<script src="slide-hl.js"></script>
 </body>
 </html>
