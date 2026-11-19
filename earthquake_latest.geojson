@@ -6,6 +6,96 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    107.629,
+                    14.922
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-19 00:51:24 UTC",
+                "Time_TH": "2026-11-19 07:51:24",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 233 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.53,
+                    18.592
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่วิน อ.แม่วาง จ.เชียงใหม่ (Tambon Mae Win, Amphoe MaeWang, ChiangMai)",
+                "Magnitude": 1.5,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-11-18 22:39:08 UTC",
+                "Time_TH": "2026-11-19 05:39:08",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.6,
+                    20.102
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่สลองนอก อ.แม่ฟ้าหลวง จ.เชียงราย (Tambon Mae Salong Nok, Amphoe MaeFaLuang, ChiangRai)",
+                "Magnitude": 1.4,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-11-18 20:23:51 UTC",
+                "Time_TH": "2026-11-19 03:23:51",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.323,
+                    19.796
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.5,
+                "Depth_km": 1.0,
+                "Time_UTC": "2026-11-18 19:17:30 UTC",
+                "Time_TH": "2026-11-19 02:17:30",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 88 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.38,
+                    22.938
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-18 09:48:39 UTC",
+                "Time_TH": "2026-11-18 16:48:39",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 283 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     97.959,
                     20.089
                 ]
@@ -89,96 +179,6 @@
                 "Time_UTC": "2026-11-16 08:25:45 UTC",
                 "Time_TH": "2026-11-16 15:25:45",
                 "Comments": "ทางทิศตะวันตกเฉียงใต้ของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 149 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.222,
-                    21.062
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 21:26:33 UTC",
-                "Time_TH": "2026-11-16 04:26:33",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 98 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    97.522,
-                    19.693
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 20:18:55 UTC",
-                "Time_TH": "2026-11-16 03:18:55",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 65 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    94.856,
-                    19.991
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 4.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 14:32:03 UTC",
-                "Time_TH": "2026-11-15 21:32:03",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 335 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.569,
-                    18.218
-                ]
-            },
-            "properties": {
-                "Location": "ต.หางดง อ.ฮอด จ.เชียงใหม่ (Tambon Hang Dong, Amphoe Hot, ChiangMai)",
-                "Magnitude": 1.7,
-                "Depth_km": 4.0,
-                "Time_UTC": "2026-11-15 09:20:15 UTC",
-                "Time_TH": "2026-11-15 16:20:15",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.213,
-                    20.336
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.0,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-15 08:56:46 UTC",
-                "Time_TH": "2026-11-15 15:56:46",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 217 กม."
             }
         }
     ]
