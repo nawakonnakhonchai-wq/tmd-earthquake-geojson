@@ -6,6 +6,24 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    99.162,
+                    19.81
+                ]
+            },
+            "properties": {
+                "Location": "ต.แม่สูน อ.ฝาง จ.เชียงใหม่ (Tambon Mae Sun, Amphoe Fang, ChiangMai)",
+                "Magnitude": 2.1,
+                "Depth_km": 3.0,
+                "Time_UTC": "2026-11-20 05:38:12 UTC",
+                "Time_TH": "2026-11-20 12:38:12",
+                "Comments": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     96.142,
                     21.966
                 ]
@@ -161,24 +179,6 @@
                 "Time_UTC": "2026-11-19 00:51:24 UTC",
                 "Time_TH": "2026-11-19 07:51:24",
                 "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 233 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    98.53,
-                    18.592
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่วิน อ.แม่วาง จ.เชียงใหม่ (Tambon Mae Win, Amphoe MaeWang, ChiangMai)",
-                "Magnitude": 1.5,
-                "Depth_km": 2.0,
-                "Time_UTC": "2026-11-18 22:39:08 UTC",
-                "Time_TH": "2026-11-19 05:39:08",
-                "Comments": ""
             }
         }
     ]
