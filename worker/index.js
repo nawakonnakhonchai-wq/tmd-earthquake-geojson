@@ -171,7 +171,9 @@ function dataResponse(body, type) {
 }
 
 async function handleEmccAi(request, env) {
-  if (!env.GEMINI_API_KEY) {
+  const keyName = Object.keys(env || {}).find((k) => k.trim().toUpperCase() === "GEMINI_API_KEY");
+  const apiKey = (env?.GEMINI_API_KEY || (keyName ? env[keyName] : "") || "").trim();
+  if (!apiKey) {
     return new Response(JSON.stringify({ ok: false, reason: "no_key" }), {
       headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
     });
@@ -218,7 +220,7 @@ async function handleEmccAi(request, env) {
     "- ตอบกระชับ ชัดเจน เป็นมืออาชีพ แบบรายงานผู้บริหาร EMCC"
   ].join("\n");
 
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(env.GEMINI_API_KEY)}`;
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
   try {
     const gRes = await fetch(geminiUrl, {
       method: "POST",
