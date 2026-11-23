@@ -158,12 +158,100 @@ export async function runUpdate(env) {
 }
 
 // ---------- HTTP ----------
-const CORS = { "Access-Control-Allow-Origin": "*" };
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
 
 function dataResponse(body, type) {
   return new Response(body, {
     headers: { ...CORS, "Content-Type": `${type}; charset=utf-8`, "Cache-Control": "public, max-age=60" },
   });
+}
+
+async function handleEmccAi(request, env) {
+  if (!env.GEMINI_API_KEY) {
+    return new Response(JSON.stringify({ ok: false, reason: "no_key" }), {
+      headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+    });
+  }
+  let payload;
+  try { payload = await request.json(); } catch {
+    return new Response(JSON.stringify({ ok: false, reason: "bad_json" }), {
+      status: 400, headers: { ...CORS, "Content-Type": "application/json; charset=utf-8" },
+    });
+  }
+  const query = String(payload?.query || "").trim().slice(0, 400);
+  if (!query) {
+    return new Response(JSON.stringify({ ok: false, reason: "empty_query" }), {
+      status: 400, headers: { ...CORS, "Content-Type": "application/json; charset=utf-8" },
+    });
+  }
+  const ctx = payload?.context || {};
+  const systemPrompt = [
+    "คุณคือผู้ช่วย AI วิเคราะห์ข้อมูลอุบัติเหตุและเหตุฉุกเฉินในนิคมอุตสาหกรรมของศูนย์ EMCC (กนอ.)",
+    "ตอบเป็น JSON เท่านั้นตาม schema นี้ ห้ามใส่ markdown code fence:",
+    "{",
+    '  "filters": {',
+    '    "fy": "all" หรือปี พ.ศ. 4 หลักที่มีใน context.fys เช่น "2568",',
+    '    "q": "all" หรือ "1"|"2"|"3"|"4",',
+    '    "type": "all" หรือชื่อประเภทที่ตรงกับ context.types เป๊ะๆ,',
+    '    "estate": "all" หรือชื่อนิคมที่ตรงกับ context.estates เป๊ะๆ,',
+    '    "line": "all" หรือ "1"|"2"|"3",',
+    '    "month": "all" หรือชื่อเดือนย่อไทย เช่น "ต.ค.".."ก.ย.",',
+    '    "slot": "all" หรือค่าตรงกับ context.slots,',
+    '    "minInj": 0 หรือจำนวนผู้บาดเจ็บขั้นต่ำ,',
+    '    "minDead": 0 หรือจำนวนผู้เสียชีวิตขั้นต่ำ,',
+    '    "operating": "all" หรือ "yes"|"no",',
+    '    "search": "" หรือคำค้นหาเพิ่มเติมในชื่อบริษัท/สาเหตุ (ใส่เฉพาะคำที่ไม่อยู่ในตัวกรองด้านบน)',
+    "  },",
+    '  "scrollMap": true ถ้าผู้ใช้ถามหาพิกัด/แผนที่/ซูม หรือระบุชื่อนิคมเจาะจง ไม่งั้น false,',
+    '  "headline": "หัวข้อสรุปสั้นๆ ภาษาไทย ไม่เกิน 70 ตัวอักษร",',
+    '  "answer": "คำตอบวิเคราะห์เชิงลึกภาษาไทย 2-3 ประโยค อ้างอิงตัวเลขจริงจาก context เท่านั้น ห้ามเดาตัวเลขที่ไม่มีในข้อมูล",',
+    '  "highlights": ["ประเด็นสั้น 1", "ประเด็นสั้น 2", "ประเด็นสั้น 3"],',
+    '  "followups": ["คำถามต่อยอด 1", "คำถามต่อยอด 2", "คำถามต่อยอด 3"]',
+    "}",
+    "กฎสำคัญ:",
+    "- ถ้าผู้ใช้ถามภาพรวมหรือเปรียบเทียบหลายปี (เช่น เทียบปี 67 กับ 68) ให้ตั้ง fy เป็น \"all\" แล้วเปรียบเทียบตัวเลขจาก context.byYear ให้ชัดเจนใน answer",
+    "- ใช้ชื่อ estate และ type ให้ตรงกับรายการใน context เป๊ะๆ เสมอ",
+    "- ตอบกระชับ ชัดเจน เป็นมืออาชีพ แบบรายงานผู้บริหาร EMCC"
+  ].join("\n");
+
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(env.GEMINI_API_KEY)}`;
+  try {
+    const gRes = await fetch(geminiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        contents: [{
+          role: "user",
+          parts: [{ text: `คำถามผู้ใช้: ${query}\n\nข้อมูลสรุปปัจจุบัน (JSON):\n${JSON.stringify(ctx).slice(0, 14000)}` }],
+        }],
+        generationConfig: {
+          temperature: 0.2,
+          maxOutputTokens: 900,
+          responseMimeType: "application/json",
+        },
+      }),
+    });
+    if (!gRes.ok) {
+      return new Response(JSON.stringify({ ok: false, reason: "gemini_http_" + gRes.status }), {
+        headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+      });
+    }
+    const gData = await gRes.json();
+    const rawText = gData?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const parsed = JSON.parse(rawText.replace(/^```json\s*|\s*```$/g, "").trim());
+    return new Response(JSON.stringify({ ok: true, model: "gemini-2.5-flash", data: parsed }), {
+      headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({ ok: false, reason: "gemini_error", detail: String(err?.message || err) }), {
+      headers: { ...CORS, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+    });
+  }
 }
 
 export default {
@@ -173,7 +261,11 @@ export default {
 
   async fetch(request, env, ctx) {
     const { pathname } = new URL(request.url);
-    if (request.method === "OPTIONS") return new Response(null, { headers: { ...CORS, "Access-Control-Allow-Methods": "GET" } });
+    if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+
+    if (pathname === "/api/emcc-ai" && request.method === "POST") {
+      return handleEmccAi(request, env);
+    }
 
     const routes = {
       "/earthquake_history.geojson": [K_HISTORY, "application/geo+json"],
