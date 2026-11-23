@@ -6,143 +6,17 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    99.162,
-                    19.81
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สูน อ.ฝาง จ.เชียงใหม่ (Tambon Mae Sun, Amphoe Fang, ChiangMai)",
-                "Magnitude": 2.1,
-                "Depth_km": 3.0,
-                "Time_UTC": "2026-11-20 05:38:12 UTC",
-                "Time_TH": "2026-11-20 12:38:12",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.142,
-                    21.966
+                    97.956,
+                    20.006
                 ]
             },
             "properties": {
                 "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.5,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 23:34:43 UTC",
-                "Time_TH": "2026-11-20 06:34:43",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 349 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.992,
-                    21.205
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.9,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 23:20:58 UTC",
-                "Time_TH": "2026-11-20 06:20:58",
-                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 86 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.389,
-                    21.152
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 1.8,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 20:33:40 UTC",
-                "Time_TH": "2026-11-20 03:33:40",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 94 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.16,
-                    19.823
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สูน อ.ฝาง จ.เชียงใหม่ (Tambon Mae Sun, Amphoe Fang, ChiangMai)",
-                "Magnitude": 1.6,
-                "Depth_km": 5.0,
-                "Time_UTC": "2026-11-19 19:18:34 UTC",
-                "Time_TH": "2026-11-20 02:18:34",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    99.153,
-                    19.817
-                ]
-            },
-            "properties": {
-                "Location": "ต.แม่สูน อ.ฝาง จ.เชียงใหม่ (Tambon Mae Sun, Amphoe Fang, ChiangMai)",
-                "Magnitude": 2.2,
-                "Depth_km": 7.0,
-                "Time_UTC": "2026-11-19 19:15:57 UTC",
-                "Time_TH": "2026-11-20 02:15:57",
-                "Comments": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    96.344,
-                    18.988
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 2.7,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 16:56:28 UTC",
-                "Time_TH": "2026-11-19 23:56:28",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ขุนยวม จ.แม่ฮ่องสอน ประมาณ 169 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    100.576,
-                    19.479
-                ]
-            },
-            "properties": {
-                "Location": "ต.ร่มเย็น อ.เชียงคำ จ.พะเยา (Tambon Rom Yen, Amphoe ChiangKham, Phayao)",
-                "Magnitude": 1.8,
+                "Magnitude": 2.0,
                 "Depth_km": 2.0,
-                "Time_UTC": "2026-11-19 14:48:13 UTC",
-                "Time_TH": "2026-11-19 21:48:13",
-                "Comments": ""
+                "Time_UTC": "2026-11-22 21:30:53 UTC",
+                "Time_TH": "2026-11-23 04:30:53",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 62 กม."
             }
         },
         {
@@ -150,35 +24,161 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    96.173,
-                    20.65
-                ]
-            },
-            "properties": {
-                "Location": "ประเทศเมียนมา (Myanmar)",
-                "Magnitude": 3.3,
-                "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 09:12:10 UTC",
-                "Time_TH": "2026-11-19 16:12:10",
-                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 241 กม."
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    107.629,
-                    14.922
+                    107.739,
+                    14.876
                 ]
             },
             "properties": {
                 "Location": "ประเทศเวียดนาม (Vietnam)",
-                "Magnitude": 3.2,
+                "Magnitude": 3.7,
                 "Depth_km": 10.0,
-                "Time_UTC": "2026-11-19 00:51:24 UTC",
-                "Time_TH": "2026-11-19 07:51:24",
-                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 233 กม."
+                "Time_UTC": "2026-11-22 03:32:11 UTC",
+                "Time_TH": "2026-11-22 10:32:11",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 246 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.614,
+                    22.178
+                ]
+            },
+            "properties": {
+                "Location": "พรมแดนประเทศลาว - ประเทศจีน (Laos - China Border Region)",
+                "Magnitude": 2.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-22 03:12:04 UTC",
+                "Time_TH": "2026-11-22 10:12:04",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 240 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    95.152,
+                    18.32
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.7,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-22 01:44:40 UTC",
+                "Time_TH": "2026-11-22 08:44:40",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.แม่สะเรียง จ.แม่ฮ่องสอน ประมาณ 294 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    95.108,
+                    23.757
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 3.9,
+                "Depth_km": 116.0,
+                "Time_UTC": "2026-11-21 21:06:03 UTC",
+                "Time_TH": "2026-11-22 04:06:03",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.ปางมะผ้า จ.แม่ฮ่องสอน ประมาณ 572 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    96.217,
+                    20.606
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 2.4,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-21 17:14:26 UTC",
+                "Time_TH": "2026-11-22 00:14:26",
+                "Comments": "ทางทิศตะวันตกเฉียงเหนือของ อ.เมือง จ.แม่ฮ่องสอน ประมาณ 234 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    107.618,
+                    14.929
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเวียดนาม (Vietnam)",
+                "Magnitude": 3.5,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-21 14:42:24 UTC",
+                "Time_TH": "2026-11-21 21:42:24",
+                "Comments": "ทางทิศตะวันออกเฉียงใต้ของ อ. โขงเจียม จ.อุบลราชธานี ประมาณ 232 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.291,
+                    23.632
+                ]
+            },
+            "properties": {
+                "Location": "มณฑลยูนนาน, ประเทศจีน (Yunnan, China)",
+                "Magnitude": 3.3,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-21 14:26:40 UTC",
+                "Time_TH": "2026-11-21 21:26:40",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ ต.ริมโขง อ.เชียงของ จ.เชียงราย ประมาณ 414 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.151,
+                    20.693
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศเมียนมา (Myanmar)",
+                "Magnitude": 1.7,
+                "Depth_km": 2.0,
+                "Time_UTC": "2026-11-21 13:56:08 UTC",
+                "Time_TH": "2026-11-21 20:56:08",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.แม่สาย จ.เชียงราย ประมาณ 40 กม."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.579,
+                    18.979
+                ]
+            },
+            "properties": {
+                "Location": "ประเทศลาว (Laos)",
+                "Magnitude": 2.2,
+                "Depth_km": 10.0,
+                "Time_UTC": "2026-11-21 11:25:26 UTC",
+                "Time_TH": "2026-11-21 18:25:26",
+                "Comments": "ทางทิศตะวันออกเฉียงเหนือของ อ.สังคม จ.หนองคาย ประมาณ 107 กม."
             }
         }
     ]
