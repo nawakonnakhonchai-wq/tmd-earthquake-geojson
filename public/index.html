@@ -367,6 +367,19 @@ footer a { color: var(--ink); }
 .nav-links .shl { background: var(--ink); }
 .nav-links.hl-on a, .nav-links.hl-on a.on { border-bottom-color: transparent; }
 .nav-links.hl-on.hl-hov a.on:not(:hover) { color: var(--text-secondary); }
+/* ===== scroll-reveal, chart entrance animations & top progress bar ===== */
+#scroll-prog { position: fixed; top: 0; left: 0; right: 0; height: 3.5px; z-index: 2500; pointer-events: none; background: transparent; }
+#scroll-prog i { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, #f97316, #dc2626); box-shadow: 0 0 8px rgba(249, 115, 22, .45); border-radius: 0 3px 3px 0; transition: width .08s linear; }
+.reveal-el { opacity: 0; transform: translateY(26px); transition: opacity .68s cubic-bezier(.22, 1, .36, 1) calc(var(--stagger, 0) * 80ms), transform .68s cubic-bezier(.22, 1, .36, 1) calc(var(--stagger, 0) * 80ms); }
+.reveal-el.reveal-in { opacity: 1; transform: translateY(0); }
+.reveal-el .chart-wrap svg, .reveal-el .trend-wrap svg { opacity: 0; transform: translateY(12px) scale(.985); transition: opacity .65s ease .12s, transform .7s cubic-bezier(.22, 1, .36, 1) .12s; }
+.reveal-el.reveal-in .chart-wrap svg, .reveal-el.reveal-in .trend-wrap svg { opacity: 1; transform: translateY(0) scale(1); }
+.reveal-el .bar-fill, .reveal-el .dist-fill { transform-origin: left center; transform: scaleX(0); transition: transform .7s cubic-bezier(.22, 1, .36, 1) .14s; }
+.reveal-el.reveal-in .bar-fill, .reveal-el.reveal-in .dist-fill { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce), print {
+  #scroll-prog { display: none !important; }
+  .reveal-el, .reveal-el .chart-wrap svg, .reveal-el .trend-wrap svg, .reveal-el .bar-fill, .reveal-el .dist-fill { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
@@ -1100,5 +1113,45 @@ footer a { color: var(--ink); }
 })();
 </script>
 <script src="slide-hl.js"></script>
+<script>
+(function(){
+  var prog = document.createElement('div'); prog.id = 'scroll-prog'; prog.setAttribute('aria-hidden', 'true');
+  var pf = document.createElement('i'); prog.appendChild(pf); document.body.prepend(prog);
+  var raf = 0;
+  function updProg() { raf = 0; var h = document.documentElement.scrollHeight - window.innerHeight; pf.style.width = (h > 0 ? Math.min(100, Math.max(0, window.scrollY / h * 100)) : 0) + '%'; }
+  window.addEventListener('scroll', function(){ if (!raf) raf = requestAnimationFrame(updProg); }, { passive: true });
+  window.addEventListener('resize', updProg, { passive: true }); updProg();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var started = false;
+  function setupReveal() {
+    if (started) return;
+    started = true;
+    var targets = document.querySelectorAll('.kpis > .card, section.card, .card.featured');
+    if (!targets.length) return;
+    if (reduce || !('IntersectionObserver' in window)) {
+      targets.forEach(function(el){ el.classList.add('reveal-el', 'reveal-in'); }); return;
+    }
+    var pmap = new Map();
+    targets.forEach(function(el){
+      el.classList.add('reveal-el');
+      var p = el.parentElement, idx = pmap.get(p) || 0; pmap.set(p, idx + 1);
+      el.style.setProperty('--stagger', Math.min(idx, 3));
+    });
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('reveal-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      targets.forEach(function(el){ io.observe(el); });
+    }); });
+    updProg();
+  }
+  var kCount = document.getElementById('kCount');
+  if (kCount) {
+    new MutationObserver(function(){ if (kCount.textContent && kCount.textContent !== '–') setupReveal(); }).observe(kCount, { childList: true, characterData: true, subtree: true });
+  }
+  setTimeout(setupReveal, 1000);
+})();
+</script>
 </body>
 </html>
