@@ -383,9 +383,55 @@ footer a { color: var(--ink); }
 .nav-home { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; margin-right: 6px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--text-secondary); background: var(--surface-2); border: 1px solid var(--border); text-decoration: none; transition: background .15s, color .15s, border-color .15s; }
 .nav-home:hover { color: var(--ink); background: var(--surface-3); border-color: var(--ink); }
 @media (max-width: 600px) { .nav-home span { display: none; } .nav-home { padding: 6px 8px; } }
+/* ===== Unified WaterDash-Style Collapsible Left Sidebar ===== */
+.wd-side { display: none; }
+@media (min-width: 901px) {
+  body { padding-left: 252px; transition: padding-left .25s cubic-bezier(.22, 1, .36, 1); }
+  body.side-collapsed { padding-left: 76px; }
+  .nav .nav-home, .nav .nav-links { display: none !important; }
+  .wd-side {
+    display: flex; flex-direction: column; position: fixed; left: 0; top: 0; bottom: 0; width: 252px; z-index: 1500;
+    background: var(--surface-2); border-right: 1px solid var(--border); padding: 20px 0 24px;
+    transition: width .25s cubic-bezier(.22, 1, .36, 1); overflow-y: auto; overflow-x: hidden;
+  }
+  body.side-collapsed .wd-side { width: 76px; }
+  .wd-side .side-brand { display: flex; align-items: center; gap: 12px; padding: 0 18px 20px; }
+  .wd-side .hamb { all: unset; cursor: pointer; width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: 8px; color: var(--ink); }
+  .wd-side .hamb:hover { background: var(--surface-3); }
+  .wd-side .brand-w { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+  .wd-side .logo-mark { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, #f97316, #dc2626); color: #fff; flex: none; }
+  .wd-side .logo-t { font-size: 20px; font-weight: 700; letter-spacing: -.015em; color: var(--ink); }
+  .wd-side .logo-t b { color: #f97316; font-weight: 700; }
+  .wd-side .side-nav { display: flex; flex-direction: column; gap: 2px; padding-right: 14px; }
+  .wd-side .nav-h { margin: 18px 0 6px 24px; font-size: 11.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink); opacity: .6; white-space: nowrap; }
+  .wd-side .nav-item { display: flex; align-items: center; gap: 13px; padding: 11px 14px 11px 24px; border-radius: 0 999px 999px 0; color: var(--text-secondary); font-size: 14.5px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background .18s, color .18s, box-shadow .18s; }
+  .wd-side .nav-item svg { width: 20px; height: 20px; flex: none; }
+  .wd-side .nav-item:hover { color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+  .wd-side .nav-item.on { background: var(--surface); color: #f97316; font-weight: 700; box-shadow: 0 1px 4px rgba(14, 14, 17, .08); }
+  body.side-collapsed .wd-side .logo-t, body.side-collapsed .wd-side .nav-h, body.side-collapsed .wd-side .lbl-t { display: none; }
+  body.side-collapsed .wd-side .side-brand { flex-direction: column; padding: 0 0 16px; gap: 10px; }
+  body.side-collapsed .wd-side .side-nav { padding: 0 12px; gap: 6px; }
+  body.side-collapsed .wd-side .nav-item { justify-content: center; padding: 11px; border-radius: 12px; }
+}
+@media print { .wd-side { display: none !important; } body { padding-left: 0 !important; } }
 </style>
 </head>
 <body>
+<aside class="wd-side" aria-label="เมนูหลัก">
+  <div class="side-brand">
+    <button type="button" class="hamb" id="btn-menu" aria-label="ย่อหรือขยายเมนู" title="ย่อ/ขยายเมนู"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <span class="brand-w"><span class="logo-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg></span><span class="logo-t">Quake<b>Dash</b></span></span>
+  </div>
+  <nav class="side-nav">
+    <a class="nav-item" href="https://nawakonnakhonchai-wq.github.io/index.html" title="กลับหน้าหลัก Main Dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span class="lbl-t">กลับหน้าหลัก</span></a>
+    <div class="nav-h">แดชบอร์ด</div>
+    <a class="nav-item on" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span class="lbl-t">แผนที่แผ่นดินไหว</span></a>
+    <a class="nav-item" href="#overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span class="lbl-t">ภาพรวม</span></a>
+    <div class="nav-h">วิเคราะห์ & ข้อมูล</div>
+    <a class="nav-item" href="#trendSec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg><span class="lbl-t">แนวโน้ม</span></a>
+    <a class="nav-item" href="#listSec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M10 10v9"/></svg><span class="lbl-t">รายการแผ่นดินไหว</span></a>
+  </nav>
+</aside>
 <div class="app">
   <nav class="nav" aria-label="เมนู">
     <div class="logo">
@@ -1155,6 +1201,21 @@ footer a { color: var(--ink); }
     new MutationObserver(function(){ if (kCount.textContent && kCount.textContent !== '–') setupReveal(); }).observe(kCount, { childList: true, characterData: true, subtree: true });
   }
   setTimeout(setupReveal, 1000);
+  var btnMenu = document.getElementById('btn-menu');
+  if (btnMenu) {
+    try { if (localStorage.getItem('quake-side') === 'collapsed') document.body.classList.add('side-collapsed'); } catch (e) {}
+    btnMenu.addEventListener('click', function(){
+      document.body.classList.toggle('side-collapsed');
+      try { localStorage.setItem('quake-side', document.body.classList.contains('side-collapsed') ? 'collapsed' : 'open'); } catch (e) {}
+      setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 270);
+    });
+  }
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('.wd-side .nav-item[href^="#"]'));
+  var sideSecs = sideLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  window.addEventListener('scroll', function(){
+    var k = 0; sideSecs.forEach(function(el, i){ if (el && el.getBoundingClientRect().top < 160) k = i; });
+    sideLinks.forEach(function(a, i){ a.classList.toggle('on', i === k); });
+  }, { passive: true });
 })();
 </script>
 </body>
