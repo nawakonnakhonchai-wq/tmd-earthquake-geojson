@@ -20,26 +20,26 @@
 <style>
 :root {
   color-scheme: light;
-  --canvas: #e6e4eb;
+  --canvas: #fafaf9;
   --surface: #ffffff;
-  --surface-2: #f4f4f6;
-  --surface-3: #ececf0;
-  --border: #e4e4e9;
-  --grid: #ededf1;
-  --ink: #0e0e11;
-  --text-primary: #0e0e11;
-  --text-secondary: #4e4e57;
-  --text-muted: #8a8a93;
+  --surface-2: #fafaf9;
+  --surface-3: #f3f2ef;
+  --border: #eceae6;
+  --grid: #f3f1ee;
+  --ink: #111113;
+  --text-primary: #111113;
+  --text-secondary: #52525b;
+  --text-muted: #8b8b94;
   --ring: #ffffff;
-  --shadow: 0 1px 2px rgba(14,14,17,.06), 0 8px 24px rgba(14,14,17,.08);
+  --shadow: 0 1px 2px rgba(17,17,19,.04), 0 6px 20px rgba(17,17,19,.06);
   /* ลำดับขนาดแผ่นดินไหว (ordinal โทนส้ม-แดงสีเดียว อ่อน→เข้ม) ผ่าน validator: 1 hue, ΔL ≥ .06, ขั้นอ่อนสุด ≥ 2:1 */
   --m1: #f2a072; --m2: #e8733f; --m3: #cc4b25; --m4: #9c2f1a; --m5: #651a10;
   --good: #0ca30c; --warn: #e09a00; --danger: #dc2626;
-  --good-bg: rgba(12,163,12,.1); --warn-bg: rgba(224,154,0,.13); --danger-bg: rgba(220,38,38,.12);
-  --on-ink: #ffffff; --on-ink-muted: rgba(255,255,255,.66);
-  --ink-hover: #26262c; --border-strong: #c8c8cf; --bar: #c9c9d0;
-  --hover-fill: rgba(14,14,17,.05); --glass: rgba(255,255,255,.85);
-  --app-shadow: 0 30px 80px rgba(30,25,60,.12);
+  --good-bg: rgba(12,163,12,.09); --warn-bg: rgba(224,154,0,.11); --danger-bg: rgba(220,38,38,.1);
+  --on-ink: #ffffff; --on-ink-muted: rgba(255,255,255,.68);
+  --ink-hover: #27272a; --border-strong: #d4d2cd; --bar: #f3e4da; --bar-peak: #ea580c;
+  --hover-fill: rgba(234,88,12,.06); --glass: rgba(255,255,255,.9);
+  --app-shadow: 0 24px 64px rgba(17,17,19,.08);
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -60,7 +60,7 @@
   --good: #3ad13a; --warn: #f2b233; --danger: #f87171;
   --good-bg: rgba(58,209,58,.14); --warn-bg: rgba(242,178,51,.16); --danger-bg: rgba(248,113,113,.16);
   --on-ink: #0e0e11; --on-ink-muted: rgba(14,14,17,.62);
-  --ink-hover: #d6d6dc; --border-strong: #46464e; --bar: #46464e;
+  --ink-hover: #d6d6dc; --border-strong: #46464e; --bar: #46464e; --bar-peak: #f2f2f5;
   --hover-fill: rgba(255,255,255,.06); --glass: rgba(21,21,24,.85);
   --app-shadow: 0 30px 80px rgba(0,0,0,.5);
 }
@@ -520,6 +520,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
 .scope-pill b { color: var(--ink); font-weight: 700; }
 .scope-pill.accent { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .scope-pill.accent b { color: var(--on-ink); }
+/* Light Mode clean surfaces (keeps Dark Mode untouched) */
+:root:not([data-theme="dark"]) .wd-side { background: #ffffff !important; }
+:root:not([data-theme="dark"]) .wd-side .nav-item:hover { background: #fafaf9; }
+:root:not([data-theme="dark"]) .wd-side .nav-item.on { background: #fff7ed; color: #ea580c; box-shadow: inset 0 0 0 1px #fed7aa; }
+:root:not([data-theme="dark"]) .sit-bar { background: #ffffff; }
+:root:not([data-theme="dark"]) .visual { background: #fcfbfa; border: 1px solid var(--border); }
+:root:not([data-theme="dark"]) .near { background: #ffffff; box-shadow: inset 3.5px 0 0 #ea580c; }
+:root:not([data-theme="dark"]) .specs { background: #ffffff; border: 1px solid var(--border); }
+:root:not([data-theme="dark"]) .bar-track { background: #f5f3f0; }
+:root:not([data-theme="dark"]) .kpi-ico { background: #ffffff; border: 1px solid var(--border); }
+:root:not([data-theme="dark"]) .card.dark .kpi-ico { background: rgba(255,255,255,.14); color: #ffffff; border-color: transparent; }
+:root:not([data-theme="dark"]) .card.dark .kpi-delta.down { background: rgba(74,222,128,.18); color: #4ade80; }
+:root:not([data-theme="dark"]) .card.dark .kpi-delta.up { background: rgba(251,146,60,.2); color: #fb923c; }
 @media (max-width: 900px) { .sit-bar { padding: 10px 16px; } }
 </style>
 </head>
@@ -1374,7 +1387,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
       const x0 = P.l + i * bw + gap / 2, w = Math.max(1, bw - gap), h = y(0) - y(c.n);
       if (c.n) {
         const r = Math.min(6, w / 2, h);
-        s += `<path d="M${x0},${y(0)} V${y(c.n) + r} Q${x0},${y(c.n)} ${x0 + r},${y(c.n)} H${x0 + w - r} Q${x0 + w},${y(c.n)} ${x0 + w},${y(c.n) + r} V${y(0)} Z" fill="${i === peak.i ? ink : css("--bar")}"/>`;
+        s += `<path d="M${x0},${y(0)} V${y(c.n) + r} Q${x0},${y(c.n)} ${x0 + r},${y(c.n)} H${x0 + w - r} Q${x0 + w},${y(c.n)} ${x0 + w},${y(c.n) + r} V${y(0)} Z" fill="${i === peak.i ? (css("--bar-peak") || ink) : css("--bar")}"/>`;
       }
       s += `<rect class="hit" data-i="${i}" x="${P.l + i * bw}" y="${P.t}" width="${bw}" height="${H - P.t - P.b}" fill="transparent"/>`;
       if (i % every === 0) s += `<text x="${P.l + i * bw + bw / 2}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${fmtD(lab(i))}</text>`;
