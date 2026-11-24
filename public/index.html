@@ -34,7 +34,8 @@
   --shadow: 0 1px 2px rgba(14,14,17,.06), 0 8px 24px rgba(14,14,17,.08);
   /* ลำดับขนาดแผ่นดินไหว (ordinal โทนส้ม-แดงสีเดียว อ่อน→เข้ม) ผ่าน validator: 1 hue, ΔL ≥ .06, ขั้นอ่อนสุด ≥ 2:1 */
   --m1: #f2a072; --m2: #e8733f; --m3: #cc4b25; --m4: #9c2f1a; --m5: #651a10;
-  --good: #0ca30c; --warn: #e09a00;
+  --good: #0ca30c; --warn: #e09a00; --danger: #dc2626;
+  --good-bg: rgba(12,163,12,.1); --warn-bg: rgba(224,154,0,.13); --danger-bg: rgba(220,38,38,.12);
   --on-ink: #ffffff; --on-ink-muted: rgba(255,255,255,.66);
   --ink-hover: #26262c; --border-strong: #c8c8cf; --bar: #c9c9d0;
   --hover-fill: rgba(14,14,17,.05); --glass: rgba(255,255,255,.85);
@@ -56,7 +57,8 @@
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.45);
   /* ในธีมดำ ขนาดใหญ่ = สว่างกว่า (โทนเดียวกัน หม่น→สว่าง) */
   --m1: #8c3018; --m2: #c24a26; --m3: #e8683a; --m4: #f7915f; --m5: #ffc2a0;
-  --good: #3ad13a; --warn: #f2b233;
+  --good: #3ad13a; --warn: #f2b233; --danger: #f87171;
+  --good-bg: rgba(58,209,58,.14); --warn-bg: rgba(242,178,51,.16); --danger-bg: rgba(248,113,113,.16);
   --on-ink: #0e0e11; --on-ink-muted: rgba(14,14,17,.62);
   --ink-hover: #d6d6dc; --border-strong: #46464e; --bar: #46464e;
   --hover-fill: rgba(255,255,255,.06); --glass: rgba(21,21,24,.85);
@@ -288,7 +290,7 @@ button { font: inherit; color: inherit; }
 .card.dark .kpi-label, .card.dark .kpi-note, .card.dark .kpi-value small { color: var(--on-ink-muted); }
 .kpi-label { font-size: 13px; color: var(--text-secondary); }
 .kpi-value { font-size: 32px; font-weight: 800; line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
-.kpi-value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 4px; letter-spacing: 0; }
+.kpi-value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 4px; letter-spacing: 0; white-space: nowrap; }
 .kpi-note { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .grid2 { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px; }
 .card h3 { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
@@ -308,7 +310,7 @@ svg text { font-family: inherit; }
 .bars { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
 .bar-row { display: grid; grid-template-columns: 64px 1fr 28px; align-items: center; gap: 8px; font-size: 13px; }
 .bar-row .lab { color: var(--text-secondary); }
-.bar-track { height: 12px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+.bar-track { height: 12px; min-width: 48px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 999px; min-width: 2px; }
 .bar-row .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .table-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
@@ -330,6 +332,10 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 footer { font-size: 12.5px; color: var(--text-muted); }
 footer a { color: var(--ink); }
 
+@media (max-width: 1200px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid2 { grid-template-columns: 1fr; }
+}
 @media (max-width: 1100px) {
   .featured { grid-template-columns: 1fr; }
   .visual { min-height: 200px; }
@@ -422,6 +428,86 @@ footer a { color: var(--ink); }
   body.side-collapsed .wd-side .nav-item { justify-content: center; padding: 11px; border-radius: 12px; }
 }
 @media print { .wd-side { display: none !important; } body { padding-left: 0 !important; } }
+
+/* ===== Executive Situation Banner, Severity Labels, Dataviz & Polish ===== */
+button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible, .bar-row:focus-visible {
+  outline: 2px solid #f97316; outline-offset: 2px;
+}
+.sit-bar {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px;
+  padding: 11px 28px; border-top: 1px solid var(--border); background: var(--surface-2); font-size: 13.5px;
+}
+.sit-left { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
+.sit-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 700; white-space: nowrap; flex: none;
+}
+.sit-badge svg { width: 15px; height: 15px; flex: none; }
+.sit-badge.normal { background: var(--good-bg); color: var(--good); }
+.sit-badge.watch { background: var(--warn-bg); color: var(--warn); }
+.sit-badge.alert { background: var(--danger-bg); color: var(--danger); }
+.sit-text { color: var(--text-primary); line-height: 1.4; min-width: 0; }
+.sit-text b { font-weight: 700; }
+.sit-text .sit-muted { color: var(--text-secondary); }
+.sit-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.sit-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink); font-size: 12.5px; font-weight: 600;
+  cursor: pointer; white-space: nowrap; transition: background .15s, border-color .15s;
+}
+.sit-btn:hover { background: var(--surface-3); border-color: var(--border-strong); }
+.sit-btn svg { width: 14px; height: 14px; }
+
+.sev-pill {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--text-primary);
+  vertical-align: middle; white-space: nowrap;
+}
+.sev-pill i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.sev-note { font-size: 12.5px; color: var(--text-secondary); margin: -6px 0 14px; line-height: 1.45; }
+.near .ico svg { width: 18px; height: 18px; color: var(--ink); }
+
+.kpi-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.kpi-ico { width: 28px; height: 28px; border-radius: 9px; background: var(--surface-2); color: var(--text-secondary); display: grid; place-items: center; flex: none; }
+.card.dark .kpi-ico { background: rgba(255,255,255,.12); color: var(--on-ink); }
+:root[data-theme="dark"] .card.dark .kpi-ico { background: rgba(14,14,17,.12); }
+.kpi-ico svg { width: 15px; height: 15px; }
+.kpi-delta {
+  display: inline-flex; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 700;
+  padding: 1px 7px; border-radius: 999px; margin-left: 6px; vertical-align: 2px;
+}
+.kpi-delta.up { background: var(--warn-bg); color: var(--warn); }
+.kpi-delta.down { background: var(--good-bg); color: var(--good); }
+.kpi-delta.flat { background: var(--surface-2); color: var(--text-muted); }
+.card.dark .kpi-delta.flat { background: rgba(255,255,255,.14); color: var(--on-ink-muted); }
+
+.bars-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.bars { gap: 6px; }
+.bar-row {
+  grid-template-columns: 108px 1fr 68px; gap: 10px; padding: 6px 8px; margin: 0 -8px;
+  border-radius: 10px; border: 1px solid transparent; transition: background .15s, border-color .15s;
+}
+.bar-row.clickable { cursor: pointer; }
+.bar-row.clickable:hover { background: var(--surface-2); }
+.bar-row.active { background: var(--surface-2); border-color: var(--ink); }
+.bar-row.dim { opacity: .45; }
+.bar-row .lab { display: flex; flex-direction: column; line-height: 1.25; }
+.bar-row .lab b { font-size: 13px; color: var(--text-primary); font-weight: 700; }
+.bar-row .lab small { font-size: 11px; color: var(--text-muted); }
+.bar-row .num { font-size: 12.5px; white-space: nowrap; }
+.bar-row .num small { font-weight: 500; color: var(--text-muted); margin-left: 3px; }
+.bar-clear {
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--ink); border-radius: 999px;
+  padding: 3px 10px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.bar-clear:hover { background: var(--surface-3); }
+
+.empty-box { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 28px 16px; color: var(--text-muted); text-align: center; }
+.empty-box svg { width: 28px; height: 28px; opacity: .55; }
+.tbl-sev { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-left: 4px; }
+.chip.reset-all { background: var(--surface-2); border-style: dashed; color: var(--text-secondary); font-weight: 600; }
+.chip.reset-all:hover { color: var(--ink); border-color: var(--ink); }
+@media (max-width: 900px) { .sit-bar { padding: 10px 16px; } }
 </style>
 </head>
 <body>
@@ -465,6 +551,14 @@ footer a { color: var(--ink); }
     </div>
   </nav>
 
+  <div class="sit-bar" id="sitBar" role="status" aria-live="polite">
+    <div class="sit-left">
+      <span class="sit-badge normal" id="sitBadge">กำลังสรุปสถานการณ์…</span>
+      <div class="sit-text" id="sitText">กำลังโหลดข้อมูลแผ่นดินไหวจากกรมอุตุนิยมวิทยา…</div>
+    </div>
+    <div class="sit-actions" id="sitActions"></div>
+  </div>
+
   <section class="stage" id="top">
     <div class="map-wrap">
       <div id="map" role="region" aria-label="แผนที่จุดศูนย์กลางแผ่นดินไหว"></div>
@@ -493,10 +587,22 @@ footer a { color: var(--ink); }
       <div><h2>ภาพรวม</h2><p>ตามตัวกรองที่เลือกบนแผนที่</p></div>
     </div>
     <section class="kpis">
-      <div class="card dark"><div class="kpi-label">จำนวนเหตุการณ์</div><div class="kpi-value" id="kCount">–</div><div class="kpi-note" id="kSpan">&nbsp;</div></div>
-      <div class="card"><div class="kpi-label">ขนาดสูงสุด</div><div class="kpi-value" id="kMax">–</div><div class="kpi-note" id="kMaxLoc">&nbsp;</div></div>
-      <div class="card"><div class="kpi-label">เกิดในประเทศไทย</div><div class="kpi-value" id="kTh">–</div><div class="kpi-note" id="kThNote">&nbsp;</div></div>
-      <div class="card"><div class="kpi-label">ความลึกเฉลี่ย</div><div class="kpi-value" id="kDepth">–</div><div class="kpi-note" id="kDepthNote">&nbsp;</div></div>
+      <div class="card dark">
+        <div class="kpi-head"><div class="kpi-label">จำนวนเหตุการณ์</div><span class="kpi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg></span></div>
+        <div class="kpi-value" id="kCount">–</div><div class="kpi-note" id="kSpan">&nbsp;</div>
+      </div>
+      <div class="card">
+        <div class="kpi-head"><div class="kpi-label">ขนาดสูงสุด</div><span class="kpi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></span></div>
+        <div class="kpi-value" id="kMax">–</div><div class="kpi-note" id="kMaxLoc">&nbsp;</div>
+      </div>
+      <div class="card">
+        <div class="kpi-head"><div class="kpi-label">เกิดในประเทศไทย</div><span class="kpi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span></div>
+        <div class="kpi-value" id="kTh">–</div><div class="kpi-note" id="kThNote">&nbsp;</div>
+      </div>
+      <div class="card">
+        <div class="kpi-head"><div class="kpi-label">ความลึกเฉลี่ย</div><span class="kpi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></span></div>
+        <div class="kpi-value" id="kDepth">–</div><div class="kpi-note" id="kDepthNote">&nbsp;</div>
+      </div>
     </section>
 
     <section class="card" id="trendSec">
@@ -520,8 +626,13 @@ footer a { color: var(--ink); }
         </div>
       </section>
       <section class="card">
-        <h3>จำนวนตามช่วงขนาด</h3>
-        <p class="hint">แมกนิจูด</p>
+        <div class="bars-head">
+          <div>
+            <h3>จำนวนตามช่วงขนาด</h3>
+            <p class="hint" id="barsHint">คลิกแถบเพื่อกรองเฉพาะช่วงขนาดนั้น</p>
+          </div>
+          <button type="button" class="bar-clear" id="barClear" hidden>แสดงทุกช่วง</button>
+        </div>
         <div class="bars" id="bars"></div>
       </section>
     </div>
@@ -567,32 +678,38 @@ footer a { color: var(--ink); }
   const RECENT = 12; // จำนวนเหตุการณ์ในรายการ "เหตุการณ์ล่าสุด" และขอบเขตของปุ่มเลื่อน
   const REFRESH_MS = 2 * 60 * 1000;
   const CLASSES = [
-    { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1" },
-    { min: 2, max: 3,         label: "2.0–2.9", v: "--m2" },
-    { min: 3, max: 4,         label: "3.0–3.9", v: "--m3" },
-    { min: 4, max: 5,         label: "4.0–4.9", v: "--m4" },
-    { min: 5, max: Infinity,  label: "≥ 5.0",   v: "--m5" },
+    { min: -Infinity, max: 2, label: "< 2.0",   v: "--m1", level: "เบามาก",   desc: "ไม่รู้สึกถึงแรงสั่นสะเทือน ตรวจจับได้เฉพาะเครื่องมือ" },
+    { min: 2, max: 3,         label: "2.0–2.9", v: "--m2", level: "เบา",      desc: "คนส่วนใหญ่มักไม่รู้สึกถึงแรงสั่นสะเทือน" },
+    { min: 3, max: 4,         label: "3.0–3.9", v: "--m3", level: "เล็กน้อย", desc: "อาจรู้สึกได้เล็กน้อยบริเวณใกล้จุดศูนย์กลาง" },
+    { min: 4, max: 5,         label: "4.0–4.9", v: "--m4", level: "ปานกลาง",  desc: "รู้สึกถึงแรงสั่นสะเทือนได้ชัดเจน ควรติดตามสถานการณ์" },
+    { min: 5, max: Infinity,  label: "≥ 5.0",   v: "--m5", level: "รุนแรง",   desc: "อาจส่งผลกระทบต่ออาคารหรือพื้นที่ใกล้เคียง ควรตรวจสอบ" },
   ];
+  const depthLevel = d => d <= 10 ? "ตื้น" : d <= 70 ? "ปานกลาง" : "ลึก";
   const FILTERS = {
     days:   { label: "ช่วงเวลา", def: 30, opts: [[1, "24 ชม."], [7, "7 วัน"], [30, "30 วัน"], [90, "90 วัน"], [0, "ทั้งหมด"]] },
     region: { label: "พื้นที่", def: "all", opts: [["all", "ทั้งหมด"], ["th", "ในประเทศไทย"], ["intl", "ต่างประเทศ"]] },
     minMag: { label: "ขนาด", def: 0, opts: [[0, "ทุกขนาด"], [2, "≥ 2.0"], [3, "≥ 3.0"], [4, "≥ 4.0"]] },
   };
   const ICON = {
-    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
-    depth: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14M6 11l6 6 6-6M4 21h16"/></svg>',
-    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-    globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
-    chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
-    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
-    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
-    ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
+    depth: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+    factory: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l5 3V9l5 3V6l4 2v13"/><path d="M9 17h1M14 17h1"/></svg>',
+    shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.7-7 10-3.8-1.3-7-5-7-10V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg>',
+    warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
+    reset: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+    chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
+    ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M7 17 17 7M8 7h9v9"/></svg>',
   };
   const cls = m => CLASSES.findIndex(c => m >= c.min && m < c.max);
+  const magInfo = m => CLASSES[cls(m)] || CLASSES[0];
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const colorOf = m => css(CLASSES[cls(m)].v);
   const radiusOf = m => Math.max(4, 3 + m * 2.6);
-  const state = { all: [], estates: [], showEstates: true, region: "all", minMag: 0, days: 30, q: "", sel: null, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE, status: null };
+  const state = { all: [], estates: [], showEstates: true, region: "all", minMag: 0, days: 30, magClass: null, q: "", sel: null, sortK: "time", sortDir: -1, fetchedAt: null, limit: PAGE, status: null };
 
   // ---------- helpers ----------
   const parseTH = s => s ? new Date(s.replace(" ", "T") + "+07:00") : null;
@@ -701,10 +818,11 @@ footer a { color: var(--ink); }
   function popupHtml(e) {
     const l = splitLoc(e.loc);
     const n = state.estates.length ? nearestEstate(e) : null;
-    return `<div class="pop-head"><span class="pop-mag"><i style="background:${colorOf(e.mag)}"></i>M ${e.mag.toFixed(1)}</span><span class="pop-ago">${e.time ? ago(e.time) : ""}</span></div>
+    const mi = magInfo(e.mag);
+    return `<div class="pop-head"><span class="pop-mag"><i style="background:${colorOf(e.mag)}"></i>M ${e.mag.toFixed(1)} · ${mi.level}</span><span class="pop-ago">${e.time ? ago(e.time) : ""}</span></div>
       <div class="pop-title">${esc(l.th)}</div>${l.en ? `<div class="pop-en">${esc(l.en)}</div>` : ""}
       ${e.cmt ? `<div class="pop-row">${ICON.pin}<span>${esc(e.cmt)}</span></div>` : ""}
-      <div class="pop-specs"><span>${ICON.depth}ลึก ${e.depth} กม.</span><span>${ICON.clock}${e.time ? fmtFull(e.time) : "-"}</span><span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span></div>
+      <div class="pop-specs"><span>${ICON.depth}ลึก ${e.depth} กม. (${depthLevel(e.depth)})</span><span>${ICON.clock}${e.time ? fmtFull(e.time) : "-"}</span><span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span></div>
       ${n ? `<div class="pop-near"><span class="dia"></span><div>นิคมฯ ใกล้สุด <b>${esc(n.name)}</b> · ${fmtKm(n.d)} กม.</div></div>` : ""}`;
   }
 
@@ -768,20 +886,68 @@ footer a { color: var(--ink); }
   }
 
   const since = () => state.days ? Date.now() - state.days * 86400e3 : -Infinity;
-  const filtered = () => {
+  const filtered = (opts = {}) => {
     const t0 = since(), q = state.q.trim().toLowerCase();
     return state.all.filter(e =>
       (e.time ? +e.time >= t0 : !state.days) && e.mag >= state.minMag &&
+      (opts.ignoreMagClass || state.magClass === null || cls(e.mag) === state.magClass) &&
       (state.region === "all" || (state.region === "th" ? e.thai : !e.thai)) &&
       (!q || e.loc.toLowerCase().includes(q) || e.cmt.toLowerCase().includes(q)));
   };
   const selected = rows => rows.find(e => e.id === state.sel) || rows[0] || null;
+  function resetFilters() {
+    state.days = FILTERS.days.def; state.region = FILTERS.region.def; state.minMag = FILTERS.minMag.def;
+    state.magClass = null; state.q = "";
+    const qIn = document.getElementById("q"), qBox = document.getElementById("searchBox");
+    if (qIn) qIn.value = "";
+    if (qBox) qBox.classList.remove("has");
+    apply();
+  }
 
   // ---------- render ----------
   function render() {
     const rows = filtered();
-    renderStatus(); renderChips(); renderKpis(rows); renderMap(rows); renderLegend();
-    renderFeatured(rows); renderRail(rows); renderTimeline(rows); renderBars(rows); renderTrend(rows); renderTable(rows);
+    const baseRows = filtered({ ignoreMagClass: true });
+    renderStatus(); renderSituation(); renderChips(); renderKpis(rows); renderMap(rows); renderLegend();
+    renderFeatured(rows); renderRail(rows); renderTimeline(rows); renderBars(baseRows); renderTrend(rows); renderTable(rows);
+  }
+
+  function renderSituation() {
+    const badge = document.getElementById("sitBadge"), text = document.getElementById("sitText"), act = document.getElementById("sitActions");
+    if (!state.all.length) {
+      badge.className = "sit-badge normal";
+      badge.innerHTML = `${ICON.shield}ไม่มีข้อมูล`;
+      text.textContent = "ยังไม่มีข้อมูลเหตุการณ์แผ่นดินไหว";
+      act.innerHTML = "";
+      return;
+    }
+    const cutoff = Date.now() - 86400e3;
+    const recent24 = state.all.filter(e => e.time && +e.time >= cutoff);
+    const pool = recent24.length ? recent24 : state.all.slice(0, 1);
+    const top = pool.reduce((m, r) => (!m || r.mag > m.mag ? r : m), null);
+    const nearTop = top && state.estates.length ? nearestEstate(top) : null;
+    // ประเมินระดับสถานการณ์จากเหตุการณ์ 24 ชม. ล่าสุด
+    let level = "normal", label = "สถานการณ์ปกติ", ico = ICON.shield;
+    const hasAlert = recent24.some(e => e.mag >= 5 || (e.mag >= 4 && state.estates.length && nearestEstate(e).d <= 150));
+    const hasWatch = recent24.some(e => e.mag >= 4 || (e.mag >= 3 && (e.thai || (state.estates.length && nearestEstate(e).d <= 100))));
+    if (hasAlert) { level = "alert"; label = "ควรตรวจสอบพื้นที่"; ico = ICON.warn; }
+    else if (hasWatch) { level = "watch"; label = "เฝ้าระวัง"; ico = ICON.warn; }
+    badge.className = `sit-badge ${level}`;
+    badge.innerHTML = `${ico}${label}`;
+    if (recent24.length && top) {
+      const th24 = recent24.filter(e => e.thai).length;
+      text.innerHTML = `24 ชม. ล่าสุด: เกิด <b>${recent24.length} ครั้ง</b>${th24 ? ` (ในไทย ${th24})` : ""} · สูงสุด <b>M ${top.mag.toFixed(1)} (${magInfo(top.mag).level})</b> ที่ ${esc(splitLoc(top.loc).th)}${nearTop ? ` <span class="sit-muted">· ห่างนิคมฯ ${esc(nearTop.name)} ${fmtKm(nearTop.d)} กม.</span>` : ""}`;
+      act.innerHTML = `<button type="button" class="sit-btn" id="sitJump">ดูเหตุการณ์สูงสุด 24 ชม.</button>`;
+      document.getElementById("sitJump").onclick = () => {
+        if (state.days && state.days < 1) state.days = 1;
+        state.magClass = null;
+        if (!filtered().some(e => e.id === top.id)) resetFilters();
+        select(top, true);
+      };
+    } else if (top) {
+      text.innerHTML = `24 ชม. ล่าสุดไม่มีเหตุการณ์ใหม่ <span class="sit-muted">· ล่าสุดคือ M ${top.mag.toFixed(1)} ที่ ${esc(splitLoc(top.loc).th)} (${top.time ? ago(top.time) : "-"})</span>`;
+      act.innerHTML = "";
+    }
   }
 
   function renderStatus() {
@@ -797,18 +963,35 @@ footer a { color: var(--ink); }
   // filter chips: ค่าที่ไม่ใช่ค่าเริ่มต้นเป็นแคปซูลสีดำพร้อมปุ่ม × / ค่าเริ่มต้นเป็นสีขาวพร้อมลูกศร
   function renderChips() {
     const box = document.getElementById("chips");
-    box.innerHTML = Object.entries(FILTERS).map(([k, f]) => {
+    let activeCount = 0;
+    let html = Object.entries(FILTERS).map(([k, f]) => {
       const cur = f.opts.find(o => o[0] === state[k]) || f.opts[0];
       const active = state[k] !== f.def;
+      if (active) activeCount++;
       return `<div class="chip${active ? " active" : ""}" data-k="${k}" role="button" tabindex="0" aria-haspopup="true">
         ${f.label}: ${cur[1]} ${active ? `<span class="x" data-reset="${k}" title="ล้างตัวกรอง">${ICON.x}</span>` : ICON.chev}
         <div class="menu" role="menu">${f.opts.map(o => `<button type="button" role="menuitemradio" aria-checked="${o[0] === state[k]}" data-v="${o[0]}">${o[1]}</button>`).join("")}</div>
       </div>`;
     }).join("");
+    if (state.magClass !== null) {
+      activeCount++;
+      const c = CLASSES[state.magClass];
+      html += `<div class="chip active" role="button" tabindex="0" data-reset="magClass" title="คลิกเพื่อล้างตัวกรองช่วงขนาด">ช่วงขนาด: ${c.label} (${c.level}) <span class="x" data-reset="magClass">${ICON.x}</span></div>`;
+    }
+    if (state.q.trim()) activeCount++;
+    if (activeCount >= 2) {
+      html += `<button type="button" class="chip reset-all" data-reset="all">${ICON.reset}ล้างทั้งหมด</button>`;
+    }
+    box.innerHTML = html;
   }
   document.getElementById("chips").addEventListener("click", ev => {
     const reset = ev.target.closest("[data-reset]");
-    if (reset) { const k = reset.dataset.reset; state[k] = FILTERS[k].def; return apply(); }
+    if (reset) {
+      const k = reset.dataset.reset;
+      if (k === "all") return resetFilters();
+      if (k === "magClass") { state.magClass = null; return apply(); }
+      state[k] = FILTERS[k].def; return apply();
+    }
     const opt = ev.target.closest(".menu button");
     if (opt) { const k = opt.closest(".chip").dataset.k; const v = opt.dataset.v; state[k] = typeof FILTERS[k].def === "number" ? Number(v) : v; return apply(); }
     const chip = ev.target.closest(".chip");
@@ -832,19 +1015,35 @@ footer a { color: var(--ink); }
 
   function renderKpis(rows) {
     const $ = id => document.getElementById(id);
-    $("kCount").innerHTML = `${rows.length}<small>ครั้ง</small>`;
+    // เปรียบเทียบกับช่วงเวลาก่อนหน้า (เมื่อเลือกช่วงเวลาแบบจำกัดวัน)
+    let deltaHtml = "";
+    if (state.days > 0) {
+      const t1 = since(), t0 = t1 - state.days * 86400e3, q = state.q.trim().toLowerCase();
+      const prev = state.all.filter(e =>
+        e.time && +e.time >= t0 && +e.time < t1 && e.mag >= state.minMag &&
+        (state.magClass === null || cls(e.mag) === state.magClass) &&
+        (state.region === "all" || (state.region === "th" ? e.thai : !e.thai)) &&
+        (!q || e.loc.toLowerCase().includes(q) || e.cmt.toLowerCase().includes(q))).length;
+      if (prev > 0) {
+        const pct = Math.round(((rows.length - prev) / prev) * 100);
+        const clsD = pct > 0 ? "up" : pct < 0 ? "down" : "flat";
+        deltaHtml = `<span class="kpi-delta ${clsD}" title="เทียบกับช่วง ${state.days} วันก่อนหน้า (${prev} ครั้ง)">${pct > 0 ? `+${pct}%` : pct < 0 ? `${pct}%` : "เท่าเดิม"}</span>`;
+      }
+    }
+    $("kCount").innerHTML = `${rows.length.toLocaleString("th-TH")}<small>ครั้ง</small>${deltaHtml}`;
     const times = rows.map(r => r.time).filter(Boolean).sort((a, b) => a - b);
     $("kSpan").textContent = times.length ? `${fmtDate(times[0])} – ${fmtDate(times[times.length - 1])}` : "ไม่มีข้อมูล";
     const max = rows.reduce((m, r) => (!m || r.mag > m.mag ? r : m), null);
-    $("kMax").innerHTML = max ? `${max.mag.toFixed(1)}<small>แมกนิจูด</small>` : "–";
+    $("kMax").innerHTML = max ? `${max.mag.toFixed(1)}<small>${magInfo(max.mag).level}</small>` : "–";
     $("kMaxLoc").textContent = max ? splitLoc(max.loc).th : " ";
     const th = rows.filter(r => r.thai);
-    $("kTh").innerHTML = `${th.length}<small>ครั้ง</small>`;
+    const thPct = rows.length ? Math.round((th.length / rows.length) * 100) : 0;
+    $("kTh").innerHTML = `${th.length.toLocaleString("th-TH")}<small>ครั้ง${rows.length ? ` (${thPct}%)` : ""}</small>`;
     const prov = {};
     th.forEach(r => { const m = r.loc.match(/จ\.\s*([^\s(]+)/); if (m) prov[m[1]] = (prov[m[1]] || 0) + 1; });
     $("kThNote").textContent = th.length ? Object.entries(prov).sort((x, y) => y[1] - x[1]).slice(0, 3).map(([p, c]) => `จ.${p} ${c}`).join(" · ") : "ไม่มีเหตุการณ์ในไทย";
     const avg = rows.length ? rows.reduce((s, r) => s + r.depth, 0) / rows.length : 0;
-    $("kDepth").innerHTML = rows.length ? `${avg.toFixed(1)}<small>กม.</small>` : "–";
+    $("kDepth").innerHTML = rows.length ? `${avg.toFixed(1)}<small>กม. (${depthLevel(avg)})</small>` : "–";
     $("kDepthNote").textContent = rows.length ? `ระดับตื้น (≤ 10 กม.) ${rows.filter(r => r.depth <= 10).length} ครั้ง` : " ";
   }
 
@@ -888,7 +1087,7 @@ footer a { color: var(--ink); }
     if (!e) return;
     state.sel = e.id; state.selKey = e.key;
     const rows = filtered();
-    renderFeatured(rows); renderRail(rows); renderMap(rows);
+    renderFeatured(rows); renderRail(rows); renderMap(rows); renderTimeline(rows);
     if (fly) {
       map.flyTo([e.lat, e.lon], Math.max(map.getZoom(), 7), { duration: 0.8 });
       setTimeout(() => markerById.get(e.id)?.openPopup(), 850);
@@ -913,8 +1112,14 @@ footer a { color: var(--ink); }
   function renderFeatured(rows) {
     const box = document.getElementById("featured");
     const e = selected(rows);
-    if (!e) { box.innerHTML = `<div class="empty" style="grid-column:1/-1">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</div>`; return; }
+    if (!e) {
+      box.innerHTML = `<div class="empty-box" style="grid-column:1/-1">${ICON.warn}<div>ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</div><button type="button" class="sit-btn" id="emptyReset">${ICON.reset}ล้างตัวกรองทั้งหมด</button></div>`;
+      const rb = document.getElementById("emptyReset");
+      if (rb) rb.onclick = resetFilters;
+      return;
+    }
     const l = splitLoc(e.loc);
+    const mi = magInfo(e.mag);
     const isLatest = rows[0] && rows[0].id === e.id;
     const idx = rows.indexOf(e);
     box.innerHTML = `
@@ -933,17 +1138,18 @@ footer a { color: var(--ink); }
         <div class="f-title">${esc(l.th)}</div>
         <div class="f-addr">${ICON.pin}<span>${esc(e.cmt || l.en || "-")}</span></div>
         <div class="specs">
-          <span>${ICON.depth}${e.depth} กม.</span>
+          <span>${ICON.depth}ลึก ${e.depth} กม. (${depthLevel(e.depth)})</span>
           <span>${ICON.clock}${e.time ? hm(e.time) + " น." : "-"}</span>
           <span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span>
         </div>
         <p class="f-desc">${e.time ? fmtFull(e.time) : ""}${l.en ? `<br><span class="en">${esc(l.en)}</span>` : ""}<br><span class="en">${e.lat.toFixed(3)}, ${e.lon.toFixed(3)}</span></p>
         ${(() => { const n = state.estates.length ? nearestEstate(e) : null; return n ? `<div class="near" title="ระยะตรงจากจุดศูนย์กลางแผ่นดินไหวถึงนิคมฯ">
-          <span class="ico"><span class="dia"></span></span>
+          <span class="ico" aria-hidden="true">${ICON.factory}</span>
           <div style="min-width:0"><div class="k">นิคมฯ ที่ใกล้ที่สุด</div><div class="nm">${esc(n.name)}</div>${n.ops ? `<div class="op">${esc(n.ops)}</div>` : ""}</div>
           <div class="dist"><div class="k">ห่างประมาณ</div><b>${fmtKm(n.d)}<small>กม.</small></b></div>
         </div>` : ""; })()}
-        <div class="f-price">ขนาด <b>M ${e.mag.toFixed(1)}</b></div>
+        <div class="f-price">ขนาด <b>M ${e.mag.toFixed(1)}</b> <span class="sev-pill"><i style="background:${colorOf(e.mag)}"></i>${mi.level}</span></div>
+        <div class="sev-note">${mi.desc}</div>
         <div class="f-actions">
           <button class="btn-dark" type="button" id="flyBtn">ดูบนแผนที่</button>
           <button class="btn-out" type="button" id="copyBtn" title="คัดลอกพิกัด" aria-label="คัดลอกพิกัด">${ICON.copy}</button>
@@ -999,13 +1205,23 @@ footer a { color: var(--ink); }
       s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(m)}" y2="${y(m)}" stroke="${grid}"/>`;
       s += `<text x="${P.l - 8}" y="${y(m) + 4}" text-anchor="end" font-size="11" fill="${muted}">${m}</text>`;
     }
+    // เส้นอ้างอิง M 4.0 (ระดับเริ่มรู้สึกถึงแรงสั่นสะเทือนได้ชัด)
+    if (yMax >= 4) {
+      const y4 = y(4);
+      s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y4}" y2="${y4}" stroke="${css("--m4")}" stroke-width="1.2" stroke-dasharray="4 4" opacity=".65"/>`;
+      s += `<text x="${P.l + 6}" y="${Math.max(12, y4 - 5)}" text-anchor="start" font-size="10.5" font-weight="600" fill="${css("--m4")}" paint-order="stroke" stroke="${css("--surface")}" stroke-width="5">M 4.0 เริ่มรู้สึกได้ชัด</text>`;
+    }
     const dayMs = 86400e3, off = 7 * 3600e3, spanDays = (t1 - t0) / dayMs, step = spanDays > 6 ? Math.ceil(spanDays / 5) : 1;
     for (let d = Math.ceil((t0 + off) / dayMs) * dayMs - off; d <= t1; d += dayMs * step) {
       s += `<text x="${x(d)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${muted}">${new Date(d).toLocaleDateString("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short" })}</text>`;
     }
     if (!dense) data.forEach(d => { s += `<line x1="${x(+d.time)}" x2="${x(+d.time)}" y1="${y(0)}" y2="${y(d.mag)}" stroke="${colorOf(d.mag)}" stroke-width="2" opacity=".45"/>`; });
+    const sel = selected(rows);
     [...data].sort((a, b) => a.mag - b.mag).forEach(d => {
       const rr = dense ? Math.max(2.8, radiusOf(d.mag) * 0.38) : Math.max(4.5, radiusOf(d.mag) * 0.7);
+      if (sel && d.id === sel.id) {
+        s += `<circle cx="${x(+d.time)}" cy="${y(d.mag)}" r="${rr + 4.5}" fill="none" stroke="${css("--ink")}" stroke-width="2" opacity=".75"/>`;
+      }
       s += `<circle cx="${x(+d.time)}" cy="${y(d.mag)}" r="${rr}" fill="${colorOf(d.mag)}" stroke="${css("--ring")}" stroke-width="${dense ? 1 : 2}"/>`;
       s += `<circle class="hit" data-id="${d.id}" cx="${x(+d.time)}" cy="${y(d.mag)}" r="${dense ? 7 : 14}" fill="transparent" style="cursor:pointer"/>`;
     });
@@ -1013,7 +1229,7 @@ footer a { color: var(--ink); }
     svg.querySelectorAll(".hit").forEach(c => {
       const d = state.all[+c.dataset.id];
       c.addEventListener("mouseenter", () => {
-        tip.innerHTML = `<b>M ${d.mag.toFixed(1)}</b> · ลึก ${d.depth} กม.<br>${esc(splitLoc(d.loc).th)}<br><span class="muted">${fmtDate(d.time)}</span>`;
+        tip.innerHTML = `<b>M ${d.mag.toFixed(1)} (${magInfo(d.mag).level})</b> · ลึก ${d.depth} กม.<br>${esc(splitLoc(d.loc).th)}<br><span class="muted">${fmtDate(d.time)}</span>`;
         const cx = +c.getAttribute("cx") * box.clientWidth / W;
         tip.style.left = Math.min(box.clientWidth - 200, Math.max(0, cx - 100)) + "px";
         tip.style.top = Math.max(0, +c.getAttribute("cy") - 78) + "px";
@@ -1027,13 +1243,34 @@ footer a { color: var(--ink); }
   function renderBars(rows) {
     const counts = CLASSES.map(() => 0);
     rows.forEach(r => counts[cls(r.mag)]++);
+    const total = rows.length || 1;
     const max = Math.max(1, ...counts);
-    document.getElementById("bars").innerHTML = CLASSES.map((c, i) => `
-      <div class="bar-row" title="${c.label}: ${counts[i]} ครั้ง">
-        <span class="lab">${c.label}</span>
+    const clr = document.getElementById("barClear");
+    if (clr) {
+      clr.hidden = state.magClass === null;
+      clr.onclick = () => { state.magClass = null; apply(); };
+    }
+    const hint = document.getElementById("barsHint");
+    if (hint) {
+      hint.textContent = state.magClass !== null
+        ? `กำลังกรองเฉพาะช่วง ${CLASSES[state.magClass].label} (${CLASSES[state.magClass].level}) — คลิกซ้ำเพื่อยกเลิก`
+        : "คลิกแถบเพื่อกรองเฉพาะช่วงขนาดนั้น";
+    }
+    const box = document.getElementById("bars");
+    box.innerHTML = CLASSES.map((c, i) => {
+      const pct = rows.length ? Math.round((counts[i] / total) * 100) : 0;
+      const isAct = state.magClass === i, isDim = state.magClass !== null && !isAct;
+      return `<div class="bar-row clickable${isAct ? " active" : ""}${isDim ? " dim" : ""}" data-cls="${i}" role="button" tabindex="0" aria-pressed="${isAct}" title="${c.label} (${c.level}): ${counts[i]} ครั้ง (${pct}%) — คลิกเพื่อกรอง">
+        <span class="lab"><b>${c.label}</b><small>${c.level}</small></span>
         <div class="bar-track"><div class="bar-fill" style="width:${counts[i] / max * 100}%;background:${counts[i] ? css(c.v) : "transparent"}"></div></div>
-        <span class="num">${counts[i]}</span>
-      </div>`).join("");
+        <span class="num">${counts[i]}<small>${pct}%</small></span>
+      </div>`;
+    }).join("");
+    box.querySelectorAll(".bar-row[data-cls]").forEach(row => {
+      const toggle = () => { const i = +row.dataset.cls; state.magClass = state.magClass === i ? null : i; apply(); };
+      row.addEventListener("click", toggle);
+      row.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); toggle(); } });
+    });
   }
 
   function renderTrend(rows) {
@@ -1089,7 +1326,17 @@ footer a { color: var(--ink); }
       });
       rc.addEventListener("mouseleave", () => { tip.classList.remove("on"); rc.setAttribute("fill", "transparent"); });
     });
-    // ชี้แท่งสูงสุดด้วยข้อความ (ไม่ใช้สีอย่างเดียว)
+    // ชี้แท่งสูงสุดด้วยข้อความ (ไม่ใช้สีอย่างเดียว) + เส้นค่าเฉลี่ยอ้างอิง
+    if (data.length) {
+      const avgBucket = data.length / Math.max(1, n);
+      if (avgBucket > 0 && avgBucket < yMax) {
+        const ya = y(avgBucket);
+        svg.insertAdjacentHTML("beforeend",
+          `<line x1="${P.l}" x2="${W - P.r}" y1="${ya}" y2="${ya}" stroke="${css("--m3")}" stroke-width="1.2" stroke-dasharray="4 4" opacity=".7"/>` +
+          `<text x="${P.l + 6}" y="${Math.max(12, ya - 5)}" text-anchor="start" font-size="10.5" font-weight="600" fill="${css("--m3")}" paint-order="stroke" stroke="${css("--surface")}" stroke-width="5">เฉลี่ย ${avgBucket.toFixed(1)}</text>`
+        );
+      }
+    }
     if (peak.i >= 0 && data.length) {
       const px = P.l + peak.i * bw + bw / 2;
       svg.insertAdjacentHTML("beforeend", `<text x="${Math.min(W - 20, Math.max(P.l + 16, px))}" y="${Math.max(10, y(peak.n) - 6)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${ink}">${peak.n}</text>`);
@@ -1113,7 +1360,13 @@ footer a { color: var(--ink); }
     const sorted = [...rows].sort((a, b) => (val(a) > val(b) ? 1 : val(a) < val(b) ? -1 : 0) * dir);
     document.querySelectorAll("th[data-k]").forEach(th => { if (th.dataset.k === k) th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending"); else th.removeAttribute("aria-sort"); });
     const tb = document.getElementById("tbody"), more = document.getElementById("moreRow");
-    if (!sorted.length) { tb.innerHTML = `<tr><td colspan="5" class="empty">ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</td></tr>`; more.innerHTML = ""; return; }
+    if (!sorted.length) {
+      tb.innerHTML = `<tr><td colspan="5"><div class="empty-box">${ICON.warn}<div>ไม่มีเหตุการณ์ตามตัวกรองที่เลือก</div><button type="button" class="sit-btn" id="tblReset">${ICON.reset}ล้างตัวกรองทั้งหมด</button></div></td></tr>`;
+      more.innerHTML = "";
+      const trb = document.getElementById("tblReset");
+      if (trb) trb.onclick = resetFilters;
+      return;
+    }
     const shown = sorted.slice(0, state.limit);
     more.innerHTML = sorted.length > shown.length
       ? `<span class="count">แสดง ${shown.length} จาก ${sorted.length} รายการ</span><button class="btn-out" type="button" id="moreBtn">แสดงเพิ่ม</button>`
@@ -1124,7 +1377,7 @@ footer a { color: var(--ink); }
       const l = splitLoc(r.loc);
       return `<tr data-id="${r.id}">
         <td class="num">${r.time ? fmtDate(r.time) : "-"}</td>
-        <td class="num"><span class="mag-chip"><i style="background:${colorOf(r.mag)}"></i>${r.mag.toFixed(1)}</span></td>
+        <td class="num"><span class="mag-chip"><i style="background:${colorOf(r.mag)}"></i>${r.mag.toFixed(1)}</span><span class="tbl-sev">${magInfo(r.mag).level}</span></td>
         <td class="num col-depth">${r.depth}</td>
         <td>${esc(l.th)}${r.thai ? '<span class="flag-th">ไทย</span>' : ""}${l.en ? `<div class="loc-en">${esc(l.en)}</div>` : ""}</td>
         <td class="col-cmt">${esc(r.cmt)}</td>
@@ -1161,10 +1414,12 @@ footer a { color: var(--ink); }
     state.limit = PAGE; renderTable(filtered());
   }));
   const navLinks = [...document.querySelectorAll(".nav-links a")];
+  const sideLinks = [...document.querySelectorAll('.wd-side .nav-item[href^="#"]')];
   const secs = navLinks.map(a => document.querySelector(a.getAttribute("href")));
   addEventListener("scroll", () => {
     let k = 0; secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top < 140) k = i; });
     navLinks.forEach((a, i) => a.classList.toggle("on", i === k));
+    sideLinks.forEach((a, i) => a.classList.toggle("on", i === k));
   }, { passive: true });
   let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { map.invalidateSize(); const r = filtered(); renderFeatured(r); renderTimeline(r); renderTrend(r); }, 150); });
   setInterval(load, REFRESH_MS);
@@ -1296,81 +1551,5 @@ footer a { color: var(--ink); }
   });
 })();
 </script>
-<style id="emcc-hub-mobile-css">
-/* EMCC dashboard switcher on phones (shared by every dashboard; desktop unchanged).
-   ≤760px: the switcher never unfolds inline; it opens a bottom sheet. In a bottom tab bar it is an icon-only button. */
-@media (max-width:760px){
- .hub-wrap .hub-menu,.hub-wrap.open .hub-menu{display:none!important}
- .hub-wrap.hub-in-bar{flex:none!important;width:auto!important;min-width:0!important}
- .hub-wrap.hub-in-bar .hub-btn{width:auto!important;padding:10px 12px!important;border-radius:14px!important;justify-content:center!important;gap:0!important}
- .hub-wrap.hub-in-bar .hub-lbl,.hub-wrap.hub-in-bar .hub-ch{display:none!important}
- .hub-wrap.hub-in-bar .hub-btn svg.h-ic-home{width:22px;height:22px}
-}
-.hub-sheet{position:fixed;inset:0;z-index:9000;font:inherit}
-.hub-sheet[hidden]{display:none!important}
-.hub-sheet-bg{position:absolute;inset:0;background:rgba(10,12,16,.45);opacity:0;transition:opacity .2s ease}
-.hub-sheet-panel{position:absolute;left:0;right:0;bottom:0;max-height:82vh;max-height:82dvh;overflow:auto;overscroll-behavior:contain;
- border-radius:22px 22px 0 0;padding:6px 12px calc(14px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.25);
- transform:translateY(100%);transition:transform .26s cubic-bezier(.2,.8,.2,1)}
-.hub-sheet.on .hub-sheet-bg{opacity:1}
-.hub-sheet.on .hub-sheet-panel{transform:none}
-.hub-grab{width:42px;height:5px;border-radius:9px;background:rgba(128,128,128,.45);margin:6px auto 10px}
-.hub-sheet-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 6px 8px;font-weight:700;font-size:16px}
-.hub-sheet-x{all:unset;cursor:pointer;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(128,128,128,.14);font-size:18px;line-height:1}
-.hub-sheet-list{display:flex;flex-direction:column;gap:2px}
-.hub-sheet-list a.hub-link{display:flex;align-items:center;gap:12px;padding:13px 12px;border-radius:12px;font-size:15px;font-weight:500;text-decoration:none;color:inherit}
-.hub-sheet-list a.hub-link:active,.hub-sheet-list a.hub-link:hover{background:rgba(128,128,128,.12)}
-.hub-sheet-list a.hub-link.cur{background:rgba(128,128,128,.14);font-weight:700}
-.hub-sheet-list a.hub-link.main-l{border-bottom:1px solid rgba(128,128,128,.2);border-radius:12px 12px 0 0;margin-bottom:4px;font-weight:700}
-.hub-sheet-list .hub-dot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--dc,#3987e5)}
-.hub-sheet-list a.hub-link>span:last-child{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-html.hub-lock,html.hub-lock body{overflow:hidden!important}
-@media (prefers-reduced-motion:reduce){.hub-sheet-bg,.hub-sheet-panel{transition:none}}
-@media print{.hub-sheet{display:none!important}}
-</style>
-<script id="emcc-hub-mobile-js">
-(function(){
-  var menu=document.querySelector('.hub-menu');if(!menu)return;
-  var wrap=menu.closest('.hub-wrap'),mq=window.matchMedia('(max-width:760px)');
-  var MAIN='https://nawakonnakhonchai-wq.github.io/index.html';
-  var sheet=document.createElement('div');sheet.className='hub-sheet';sheet.hidden=true;
-  sheet.setAttribute('role','dialog');sheet.setAttribute('aria-modal','true');sheet.setAttribute('aria-label','สลับ Dashboard');
-  sheet.innerHTML='<div class="hub-sheet-bg"></div><div class="hub-sheet-panel"><div class="hub-grab" aria-hidden="true"></div>'+
-    '<div class="hub-sheet-h"><span>สลับ Dashboard</span><button type="button" class="hub-sheet-x" aria-label="ปิด">✕</button></div><div class="hub-sheet-list"></div></div>';
-  var list=sheet.querySelector('.hub-sheet-list'),panel=sheet.querySelector('.hub-sheet-panel');
-  Array.prototype.forEach.call(menu.querySelectorAll('a.hub-link'),function(a){list.appendChild(a.cloneNode(true))});
-  document.body.appendChild(sheet);
-  /* colours follow the page and its current theme */
-  function paint(){var b=getComputedStyle(document.body),bg=b.backgroundColor;
-    if(!bg||bg==='transparent'||/rgba\(.*,\s*0\)$/.test(bg))bg=getComputedStyle(document.documentElement).backgroundColor;
-    if(!bg||bg==='transparent'||/rgba\(.*,\s*0\)$/.test(bg))bg='#ffffff';
-    panel.style.background=bg;panel.style.color=b.color}
-  var last=null;
-  function open(){last=document.activeElement;paint();sheet.hidden=false;document.documentElement.classList.add('hub-lock');
-    requestAnimationFrame(function(){sheet.classList.add('on')});
-    var f=list.querySelector('a.cur')||list.querySelector('a');if(f)f.focus({preventScroll:true})}
-  function close(){if(sheet.hidden)return;sheet.classList.remove('on');document.documentElement.classList.remove('hub-lock');
-    setTimeout(function(){sheet.hidden=true},230);if(last&&last.focus)last.focus({preventScroll:true})}
-  sheet.querySelector('.hub-sheet-bg').addEventListener('click',close);
-  sheet.querySelector('.hub-sheet-x').addEventListener('click',close);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
-  /* drag the panel down to close */
-  var y0=null,dy=0;
-  panel.addEventListener('touchstart',function(e){if(panel.scrollTop>0)return;y0=e.touches[0].clientY;dy=0;panel.style.transition='none'},{passive:true});
-  panel.addEventListener('touchmove',function(e){if(y0===null)return;dy=Math.max(0,e.touches[0].clientY-y0);panel.style.transform='translateY('+dy+'px)'},{passive:true});
-  panel.addEventListener('touchend',function(){if(y0===null)return;panel.style.transition='';panel.style.transform='';if(dy>90)close();y0=null});
-  /* on phones the switcher button (and any visible "back to main" link) opens the sheet instead of unfolding */
-  if(wrap)wrap.addEventListener('click',function(e){if(!mq.matches)return;if(!e.target.closest('.hub-btn'))return;
-    e.preventDefault();e.stopPropagation();wrap.classList.remove('open');open()},true);
-  document.addEventListener('click',function(e){if(!mq.matches)return;var a=e.target.closest&&e.target.closest('a[href="'+MAIN+'"]');
-    if(!a||sheet.contains(a)||(wrap&&wrap.contains(a)))return;e.preventDefault();open()},true);
-  /* icon-only when the switcher sits in a bottom tab bar */
-  function mark(){if(!wrap)return;var n=wrap.parentElement,inBar=false;
-    while(n&&n!==document.body){var cs=getComputedStyle(n);if(cs.position==='fixed'){var r=n.getBoundingClientRect();inBar=r.top>window.innerHeight*0.6&&r.height<140;break}n=n.parentElement}
-    wrap.classList.toggle('hub-in-bar',mq.matches&&inBar)}
-  mark();window.addEventListener('resize',mark);if(mq.addEventListener)mq.addEventListener('change',function(){mark();if(!mq.matches)close()});
-})();
-</script>
-
 </body>
 </html>
