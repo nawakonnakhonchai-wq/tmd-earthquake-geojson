@@ -432,15 +432,53 @@ footer a { color: var(--ink); }
   body.side-collapsed .wd-side .side-nav { padding: 0 12px; gap: 6px; }
   body.side-collapsed .wd-side .nav-item { justify-content: center; padding: 11px; border-radius: 12px; }
 }
+@page { size: A4 portrait; margin: 12mm; }
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  .wd-side, .nav-right .icon-btn, .nav-home, .overlay, .stepper, .f-actions, .sit-actions, .bar-clear, #csvBtn, .more-row, .rail-more, .leaflet-control-zoom { display: none !important; }
-  body { padding-left: 0 !important; background: #ffffff !important; }
-  .app { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; margin: 0 !important; }
-  .stage { height: auto !important; min-height: 0 !important; grid-template-columns: 1fr 1fr !important; }
-  .map-wrap { min-height: 360px !important; }
-  .panel { overflow: visible !important; }
-  .card, .near, .sit-bar { break-inside: avoid; page-break-inside: avoid; }
+  :root, :root[data-theme="dark"] {
+    color-scheme: light !important;
+    --canvas: #ffffff !important; --surface: #ffffff !important; --surface-2: #fafaf9 !important; --surface-3: #f3f2ef !important;
+    --border: #e2e0dc !important; --grid: #eceae6 !important; --ink: #111113 !important;
+    --text-primary: #111113 !important; --text-secondary: #4b5563 !important; --text-muted: #6b7280 !important;
+    --ring: #ffffff !important; --bar: #f3e4da !important; --bar-peak: #ea580c !important;
+    --m1: #f2a072 !important; --m2: #e8733f !important; --m3: #cc4b25 !important; --m4: #9c2f1a !important; --m5: #651a10 !important;
+    --on-ink: #ffffff !important; --on-ink-muted: rgba(255,255,255,.72) !important;
+  }
+  .wd-side, .nav-links, .nav-right .icon-btn, .nav-home, .overlay, .stepper, .f-actions, .sit-actions,
+  .bar-clear, #csvBtn, .more-row, .rail-more, .rail-head, .rail, .panel .divider,
+  .leaflet-control-zoom, .visual .corner, #scroll-prog { display: none !important; }
+  html, body { background: #ffffff !important; padding-left: 0 !important; font-size: 12.5px !important; }
+  .app { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; margin: 0 !important; overflow: visible !important; }
+  .nav { display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 0 0 8px !important; border-bottom: 1.5px solid #111113 !important; }
+  .status #updated { display: inline !important; }
+  .sit-bar { margin: 10px 0 0 !important; padding: 8px 12px !important; background: #fafaf9 !important; border: 1px solid #e2e0dc !important; border-radius: 10px !important; font-size: 12px !important; }
+  .stage { display: block !important; height: auto !important; min-height: 0 !important; border-top: 0 !important; }
+  .map-wrap { margin: 10px 0 0 !important; height: 290px !important; min-height: 290px !important; border-radius: 12px !important; box-shadow: none !important; }
+  #map { border-radius: 12px !important; }
+  .panel { overflow: visible !important; padding: 12px 0 0 !important; gap: 10px !important; }
+  .featured { grid-template-columns: 220px minmax(0, 1fr) !important; gap: 14px !important; break-inside: avoid; page-break-inside: avoid; }
+  .visual { min-height: 210px !important; height: 210px !important; background: #fcfbfa !important; border: 1px solid #e2e0dc !important; border-radius: 14px !important; }
+  .visual svg.ripple { width: 100% !important; height: 100% !important; }
+  .f-title { font-size: 18px !important; margin: 4px 0 !important; }
+  .f-price b { font-size: 24px !important; }
+  .specs, .near { background: #ffffff !important; border: 1px solid #e2e0dc !important; margin: 8px 0 !important; padding: 8px 10px !important; }
+  .below { padding: 14px 0 0 !important; border-top: 0 !important; gap: 12px !important; }
+  .sec-head h2 { font-size: 17px !important; }
+  .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 8px !important; break-inside: avoid; }
+  .card { padding: 10px 12px !important; border-radius: 12px !important; box-shadow: none !important; break-inside: avoid; page-break-inside: avoid; }
+  .card.dark { background: #ffffff !important; color: #111113 !important; border: 1px solid #e2e0dc !important; box-shadow: inset 3.5px 0 0 #ea580c !important; }
+  .card.dark .kpi-label, .card.dark .kpi-note, .card.dark .kpi-value small { color: #52525b !important; }
+  .card.dark .kpi-ico { background: #fff7ed !important; color: #ea580c !important; }
+  .kpi-value { font-size: 20px !important; }
+  .kpi-value small { font-size: 11px !important; }
+  .grid2 { grid-template-columns: 1.35fr 1fr !important; gap: 10px !important; break-inside: avoid; }
+  .chart-box svg { width: 100% !important; height: auto !important; max-height: 180px !important; }
+  #listSec { break-inside: auto !important; page-break-inside: auto !important; }
+  table { font-size: 11.5px !important; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  th, td { padding: 5px 7px !important; }
+  .col-depth, .col-cmt { display: table-cell !important; }
 }
 
 /* ===== Executive Situation Banner, Severity Labels, Dataviz & Polish ===== */
@@ -1487,7 +1525,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
   });
   document.getElementById("qClear").addEventListener("click", () => { qIn.value = ""; qBox.classList.remove("has"); state.q = ""; apply(); qIn.focus(); });
   document.getElementById("csvBtn").addEventListener("click", exportCsv);
-  document.getElementById("printBtn").addEventListener("click", () => window.print());
+  let printPrevTheme = null;
+  function prepPrint() {
+    if (document.documentElement.dataset.theme === "dark") {
+      printPrevTheme = "dark";
+      document.documentElement.dataset.theme = "light";
+      baseTiles.setUrl(`${base}${tileName()}_Base/MapServer/tile/{z}/{y}/{x}`);
+      labelTiles.setUrl(`${base}${tileName()}_Reference/MapServer/tile/{z}/{y}/{x}`);
+      if (state.all.length) render();
+    }
+    map.invalidateSize();
+  }
+  function afterPrint() {
+    if (printPrevTheme === "dark") {
+      document.documentElement.dataset.theme = "dark";
+      printPrevTheme = null;
+      baseTiles.setUrl(`${base}${tileName()}_Base/MapServer/tile/{z}/{y}/{x}`);
+      labelTiles.setUrl(`${base}${tileName()}_Reference/MapServer/tile/{z}/{y}/{x}`);
+      if (state.all.length) render();
+    }
+    setTimeout(() => map.invalidateSize(), 150);
+  }
+  addEventListener("beforeprint", prepPrint);
+  addEventListener("afterprint", afterPrint);
+  document.getElementById("printBtn").addEventListener("click", () => {
+    prepPrint();
+    setTimeout(() => window.print(), printPrevTheme ? 450 : 80);
+  });
   document.getElementById("reload").addEventListener("click", load);
   const themeBtn = document.getElementById("themeBtn");
   const syncThemeBtn = () => themeBtn.setAttribute("aria-pressed", String(document.documentElement.dataset.theme === "dark"));
