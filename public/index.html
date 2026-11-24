@@ -432,7 +432,16 @@ footer a { color: var(--ink); }
   body.side-collapsed .wd-side .side-nav { padding: 0 12px; gap: 6px; }
   body.side-collapsed .wd-side .nav-item { justify-content: center; padding: 11px; border-radius: 12px; }
 }
-@media print { .wd-side { display: none !important; } body { padding-left: 0 !important; } }
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .wd-side, .nav-right .icon-btn, .nav-home, .overlay, .stepper, .f-actions, .sit-actions, .bar-clear, #csvBtn, .more-row, .rail-more, .leaflet-control-zoom { display: none !important; }
+  body { padding-left: 0 !important; background: #ffffff !important; }
+  .app { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; margin: 0 !important; }
+  .stage { height: auto !important; min-height: 0 !important; grid-template-columns: 1fr 1fr !important; }
+  .map-wrap { min-height: 360px !important; }
+  .panel { overflow: visible !important; }
+  .card, .near, .sit-bar { break-inside: avoid; page-break-inside: avoid; }
+}
 
 /* ===== Executive Situation Banner, Severity Labels, Dataviz & Polish ===== */
 button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible, .bar-row:focus-visible {
@@ -570,6 +579,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
       <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="สลับธีมขาว/ดำ" title="สลับธีมขาว/ดำ">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      </button>
+      <button class="icon-btn" id="printBtn" type="button" aria-label="พิมพ์รายงาน" title="พิมพ์รายงาน / บันทึก PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg>
       </button>
       <button class="icon-btn" id="reload" type="button" aria-label="โหลดข้อมูลใหม่" title="โหลดข้อมูลใหม่">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
@@ -1475,6 +1487,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
   });
   document.getElementById("qClear").addEventListener("click", () => { qIn.value = ""; qBox.classList.remove("has"); state.q = ""; apply(); qIn.focus(); });
   document.getElementById("csvBtn").addEventListener("click", exportCsv);
+  document.getElementById("printBtn").addEventListener("click", () => window.print());
   document.getElementById("reload").addEventListener("click", load);
   const themeBtn = document.getElementById("themeBtn");
   const syncThemeBtn = () => themeBtn.setAttribute("aria-pressed", String(document.documentElement.dataset.theme === "dark"));
