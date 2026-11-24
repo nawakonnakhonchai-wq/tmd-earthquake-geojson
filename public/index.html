@@ -215,8 +215,13 @@ button { font: inherit; color: inherit; }
 }
 .visual svg.ripple { width: 100%; height: 100%; position: absolute; inset: 0; }
 .visual .badge {
-  position: absolute; left: 14px; top: 14px; width: 44px; height: 44px; border-radius: 50%; background: var(--surface);
-  display: grid; place-items: center; font-weight: 800; font-size: 14px; box-shadow: var(--shadow);
+  position: absolute; left: 14px; top: 14px; height: 34px; padding: 0 12px; border-radius: 999px; background: var(--surface);
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13.5px; box-shadow: var(--shadow); white-space: nowrap;
+}
+.visual .badge i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.visual .vis-cap {
+  position: absolute; left: 14px; top: 54px; font-size: 11px; font-weight: 600; color: var(--text-muted);
+  background: color-mix(in srgb, var(--surface-2) 85%, transparent); padding: 1px 6px; border-radius: 6px; pointer-events: none;
 }
 .visual .corner { position: absolute; right: 14px; top: 14px; }
 .stepper {
@@ -507,6 +512,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
 .tbl-sev { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-left: 4px; }
 .chip.reset-all { background: var(--surface-2); border-style: dashed; color: var(--text-secondary); font-weight: 600; }
 .chip.reset-all:hover { color: var(--ink); border-color: var(--ink); }
+.scope-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.scope-pill {
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); font-size: 12.5px; color: var(--text-secondary); white-space: nowrap;
+}
+.scope-pill b { color: var(--ink); font-weight: 700; }
+.scope-pill.accent { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.scope-pill.accent b { color: var(--on-ink); }
 @media (max-width: 900px) { .sit-bar { padding: 10px 16px; } }
 </style>
 </head>
@@ -584,7 +597,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
 
   <div class="below">
     <div class="sec-head" id="overview">
-      <div><h2>ภาพรวม</h2><p>ตามตัวกรองที่เลือกบนแผนที่</p></div>
+      <div><h2>ภาพรวม</h2><p>สรุปสถิติตามตัวกรองที่เลือกด้านบน</p></div>
+      <div class="scope-bar" id="scopeBar" aria-label="ขอบเขตข้อมูลที่กำลังแสดง"></div>
     </div>
     <section class="kpis">
       <div class="card dark">
@@ -685,6 +699,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
     { min: 5, max: Infinity,  label: "≥ 5.0",   v: "--m5", level: "รุนแรง",   desc: "อาจส่งผลกระทบต่ออาคารหรือพื้นที่ใกล้เคียง ควรตรวจสอบ" },
   ];
   const depthLevel = d => d <= 10 ? "ตื้น" : d <= 70 ? "ปานกลาง" : "ลึก";
+  const depthDesc = d => d <= 10
+    ? "แผ่นดินไหวตื้น (≤ 10 กม.) มักรู้สึกแรงสั่นสะเทือนบนผิวดินชัดกว่าแผ่นดินไหวลึก"
+    : d <= 70 ? "ความลึกระดับปานกลาง (11–70 กม.)" : "แผ่นดินไหวลึก (> 70 กม.) แรงสั่นสะเทือนบนผิวดินมักเบากว่า";
+  const shortPlace = loc => {
+    const th = splitLoc(loc).th.trim();
+    const prov = th.match(/จ\.\s*([^\s,]+)/);
+    if (prov) return `จ.${prov[1]}`;
+    const clean = th.replace(/^ตอน(เหนือ|ใต้|ตะวันออก|ตะวันตก)ของ/, "").replace(/^หมู่เกาะ/, "").replace(/^ประเทศ/, "").replace(/^พรมแดน/, "").trim();
+    return clean.length > 14 ? clean.slice(0, 13) + "…" : clean;
+  };
   const FILTERS = {
     days:   { label: "ช่วงเวลา", def: 30, opts: [[1, "24 ชม."], [7, "7 วัน"], [30, "30 วัน"], [90, "90 วัน"], [0, "ทั้งหมด"]] },
     region: { label: "พื้นที่", def: "all", opts: [["all", "ทั้งหมด"], ["th", "ในประเทศไทย"], ["intl", "ต่างประเทศ"]] },
@@ -771,13 +795,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
     const ex = cx + rr * Math.sin(th), ey = cy - rr * Math.cos(th);
     const opp = th + Math.PI; // วางป้ายวงไว้ฝั่งตรงข้ามกับเส้น
     let s = `<svg class="ripple" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="ระยะจากจุดศูนย์กลางถึงนิคมฯ ${esc(n.name)} ประมาณ ${fmtKm(n.d)} กม.">`;
+    // ตัวชี้ทิศเหนือ (N) ด้านบนสุดของวงแหวน
+    s += `<text x="${cx}" y="${Math.max(12, cy - R - 5)}" text-anchor="middle" font-size="10.5" font-weight="800" fill="${muted}" letter-spacing=".04em">N</text>`;
+    const ringGap = R / k;
     for (let i = k; i >= 1; i--) {
       const ri = R * i / k;
       s += `<circle cx="${cx}" cy="${cy}" r="${ri}" fill="none" stroke="${grid}" stroke-width="1" ${i === k ? "" : 'stroke-dasharray="3 4"'}/>`;
-      const lx = cx + ri * Math.sin(opp), ly = cy - ri * Math.cos(opp);
-      s += `<text x="${lx}" y="${ly}" dy="4" text-anchor="middle" font-size="11" fill="${muted}" paint-order="stroke" stroke="${css("--surface-2")}" stroke-width="4">${(step * i).toLocaleString("th-TH")}</text>`;
+      // แสดงป้ายระยะวงนอกสุดพร้อมหน่วย "กม." และแสดงวงในเฉพาะเมื่อมีระยะห่างพอไม่ให้ตัวเลขทับกัน
+      if (i === k || (ringGap >= 24 && (i === Math.ceil(k / 2) || ringGap >= 34))) {
+        const lx = cx + ri * Math.sin(opp), ly = cy - ri * Math.cos(opp);
+        const rTxt = i === k ? `${(step * i).toLocaleString("th-TH")} กม.` : (step * i).toLocaleString("th-TH");
+        s += `<text x="${lx}" y="${ly}" dy="4" text-anchor="middle" font-size="10.5" fill="${muted}" paint-order="stroke" stroke="${css("--surface-2")}" stroke-width="4">${rTxt}</text>`;
+      }
     }
-    s += `<text x="${cx + (R + 0) * Math.sin(opp)}" y="${cy - R * Math.cos(opp)}" dy="17" text-anchor="middle" font-size="10.5" fill="${muted}">กม.</text>`;
     s += `<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="${ink}" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>`;
     s += `<circle cx="${cx}" cy="${cy}" r="11" fill="${colorOf(e.mag)}" stroke="${ring}" stroke-width="3"/>`;
     s += `<rect x="${ex - 7}" y="${ey - 7}" width="14" height="14" rx="2" transform="rotate(45 ${ex} ${ey})" fill="${surf}" stroke="${ink}" stroke-width="2.5"/>`;
@@ -908,8 +938,35 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
   function render() {
     const rows = filtered();
     const baseRows = filtered({ ignoreMagClass: true });
-    renderStatus(); renderSituation(); renderChips(); renderKpis(rows); renderMap(rows); renderLegend();
+    renderStatus(); renderSituation(); renderChips(); renderScope(rows); renderKpis(rows); renderMap(rows); renderLegend();
     renderFeatured(rows); renderRail(rows); renderTimeline(rows); renderBars(baseRows); renderTrend(rows); renderTable(rows);
+  }
+
+  function renderScope(rows) {
+    const box = document.getElementById("scopeBar");
+    if (!box) return;
+    const pills = [];
+    let hasCustom = false;
+    Object.entries(FILTERS).forEach(([k, f]) => {
+      const cur = f.opts.find(o => o[0] === state[k]) || f.opts[0];
+      const act = state[k] !== f.def;
+      if (act) hasCustom = true;
+      pills.push(`<span class="scope-pill${act ? " accent" : ""}">${f.label}: <b>${cur[1]}</b></span>`);
+    });
+    if (state.magClass !== null) {
+      hasCustom = true;
+      const c = CLASSES[state.magClass];
+      pills.push(`<span class="scope-pill accent">ช่วงขนาด: <b>${c.label} (${c.level})</b></span>`);
+    }
+    if (state.q.trim()) {
+      hasCustom = true;
+      pills.push(`<span class="scope-pill accent">ค้นหา: <b>"${esc(state.q.trim())}"</b></span>`);
+    }
+    pills.push(`<span class="scope-pill"><b>${rows.length.toLocaleString("th-TH")}</b> เหตุการณ์</span>`);
+    if (hasCustom) pills.push(`<button type="button" class="bar-clear" id="scopeReset">ล้างตัวกรอง</button>`);
+    box.innerHTML = pills.join("");
+    const rb = document.getElementById("scopeReset");
+    if (rb) rb.onclick = resetFilters;
   }
 
   function renderSituation() {
@@ -1044,7 +1101,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
     $("kThNote").textContent = th.length ? Object.entries(prov).sort((x, y) => y[1] - x[1]).slice(0, 3).map(([p, c]) => `จ.${p} ${c}`).join(" · ") : "ไม่มีเหตุการณ์ในไทย";
     const avg = rows.length ? rows.reduce((s, r) => s + r.depth, 0) / rows.length : 0;
     $("kDepth").innerHTML = rows.length ? `${avg.toFixed(1)}<small>กม. (${depthLevel(avg)})</small>` : "–";
-    $("kDepthNote").textContent = rows.length ? `ระดับตื้น (≤ 10 กม.) ${rows.filter(r => r.depth <= 10).length} ครั้ง` : " ";
+    $("kDepthNote").textContent = rows.length ? `ตื้น (≤ 10 กม.) ${rows.filter(r => r.depth <= 10).length} ครั้ง · ยิ่งตื้นยิ่งรู้สึกชัด` : " ";
+    $("kDepthNote").title = "แผ่นดินไหวตื้น (≤ 10 กม.) มักทำให้รู้สึกถึงแรงสั่นสะเทือนบนผิวดินชัดกว่าแผ่นดินไหวลึกในขนาดเดียวกัน";
   }
 
   function renderMap(rows) {
@@ -1056,12 +1114,18 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
         .bindPopup(() => popupHtml(e), POP_OPTS).on("click", () => select(e, false));
       m.addTo(dotLayer); markerById.set(e.id, m);
     });
-    // ป้ายแบบในภาพตัวอย่าง: เหตุการณ์ขนาดใหญ่สุด 6 รายการ + รายการที่เลือก
-    const tagged = [...rows].sort((a, b) => b.mag - a.mag).slice(0, 6);
-    if (sel && !tagged.includes(sel)) tagged.push(sel);
+    // ป้ายลอยบนแผนที่: เลือกเหตุการณ์ที่เลือกอยู่ก่อน + ขนาดใหญ่สุดไม่เกิน 4 ป้าย โดยเว้นระยะไม่ให้ป้ายซ้อนทับกัน
+    const tagged = [];
+    if (sel) tagged.push(sel);
+    for (const e of [...rows].sort((a, b) => b.mag - a.mag)) {
+      if (tagged.length >= 4) break;
+      if (tagged.includes(e)) continue;
+      if (tagged.some(t => Math.hypot(e.lat - t.lat, e.lon - t.lon) < 1.8)) continue;
+      tagged.push(e);
+    }
     tagged.forEach(e => {
       const isSel = sel && e.id === sel.id;
-      const icon = L.divIcon({ className: "", iconSize: [0, 0], html: `<span class="tag${isSel ? " sel" : ""}"><b>M ${e.mag.toFixed(1)}</b> / ${esc(splitLoc(e.loc).th.replace(/^ประเทศ/, "").slice(0, 18))}</span>` });
+      const icon = L.divIcon({ className: "", iconSize: [0, 0], html: `<span class="tag${isSel ? " sel" : ""}"><b>M ${e.mag.toFixed(1)}</b> · ${esc(shortPlace(e.loc))}</span>` });
       L.marker([e.lat, e.lon], { icon, zIndexOffset: isSel ? 1000 : 0, keyboard: false }).on("click", () => select(e, false)).addTo(tagLayer);
     });
     if (firstFit && rows.length) {
@@ -1124,12 +1188,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
     const idx = rows.indexOf(e);
     box.innerHTML = `
       <div class="visual">
-        <span class="badge">${e.mag.toFixed(1)}</span>
+        <span class="badge"><i style="background:${colorOf(e.mag)}"></i>M ${e.mag.toFixed(1)}</span>
+        <span class="vis-cap">ศูนย์กลาง → นิคมฯ ใกล้สุด</span>
         <a class="icon-btn corner" href="https://earthquake.tmd.go.th/" target="_blank" rel="noopener" title="เปิดเว็บกรมอุตุฯ" aria-label="เปิดเว็บกรมอุตุฯ">${ICON.ext}</a>
         ${idx >= RECENT ? `<div class="stepper"><button type="button" class="back" id="backEv" title="กลับไปเหตุการณ์ล่าสุด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>กลับไปเหตุการณ์ล่าสุด</button></div>` : `
-        <div class="stepper" role="group" aria-label="เลื่อนดูเหตุการณ์ล่าสุด">
+        <div class="stepper" role="group" aria-label="เลื่อนดูเหตุการณ์ล่าสุด ${Math.min(RECENT, rows.length)} อันดับแรก">
           <button type="button" id="prevEv" title="เหตุการณ์ใหม่กว่า (←)" aria-label="เหตุการณ์ใหม่กว่า"${idx <= 0 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
-          <span class="pos" aria-live="polite">${idx + 1} <small>/ ${Math.min(RECENT, rows.length)}</small></span>
+          <span class="pos" aria-live="polite" title="เลื่อนดูเหตุการณ์ล่าสุด ${Math.min(RECENT, rows.length)} อันดับแรก">ล่าสุด ${idx + 1} <small>/ ${Math.min(RECENT, rows.length)}</small></span>
           <button type="button" id="nextEv" title="เหตุการณ์เก่ากว่า (→)" aria-label="เหตุการณ์เก่ากว่า"${idx >= Math.min(RECENT, rows.length) - 1 ? " disabled" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
         </div>`}
       </div>
@@ -1138,7 +1203,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
         <div class="f-title">${esc(l.th)}</div>
         <div class="f-addr">${ICON.pin}<span>${esc(e.cmt || l.en || "-")}</span></div>
         <div class="specs">
-          <span>${ICON.depth}ลึก ${e.depth} กม. (${depthLevel(e.depth)})</span>
+          <span title="${depthDesc(e.depth)}">${ICON.depth}ลึก ${e.depth} กม. (${depthLevel(e.depth)})</span>
           <span>${ICON.clock}${e.time ? hm(e.time) + " น." : "-"}</span>
           <span>${ICON.globe}${e.thai ? "ในไทย" : "ต่างประเทศ"}</span>
         </div>
@@ -1172,8 +1237,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible,
   function renderRail(rows) {
     const rail = document.getElementById("rail");
     const items = rows.slice(0, RECENT), sel = selected(rows);
-    document.getElementById("railCount").textContent = rows.length ? `${Math.min(RECENT, rows.length)} จาก ${rows.length} รายการ` : "";
-    document.getElementById("railMore").hidden = rows.length <= RECENT;
+    document.getElementById("railCount").textContent = rows.length ? `ล่าสุด ${Math.min(RECENT, rows.length)} จาก ${rows.length.toLocaleString("th-TH")} เหตุการณ์` : "";
+    const more = document.getElementById("railMore");
+    more.hidden = rows.length <= RECENT;
+    if (rows.length > RECENT) more.innerHTML = `ดูครบทั้ง ${rows.length.toLocaleString("th-TH")} เหตุการณ์ในตารางด้านล่าง <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>`;
     if (!items.length) { rail.innerHTML = `<div class="empty">ไม่มีข้อมูล</div>`; return; }
     rail.innerHTML = items.map(e => `
       <button class="erow${sel && sel.id === e.id ? " sel" : ""}" type="button" data-id="${e.id}"${sel && sel.id === e.id ? ' aria-current="true"' : ""}>
